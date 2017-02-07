@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/gray5"
+              android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:text="不让他(她)看我的朋友圈"
+                    android:textColor="@color/black0"
+                    android:textSize="16sp"/>
+
+                <com.kyleduo.switchbutton.SwitchButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    app:kswBackDrawable="@drawable/ios_back_drawable"
+                    app:kswBackMeasureRatio="1.8"
+                    app:kswThumbDrawable="@drawable/ios_thumb_selector"
+                    app:kswThumbMarginBottom="-4dp"
+                    app:kswThumbMarginLeft="-2dp"
+                    app:kswThumbMarginRight="-2dp"
+                    app:kswThumbMarginTop="-0dp"
+                    app:kswThumbWidth="10dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="打开后，你在朋友圈发的照片，对方将无法看到。"
+                android:textColor="@color/gray2"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:text="不看他(她)的朋友圈"
+                    android:textColor="@color/black0"
+                    android:textSize="16sp"/>
+
+                <com.kyleduo.switchbutton.SwitchButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    app:kswBackDrawable="@drawable/ios_back_drawable"
+                    app:kswBackMeasureRatio="1.8"
+                    app:kswThumbDrawable="@drawable/ios_thumb_selector"
+                    app:kswThumbMarginBottom="-4dp"
+                    app:kswThumbMarginLeft="-2dp"
+                    app:kswThumbMarginRight="-2dp"
+                    app:kswThumbMarginTop="-0dp"
+                    app:kswThumbWidth="10dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="打开后，对方在朋友圈发的照片，你将无法看到。"
+                android:textColor="@color/gray2"
+                android:textSize="14sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

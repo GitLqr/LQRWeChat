@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray5"
+    android:orientation="vertical"
+    tools:context="com.lqr.wechat.activity.MainActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!--底部-->
+    <View
+        style="@style/Line1"
+        />
+
+    <LinearLayout
+        android:id="@+id/llButtom"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/llMessage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:gravity="bottom">
+
+                <RelativeLayout
+                    android:id="@+id/rlMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:id="@+id/tvMessageNormal"
+                        android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+                        android:layout_height="@dimen/main_bottom_iv_vertical_size"
+                        android:layout_centerInParent="true"
+                        android:background="@mipmap/message_normal"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="@color/gray0"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tvMessagePress"
+                        android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+                        android:layout_height="@dimen/main_bottom_iv_vertical_size"
+                        android:layout_centerInParent="true"
+                        android:background="@mipmap/message_press"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="@color/green0"
+                        android:textSize="12sp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvMessageCount"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignRight="@id/rlMessage"
+                    android:layout_marginRight="-5dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="@mipmap/bg_unread"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/tvMessageTextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/message"
+                    android:textColor="@color/gray0"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tvMessageTextPress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/message"
+                    android:textColor="@color/green0"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llContacts"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:gravity="bottom">
+
+                <RelativeLayout
+                    android:id="@+id/rlContacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:id="@+id/tvContactsNormal"
+                        android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+                        android:layout_height="@dimen/main_bottom_iv_vertical_size"
+                        android:background="@mipmap/contacts_normal"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="@color/gray0"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tvContactsPress"
+                        android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+                        android:layout_height="@dimen/main_bottom_iv_vertical_size"
+                        android:background="@mipmap/contacts_press"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="@color/green0"
+                        android:textSize="12sp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvContactCount"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignRight="@id/rlContacts"
+                    android:layout_marginRight="-5dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="@mipmap/bg_unread"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/tvContactsTextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contacts"
+                    android:textColor="@color/gray0"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tvContactsTextPress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contacts"
+                    android:textColor="@color/green0"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llDiscovery"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:gravity="bottom">
+
+                <RelativeLayout
+                    android:id="@+id/rlDiscovery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:id="@+id/tvDiscoveryNormal"
+                        android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+                        android:layout_height="@dimen/main_bottom_iv_vertical_size"
+                        android:background="@mipmap/discovery_normal"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="@color/gray0"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tvDiscoveryPress"
+                        android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+                        android:layout_height="@dimen/main_bottom_iv_vertical_size"
+                        android:background="@mipmap/discovery_press"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="@color/green0"
+                        android:textSize="12sp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvDiscoveryCount"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_alignRight="@id/rlDiscovery"
+                    android:layout_marginRight="-5dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="@mipmap/bg_unread"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/tvDiscoveryTextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/discovery"
+                    android:textColor="@color/gray0"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tvDiscoveryTextPress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/discovery"
+                    android:textColor="@color/green0"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llMe"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:gravity="bottom">
+
+                <RelativeLayout
+                    android:id="@+id/rlMe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:id="@+id/tvMeNormal"
+                        android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+                        android:layout_height="@dimen/main_bottom_iv_vertical_size"
+                        android:background="@mipmap/me_normal"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="@color/gray0"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tvMePress"
+                        android:layout_width="@dimen/main_bottom_iv_horizontal_size"
+                        android:layout_height="@dimen/main_bottom_iv_vertical_size"
+                        android:background="@mipmap/me_press"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="@color/green0"
+                        android:textSize="12sp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvMeCount"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_alignRight="@id/rlMe"
+                    android:layout_marginRight="-5dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="@mipmap/bg_unread"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/tvMeTextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/me"
+                    android:textColor="@color/gray0"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tvMeTextPress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/me"
+                    android:textColor="@color/green0"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

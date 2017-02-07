@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_corner_rect_solid_white"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="性别"
+            android:textColor="@color/black0"
+            android:textSize="18sp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvMale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_option_item"
+                android:drawableRight="@mipmap/list_unselected"
+                android:gravity="left|center_vertical"
+                android:padding="20dp"
+                android:text="男"
+                android:textColor="@color/gray0"
+                android:textSize="16sp"/>
+
+            <View
+                style="@style/Line1"
+                />
+
+            <TextView
+                android:id="@+id/tvFemale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_option_item"
+                android:drawableRight="@mipmap/list_unselected"
+                android:gravity="left|center_vertical"
+                android:padding="20dp"
+                android:text="女"
+                android:textColor="@color/gray0"
+                android:textSize="16sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

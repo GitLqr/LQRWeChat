@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/gray5"
+              android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llHeader"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/selector_option_item"
+            android:gravity="center_vertical"
+            android:paddingRight="3dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text="头像"
+                android:textColor="@color/black0"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:id="@+id/ivHeader"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/default_header"/>
+        </LinearLayout>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivName"
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="昵称"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"
+            app:right_text="CSDN_LQR"
+            app:right_text_color="@color/gray2"
+            app:right_text_margin_right="20dp"
+            app:right_text_size="14sp"/>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivAccount"
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="微信号"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"
+            app:right_text="sky_lqr"
+            app:right_text_color="@color/gray2"
+            app:right_text_margin_right="20dp"
+            app:right_text_size="14sp"/>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivQRCordCard"
+            style="@style/OptionItem"
+            app:left_text="二维码名片"
+            android:background="@drawable/selector_option_item"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"
+            app:right_image_margin_right="20dp"
+            app:right_src="@mipmap/ic_qr_code"/>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            style="@style/OptionItem"
+            app:left_text="我的地址"
+            android:background="@drawable/selector_option_item"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <com.lqr.optionitemview.OptionItemView
+            android:background="@drawable/selector_option_item"
+            android:id="@+id/oivGender"
+            style="@style/OptionItem"
+            app:left_text="性别"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"
+            app:right_text=""
+            app:right_text_color="@color/gray2"
+            app:right_text_margin_right="20dp"
+            app:right_text_size="14sp"/>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="地区"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"/>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivSignature"
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="个性签名"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"
+            app:right_text="未填写"
+            app:right_text_color="@color/gray2"
+            app:right_text_margin_right="20dp"
+            app:right_text_size="14sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

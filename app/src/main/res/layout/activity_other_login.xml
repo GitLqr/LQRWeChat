@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lqr.wechat.activity.MainActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="账  号"
+                android:textColor="@color/black0"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="QQ号/微信号/Email"
+                android:inputType="phone"
+                android:textColorHint="@color/gray3"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vLinePhone"
+            style="@style/Line1"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="密  码"
+                android:textColor="@color/black0"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:id="@+id/etPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="密码"
+                android:textColorHint="@color/gray3"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vLinePwd"
+            style="@style/Line1"
+            />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/selector_btn_enable"
+            android:enabled="false"
+            android:text="登录"
+            android:textColor="@color/selector_btn_enable"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="登录遇到问题?"
+            android:textColor="@color/blue0"
+            android:textSize="13sp"/>
+    </LinearLayout>
+</LinearLayout>

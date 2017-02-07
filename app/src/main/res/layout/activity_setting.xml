@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/gray5"
+              android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivNewMsgNotifySet"
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="新消息提醒"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"/>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivDontDistorbSet"
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="勿扰模式"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"/>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivCheatSet"
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="聊天"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"/>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivPrivacySet"
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="隐私"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"/>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivCommon"
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="通用"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"/>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivAccountAndSafeSet"
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="账号与安全"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivAbout"
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="关于微信"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"/>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivExit"
+            style="@style/OptionItem"
+            android:background="@drawable/selector_option_item"
+            app:left_text="退出"
+            app:left_text_color="@color/black0"
+            app:left_text_margin_left="15dp"
+            app:left_text_size="16sp"/>
+    </LinearLayout>
+
+</LinearLayout>

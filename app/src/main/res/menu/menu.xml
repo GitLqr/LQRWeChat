@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itemSearch"
+        android:icon="@mipmap/ic_search"
+        android:showAsAction="always"
+        android:title=""/>
+    <item
+        android:id="@+id/itemMore"
+        android:icon="@mipmap/ic_add"
+        android:showAsAction="always"
+        android:title="">
+    </item>
+</menu>

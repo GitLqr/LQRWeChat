@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray5"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_toolbar"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:text="账号"
+            android:textColor="@color/gray2"
+            android:textSize="14sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <com.lqr.optionitemview.OptionItemView
+                style="@style/OptionItem"
+                android:background="@drawable/selector_option_item"
+                app:left_text="微信号"
+                app:left_text_color="@color/black0"
+                app:left_text_margin_left="15dp"
+                app:left_text_size="16sp"
+                app:right_text="sky_lqr"
+                app:right_text_color="@color/gray2"
+                app:right_text_margin_right="20dp"
+                app:right_text_size="14sp"/>
+
+            <View
+                style="@style/Line1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+
+            <com.lqr.optionitemview.OptionItemView
+                style="@style/OptionItem"
+                android:background="@drawable/selector_option_item"
+                app:left_text="QQ号"
+                app:left_text_color="@color/black0"
+                app:left_text_margin_left="15dp"
+                app:left_text_size="16sp"
+                app:right_text="960432662"
+                app:right_text_color="@color/gray2"
+                app:right_text_margin_right="20dp"
+                app:right_text_size="14sp"/>
+
+            <View
+                style="@style/Line1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+
+            <com.lqr.optionitemview.OptionItemView
+                style="@style/OptionItem"
+                android:background="@drawable/selector_option_item"
+                app:left_text="手机号"
+                app:left_text_color="@color/black0"
+                app:left_text_margin_left="15dp"
+                app:left_text_size="16sp"
+                app:right_text="158xxxxxxxx"
+                app:right_text_color="@color/gray2"
+                app:right_text_margin_right="20dp"
+                app:right_text_size="14sp"/>
+
+            <View
+                style="@style/Line1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+
+            <com.lqr.optionitemview.OptionItemView
+                style="@style/OptionItem"
+                android:background="@drawable/selector_option_item"
+                app:left_text="通讯录黑名单"
+                app:left_text_color="@color/black0"
+                app:left_text_margin_left="15dp"
+                app:left_text_size="16sp"
+                app:right_text="未绑定"
+                app:right_text_color="@color/gray2"
+                app:right_text_margin_right="20dp"
+                app:right_text_size="14sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:text="安全"
+            android:textColor="@color/gray2"
+            android:textSize="14sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <com.lqr.optionitemview.OptionItemView
+                style="@style/OptionItem"
+                android:background="@drawable/selector_option_item"
+                app:left_text="声音锁"
+                app:left_text_color="@color/black0"
+                app:left_text_margin_left="15dp"
+                app:left_text_size="16sp"/>
+
+            <View
+                style="@style/Line1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+
+            <com.lqr.optionitemview.OptionItemView
+                style="@style/OptionItem"
+                android:background="@drawable/selector_option_item"
+                app:left_text="微信密码"
+                app:left_text_color="@color/black0"
+                app:left_text_margin_left="15dp"
+                app:left_text_size="16sp"/>
+
+            <View
+                style="@style/Line1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+
+            <com.lqr.optionitemview.OptionItemView
+                style="@style/OptionItem"
+                android:background="@drawable/selector_option_item"
+                app:left_text="账号保护"
+                app:left_text_color="@color/black0"
+                app:left_text_margin_left="15dp"
+                app:left_text_size="16sp"
+                app:right_text="已保护"
+                app:right_text_color="@color/gray2"
+                app:right_text_margin_right="20dp"
+                app:right_text_size="14sp"/>
+
+            <View
+                style="@style/Line1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+
+            <com.lqr.optionitemview.OptionItemView
+                style="@style/OptionItem"
+                android:background="@drawable/selector_option_item"
+                app:left_text="手机安全防护"
+                app:left_text_color="@color/black0"
+                app:left_text_margin_left="15dp"
+                app:left_text_size="16sp"
+                app:right_text="未启用"
+                app:right_text_color="@color/gray2"
+                app:right_text_margin_right="20dp"
+                app:right_text_size="14sp"/>
+
+            <View
+                style="@style/Line1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_option_item"
+                    android:gravity="center_vertical"
+                    android:text="微信安全中心"
+                    android:textColor="@color/black0"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/selector_option_item"
+                    android:lineSpacingExtra="3dp"
+                    android:text="如果你遇到微信被盗，无法登录等问题可以前往安全中心"
+                    android:textColor="@color/gray2"
+                    android:textSize="14sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

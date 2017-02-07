@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <!-- 显示时间 -->
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_notification_bg"
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:text="下午 5点"
+        android:textColor="#fff"
+        android:textSize="12sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="10dp">
+
+        <!-- 人物头像 -->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:src="@mipmap/default_header"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 昵称，当在群组中则要显示 -->
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="CSDN_LQR"
+                android:textColor="#666666"
+                android:textSize="12sp"
+                android:visibility="visible"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <com.lqr.wechat.view.BubbleImageView
+                    android:id="@+id/bivPic"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:adjustViewBounds="true"
+                    android:minWidth="80dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/dialog_toast_bg"
+                    app:bubble_angle="10dp"
+                    app:bubble_arrowHeight="10dp"
+                    app:bubble_arrowLocation="left"
+                    app:bubble_arrowOffset="-5dp"
+                    app:bubble_arrowTop="20dp"
+                    app:bubble_arrowWidth="8dp"
+                    app:bubble_showShadow="false"
+                    app:bubble_showText="false"
+                    />
+
+                <com.lqr.wechat.view.CircularProgressBar
+                    android:id="@+id/cpbLoading"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="45dp"
+                    android:visibility="gone"
+                    />
+
+                <ImageView
+                    android:id="@+id/ivPlay"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="45dp"
+                    android:src="@mipmap/img_video_play_session"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivError"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:src="@mipmap/img_error"/>
+
+            <TextView
+                android:id="@+id/tvRetry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="重试"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

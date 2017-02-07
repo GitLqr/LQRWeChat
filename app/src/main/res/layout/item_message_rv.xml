@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:id="@+id/root"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/selector_option_item"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp"
+        android:paddingRight="15dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="59dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivHeader"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="7.5dp"
+                android:layout_marginTop="7.5dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/default_header"/>
+
+            <!--九宫格头像-->
+            <com.lqr.ninegridimageview.LQRNineGridImageView
+                android:id="@+id/ngiv"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginBottom="7.5dp"
+                android:layout_marginTop="7.5dp"
+                android:background="@color/gray9"
+                android:visibility="gone"
+                app:imgGap="2dp"/>
+
+            <TextView
+                android:id="@+id/tvUnread"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="2dp"
+                android:background="@mipmap/bg_unread"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="visible"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:text="沧晓"
+                android:textColor="@color/gray0"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:singleLine="true"
+                android:text="你有一条短消息"
+                android:textColor="@color/gray3"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:text="下午2:00"
+                android:textColor="@color/gray3"
+                android:textSize="12sp"/>
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/ic_sound_tip_close"
+                android:visibility="invisible"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

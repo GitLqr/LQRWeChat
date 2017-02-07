@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/llBottom"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="#E0303135"
+        android:visibility="gone">
+
+
+        <RelativeLayout
+            android:id="@+id/rlShare"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/btnShare"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/selector_btn_enable_share_file_wall"
+                android:enabled="false"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlCollect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/btnCollect"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/selector_btn_enable_collect_file_wall"
+                android:enabled="false"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlDel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/btnDel"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/selector_btn_enable_del_file_wall"
+                android:enabled="false"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <com.lqr.recyclerview.LQRRecyclerView
+        android:id="@+id/cvFile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/llBottom"
+        android:layout_below="@id/toolbar"
+        app:rv_column="3"
+        app:rv_type="grid"/>
+
+</RelativeLayout>

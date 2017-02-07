@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="?attr/colorPrimary"
+    android:minHeight="?attr/actionBarSize"
+    app:popupTheme="@style/ToolbarPopupTheme"
+    app:subtitleTextAppearance="@style/ToolbarSubTitle"
+    app:theme="@style/ToolbarTheme"
+    app:titleTextAppearance="@style/ToolbarTitle"
+    >
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimary"
+        android:drawableBottom="@drawable/shape_bottom_green"
+        android:drawableLeft="@mipmap/ic_search2"
+        android:drawablePadding="0dp"
+        android:hint="搜索"
+        android:imeOptions="actionSearch"
+        android:textCursorDrawable="@drawable/edit_cursor"
+        android:textSize="14sp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btnOk"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_btn_send"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:visibility="gone"/>
+
+</android.support.v7.widget.Toolbar>

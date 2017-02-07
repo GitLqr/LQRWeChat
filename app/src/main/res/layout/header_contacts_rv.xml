@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llNewFriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_option_item"
+        android:gravity="center_vertical"
+        android:paddingBottom="7.5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentBottom="true"
+                android:src="@mipmap/ic_new_friend"/>
+
+            <View
+                android:id="@+id/vNewFriendUnread"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/shape_dot_red"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="3dp"
+            android:singleLine="true"
+            android:text="新的朋友"
+            android:textColor="@color/gray0"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/Line1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/llGroupCheat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_option_item"
+        android:gravity="center_vertical"
+        android:paddingBottom="7.5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentBottom="true"
+                android:src="@mipmap/ic_group_cheat"/>
+
+            <View
+                android:id="@+id/vGroupCheatUnread"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/shape_dot_red"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="3dp"
+            android:singleLine="true"
+            android:text="群聊"
+            android:textColor="@color/gray0"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/Line1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/llTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_option_item"
+        android:gravity="center_vertical"
+        android:paddingBottom="7.5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentBottom="true"
+                android:src="@mipmap/ic_tag"/>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/shape_dot_red"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="3dp"
+            android:singleLine="true"
+            android:text="标签"
+            android:textColor="@color/gray0"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/Line1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:visibility="visible"
+        />
+
+    <LinearLayout
+        android:id="@+id/llOffical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_option_item"
+        android:gravity="center_vertical"
+        android:paddingBottom="7.5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentBottom="true"
+                android:src="@mipmap/ic_offical"/>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/shape_dot_red"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="3dp"
+            android:singleLine="true"
+            android:text="公众号"
+            android:textColor="@color/gray0"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

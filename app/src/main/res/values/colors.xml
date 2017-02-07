@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#393A3F</color>
+    <color name="colorPrimarydark">#303135</color>
+    <color name="coloraccent">#7e7e7e</color>
+    <!--<color name="coloraccent">#ff4081</color>-->
+
+    <color name="main">#26AAFD</color>
+    <color name="main_bg0">#f0f0f0</color>
+    <color name="main_bg1">#f8f8f8</color>
+    <color name="main_bg3">#FEB838</color>
+    <color name="main_bg4">#F6F5F5</color>
+    <color name="main_bg5">#E6E6E6</color>
+
+    <color name="assist_red">#ff6d6d</color>
+    <color name="assist_blue">#64a4f4</color>
+    <color name="assist_blue_down">#3489ff</color>
+    <color name="assist_green">#6ae068</color>
+    <color name="assist_yellow">#fcce0b</color>
+
+    <color name="line">#D2D2D2</color>
+    <color name="line2">#1896E5</color>
+    <color name="select_down">#ededed</color>
+
+    <color name="gray0">#464646</color>
+    <color name="gray1">#7e7e7e</color>
+    <color name="gray2">#969696</color>
+    <color name="gray3">#c8969696</color>
+    <color name="gray4">#F5F5F5</color>
+    <color name="gray5">#EBEBEB</color>
+    <color name="gray6">#FBFBFB</color>
+    <color name="gray7">#999999</color>
+    <color name="gray8">#D9D9D9</color>
+    <color name="gray9">#DBDFE0</color>
+
+    <color name="red0">#ff0000</color>
+    <color name="red1">#D84E43</color>
+    <color name="red2">#F08B88</color>
+    <color name="red3">#FFFAF5</color>
+    <color name="red4">#823026</color>
+    <color name="red5">#FA6F5F</color>
+    <color name="red6">#D54A47</color>
+    <color name="red7">#E64340</color>
+
+    <color name="green0">#45C01A</color>
+    <color name="green1">#45C01A</color>
+    <color name="green2">#A3DEA3</color>
+    <color name="green3">#1AAD19</color>
+
+    <color name="blue0">#576B95</color>
+
+    <color name="black0">#000000</color>
+    <color name="black1">#99000000</color>
+    <color name="white">#ffffff</color>
+
+    <color name="yellow0">#FFC51B</color>
+    <color name="yellow1">#E5A134</color>
+
+
+    <!--遮盖层颜色-->
+    <color name="mask">#32000000</color>
+
+    <!--快速索引bar颜色-->
+    <color name="side_bar">#919091</color>
+    <color name="side_bar_pressed">#BFBFBF</color>
+</resources>

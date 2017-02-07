@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/root"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/selector_option_item"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp"
+        android:paddingRight="15dp"
+        >
+
+
+        <ImageView
+            android:id="@+id/ivHeader"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="7.5dp"
+            android:layout_marginTop="7.5dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/default_header"/>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:text="沧晓"
+                android:textColor="@color/gray0"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:singleLine="true"
+                android:text="对方请求添加你为朋友"
+                android:textColor="@color/gray3"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvAdded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text="已添加"
+            android:textColor="@color/gray3"
+            android:textSize="12sp"
+            android:visibility="gone"/>
+
+
+        <Button
+            android:id="@+id/btnAck"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/shape_btn_send"
+            android:text="接受"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:visibility="gone"/>
+    </LinearLayout>
+</FrameLayout>

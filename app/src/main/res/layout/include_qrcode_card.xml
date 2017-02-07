@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivHeader"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/default_header"/>
+
+            <!--九宫格头像-->
+            <com.lqr.ninegridimageview.LQRNineGridImageView
+                android:id="@+id/ngiv"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:background="@color/gray9"
+                android:visibility="gone"
+                app:imgGap="4dp"/>
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:text="CSDN_LQR"
+                android:textColor="@color/gray0"
+                android:textSize="14sp"/>
+
+            <ImageView
+                android:id="@+id/ivGender"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="11dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_gender_female"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivCard"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/tvTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/gray1"
+            android:textSize="12sp"/>
+    </LinearLayout>
+</FrameLayout>

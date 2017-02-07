@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/red3"
+              android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/tvMoneyLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="单个金额"
+                    android:textColor="@color/black0"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/etMoney"
+                    style="?android:attr/textViewStyle"
+                    android:background="@null"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textColor="@color/black0"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvMoneyRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/black0"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="留言"
+                    android:textColor="@color/black0"
+                    android:textSize="16sp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="3dp">
+
+                    <TextView
+                        android:id="@+id/tvHint"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="6dp"
+                        android:background="@null"
+                        android:gravity="right|center_vertical"
+                        android:text="恭喜发财，大吉大利!"
+                        android:textColor="@color/gray3"/>
+
+                    <EditText
+                        android:id="@+id/etMessage"
+                        style="?android:attr/textViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="right|center_vertical"
+                        android:maxLines="2"
+                        android:textColor="@color/black0"
+                        android:textSize="16sp"/>
+
+
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="30dp"
+                android:text="￥0.00"
+                android:textColor="@color/black0"
+                android:textSize="35sp"/>
+
+            <Button
+                android:id="@+id/btnOk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/selector_btn_red_packet"
+                android:enabled="false"
+                android:text="塞钱进红包"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="未领取的红包，将于24小时后发起退款"
+                android:textColor="@color/gray2"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTip"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/red4"
+            android:gravity="center"
+            android:text="单个红包金额不可超过200元"
+            android:textColor="@color/yellow1"
+            android:textSize="12sp"
+            android:visibility="gone"/>
+    </RelativeLayout>
+</LinearLayout>

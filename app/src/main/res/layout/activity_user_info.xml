@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <!--内容-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray5"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/include_toolbar"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_option_item"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/ivHeader"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="5dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/default_header"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvAlias"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="沧晓"
+                        android:textColor="@color/gray0"
+                        android:textSize="15sp"/>
+
+                    <ImageView
+                        android:id="@+id/ivGender"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_gender_female"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="微信号:sky_lqr"
+                    android:textColor="@color/gray2"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:singleLine="true"
+                    android:text="昵称:沧晓"
+                    android:textColor="@color/gray2"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.lqr.optionitemview.OptionItemView
+            android:id="@+id/oivAliasAndTag"
+            style="@style/OptionItem"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_option_item"
+            app:left_text="设置备注和标签"/>
+
+        <LinearLayout
+            android:id="@+id/llArea"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_option_item"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:text="地区"
+                android:textColor="@color/black0"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvArea"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="4"
+                android:textColor="@color/gray1"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/llSignature"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/selector_option_item"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:text="个性签名"
+                android:textColor="@color/black0"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvSignature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="4"
+                android:textColor="@color/gray1"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnCheat"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_btn_send"
+            android:text="发消息"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btnVideoCheat"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/shape_btn_voice_normal"
+            android:text="视频聊天"
+            android:textColor="@color/gray0"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btnAddFriend"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_btn_send"
+            android:text="添加到通讯录"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <!--菜单-->
+    <RelativeLayout
+        android:id="@+id/rlMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/vMask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/mask"
+            />
+
+        <ScrollView
+            android:id="@+id/svMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.lqr.optionitemview.OptionItemView
+                    android:id="@+id/oivAlias"
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    app:left_image_margin_left="20dp"
+                    app:left_image_margin_right="18dp"
+                    app:left_src="@mipmap/ic_friend_remark"
+                    app:left_text="设置备注及标签"
+                    app:left_text_color="@color/gray1"/>
+
+                <com.lqr.optionitemview.OptionItemView
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    android:visibility="gone"
+                    app:left_image_margin_left="20dp"
+                    app:left_image_margin_right="18dp"
+                    app:left_src="@mipmap/ic_friend_start"
+                    app:left_text="标为星标朋友"
+                    app:left_text_color="@color/gray1"/>
+
+                <com.lqr.optionitemview.OptionItemView
+                    android:id="@+id/oivFriendsCirclePrivacySet"
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    android:visibility="gone"
+                    app:left_image_margin_left="20dp"
+                    app:left_image_margin_right="18dp"
+                    app:left_src="@mipmap/ic_friend_circle_gray"
+                    app:left_text="设置朋友圈权限"
+                    app:left_text_color="@color/gray1"/>
+
+                <com.lqr.optionitemview.OptionItemView
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    android:visibility="gone"
+                    app:left_image_margin_left="20dp"
+                    app:left_image_margin_right="18dp"
+                    app:left_src="@mipmap/ic_friend_share"
+                    app:left_text="发送该名片"
+                    app:left_text_color="@color/gray1"/>
+
+                <com.lqr.optionitemview.OptionItemView
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    android:visibility="gone"
+                    app:left_image_margin_left="20dp"
+                    app:left_image_margin_right="18dp"
+                    app:left_src="@mipmap/ic_friend_complain"
+                    app:left_text="投诉"
+                    app:left_text_color="@color/gray1"/>
+
+                <com.lqr.optionitemview.OptionItemView
+                    android:id="@+id/oivAddToBlackList"
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    app:left_image_margin_left="20dp"
+                    app:left_image_margin_right="18dp"
+                    app:left_src="@mipmap/ic_friend_forbid"
+                    app:left_text="加入黑名单"
+                    app:left_text_color="@color/gray1"/>
+
+                <com.lqr.optionitemview.OptionItemView
+                    android:id="@+id/oivDelete"
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    app:left_image_margin_left="20dp"
+                    app:left_image_margin_right="18dp"
+                    app:left_src="@mipmap/ic_friend_delete"
+                    app:left_text="删除"
+                    app:left_text_color="@color/gray1"/>
+
+                <com.lqr.optionitemview.OptionItemView
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    android:visibility="gone"
+                    app:left_image_margin_left="20dp"
+                    app:left_image_margin_right="18dp"
+                    app:left_src="@mipmap/ic_friend_to_desktop"
+                    app:left_text="添加到桌面"
+                    app:left_text_color="@color/gray1"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+</FrameLayout>

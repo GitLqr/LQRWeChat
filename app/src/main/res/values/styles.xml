@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+           xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimarydark</item>
+        <item name="colorAccent">@color/coloraccent</item>
+        <!--去掉系统默认的标题栏-->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <!-- 设置activity切换动画 -->
+        <item name="android:windowAnimationStyle">@style/activityAnimation</item>
+    </style>
+
+    <!-- animation 样式 -->
+    <style name="activityAnimation" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+    </style>
+
+    <!--Toolbar的样式配置 begin-->
+    <!-- toolbar菜单文字尺寸 -->
+    <style name="ToolbarMenuTextSize" parent="@style/TextAppearance.AppCompat.Menu">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!-- toolbar菜单样式 -->
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="actionMenuTextAppearance">@style/ToolbarMenuTextSize</item>
+        <!--<item name="android:colorBackground"></item>也可以设置背景色以及menu中的其他属性-->
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+        <item name="android:itemBackground">@color/colorPrimary</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <!--设置菜单popup出现位置在toolbar的下方-->
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>  <!--设置不覆盖锚点-->
+    </style>
+    <!-- toolbar弹出菜单样式 -->
+    <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat">
+        <item name="android:colorBackground">#212121</item>
+    </style>
+    <!-- toolbar主标题样式 -->
+    <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+    <!--toolbar副标题样式-->
+    <style name="ToolbarSubTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+    <!--Toolbar的样式配置 end-->
+
+    <!--自定义RadioButton样式-->
+    <style name="CustomRadioTheme">
+        <item name="android:button">@drawable/custom_radio_btn</item>
+    </style>
+    <!--自定义CheckBox样式-->
+    <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_style</item>
+    </style>
+
+    <!--圆角Dialog-->
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <!--popupwindow滑入滑出效果-->
+    <style name="PopupAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <!--RatingBar样式-->
+    <style name="RatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/room_rating_bar</item>
+        <item name="android:minHeight">20dip</item>
+        <item name="android:maxHeight">20dip</item>
+    </style>
+
+    <!--实下滑线样式-->
+    <style name="Line1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/line</item>
+    </style>
+
+    <style name="Line2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/line2</item>
+    </style>
+
+    <!--虚下滑线样式-->
+    <style name="LineDot">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:layerType">software</item>
+        <item name="android:background">@drawable/shape_dot_horizontal_line</item>
+    </style>
+
+    <!--聊天界面中底部功能区图片样式-->
+    <style name="FuncImg">
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:background">@drawable/shape_corner_rect_solid_stroke_gray</item>
+    </style>
+    <!--聊天界面中底部功能区文字样式-->
+    <style name="FuncTv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:textColor">@color/gray1</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <!--选项条目样式-->
+    <style name="OptionItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+</resources>

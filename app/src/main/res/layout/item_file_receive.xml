@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <!-- 显示时间 -->
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_notification_bg"
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:text="下午 5点"
+        android:textColor="#fff"
+        android:textSize="12sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="10dp">
+
+        <!-- 人物头像 -->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:src="@mipmap/default_header"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 昵称，当在群组中则要显示 -->
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="沧晓："
+                android:textColor="#666666"
+                android:textSize="12sp"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:id="@+id/llFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/img_file_receive"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp">
+
+                        <ImageView
+                            android:id="@+id/ivIcon"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginRight="5dp"
+                            android:src="@mipmap/ic_word"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvFileName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:ellipsize="end"
+                                android:gravity="left|center_vertical"
+                                android:maxLines="2"
+                                android:text="嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯"
+                                android:textColor="@color/black0"
+                                android:textSize="14sp"/>
+
+                            <TextView
+                                android:id="@+id/tvFileSize"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="right|center_vertical"
+                                android:maxWidth="150dp"
+                                android:text="12k"
+                                android:textColor="@color/black1"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        style="@style/Line1"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:drawableLeft="@mipmap/img_weixin_small"
+                        android:drawablePadding="3dp"
+                        android:gravity="center_vertical"
+                        android:text="微信电脑版"
+                        android:textColor="@color/gray1"
+                        android:textSize="8sp"/>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/pbSending"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:id="@+id/llError"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ivError"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:src="@mipmap/img_error"/>
+
+                    <TextView
+                        android:id="@+id/tvRetry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="重试"
+                        android:visibility="gone"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

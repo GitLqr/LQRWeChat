@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/gray5"
+              android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingTop="10dp">
+
+        <EditText
+            android:id="@+id/etContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@null"
+            android:drawableBottom="@drawable/shape_bottom_gray"
+            android:drawableLeft="@mipmap/ic_friend_search_gray"
+            android:drawablePadding="10dp"
+            android:focusable="false"
+            android:gravity="bottom"
+            android:hint="微信号/QQ号/手机号"
+            android:textColorHint="@color/gray3"
+            android:textSize="14sp"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvNewFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="新的朋友"
+        android:textColor="@color/gray1"
+        android:textSize="12sp"/>
+
+    <com.lqr.recyclerview.LQRRecyclerView
+        android:id="@+id/rvNewFriend"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
