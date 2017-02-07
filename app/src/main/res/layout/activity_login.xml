@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="你的手机号码"
-                android:text="lqr"
+                android:text=""
                 android:textColorHint="@color/gray3"
                 android:textSize="14sp"/>
 
@@ -97,7 +97,7 @@
                 android:background="@null"
                 android:hint="填写密码"
                 android:inputType="textPassword"
-                android:text="123456"
+                android:text=""
                 android:textColorHint="@color/gray3"
                 android:textSize="14sp"/>
 
