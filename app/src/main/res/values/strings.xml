@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LQRWeChat</string>
+
+    <string name="message">微信</string>
+    <string name="contacts">通讯录</string>
+    <string name="discovery">发现</string>
+    <string name="me">我</string>
+</resources>

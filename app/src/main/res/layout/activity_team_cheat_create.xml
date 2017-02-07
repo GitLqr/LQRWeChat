@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/gray5"
+              android:orientation="vertical">
+
+
+    <include layout="@layout/include_toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--联系人选择列表-->
+        <com.lqr.recyclerview.LQRRecyclerView
+            android:id="@+id/rvContacts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/llTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#99ffffff"
+            android:orientation="vertical"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <!--被选中的联系人头像列表-->
+                <com.lqr.recyclerview.LQRRecyclerView
+                    android:id="@+id/rvSelectedContacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    app:rv_column="1"
+                    app:rv_orientation="horizontal"/>
+
+                <EditText
+                    android:id="@+id/etKey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableLeft="@mipmap/ic_search1"
+                    android:drawablePadding="5dp"
+                    android:hint="搜索"
+                    android:textColorHint="@color/gray2"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <View
+                style="@style/Line1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+
+            <View
+                android:id="@+id/vTop"
+                style="@style/Line1"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                />
+
+        </LinearLayout>
+
+        <!--快速导航条-->
+        <com.lqr.wechat.view.QuickIndexBar
+            android:id="@+id/quickIndexBar"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/llTop"/>
+
+
+        <TextView
+            android:id="@+id/tvLetter"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shape_corner_rect_solid_gray"
+            android:gravity="center"
+            android:text="A"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

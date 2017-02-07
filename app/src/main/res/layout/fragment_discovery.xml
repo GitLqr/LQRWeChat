@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/gray5"
+              android:orientation="vertical">
+
+    <com.lqr.optionitemview.OptionItemView
+        style="@style/OptionItem"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_option_item"
+        app:left_image_margin_left="20dp"
+        app:left_image_margin_right="18dp"
+        app:left_src="@mipmap/ic_friend_circle"
+        app:left_text="朋友圈"
+        app:left_text_color="@color/black0"
+        app:left_text_size="16sp"/>
+
+
+    <com.lqr.optionitemview.OptionItemView
+        android:id="@+id/oivScan"
+        android:background="@drawable/selector_option_item"
+        style="@style/OptionItem"
+        android:layout_marginTop="20dp"
+        app:left_image_margin_left="20dp"
+        app:left_image_margin_right="18dp"
+        app:left_src="@mipmap/ic_scan_blue"
+        app:left_text="扫一扫"
+        app:left_text_color="@color/black0"
+        app:left_text_size="16sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+    </RelativeLayout>
+
+    <com.lqr.optionitemview.OptionItemView
+        style="@style/OptionItem"
+        app:left_image_margin_left="20dp"
+        app:left_image_margin_right="18dp"
+        app:left_src="@mipmap/ic_shake_blue"
+        android:background="@drawable/selector_option_item"
+        app:left_text="摇一摇"
+        app:left_text_color="@color/black0"
+        app:left_text_size="16sp"/>
+
+    <com.lqr.optionitemview.OptionItemView
+        style="@style/OptionItem"
+        android:id="@+id/oivNearby"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_option_item"
+        app:left_image_margin_left="20dp"
+        app:left_image_margin_right="18dp"
+        app:left_src="@mipmap/ic_around_blue"
+        app:left_text="附近的人"
+        app:left_text_color="@color/black0"
+        app:left_text_size="16sp"/>
+
+    <com.lqr.optionitemview.OptionItemView
+        android:id="@+id/oivShop"
+        style="@style/OptionItem"
+        android:layout_marginTop="20dp"
+        app:left_image_margin_left="20dp"
+        app:left_image_margin_right="18dp"
+        app:left_src="@mipmap/ic_shop_red"
+        app:left_text="购物"
+        android:background="@drawable/selector_option_item"
+        app:left_text_color="@color/black0"
+        app:left_text_size="16sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <View
+            style="@style/Line1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+    </RelativeLayout>
+
+    <com.lqr.optionitemview.OptionItemView
+        android:id="@+id/oivGame"
+        style="@style/OptionItem"
+        app:left_image_margin_left="20dp"
+        app:left_image_margin_right="18dp"
+        app:left_src="@mipmap/ic_game"
+        app:left_text="游戏"
+        app:left_text_color="@color/black0"
+        app:left_text_size="16sp"
+        app:right_src="@mipmap/ic_huanlin"
+        app:right_text="玩幻灵，抢现金红包"
+        android:background="@drawable/selector_option_item"
+        app:right_text_color="@color/gray3"
+        app:right_text_size="13sp"/>
+</LinearLayout>

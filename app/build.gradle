@@ -1,0 +1,125 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "com.lqr.wechat"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //设置支持的SO库架构
+            abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+}
+
+repositories {
+    flatDir { dirs 'libs' }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:cardview-v7:25.0.1'
+    compile 'com.android.support:design:24.1.1'
+
+    compile(name: 'emoji_library', ext: 'aar')
+
+    //万能适配器
+    compile 'com.lqr.adapter:library:1.0.1'
+    //简单的RecyclerView
+    compile 'com.lqr.recyclerview:library:1.0.2'
+    //选项条目控件
+    compile 'com.lqr.optionitemview:library:1.0.7'
+    //完全仿微信的图片选择
+    compile 'com.lqr.imagepicker:library:1.0.0'
+    //安卓视频录制控件，可以用来仿微信小视频
+    compile 'com.lqr.videorecordview:library:1.0.0'
+    //仿微信群头像九宫格控件
+    compile 'com.lqr.ninegridimageview:library:1.0.0'
+
+    //获取权限
+    compile 'com.lovedise:permissiongen:0.0.6'
+
+    // 开关控件
+//    compile 'ch.ielse:switchbutton:1.0.0'
+    compile 'com.kyleduo.switchbutton:library:1.4.4'
+
+    // 动画
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.facebook.rebound:rebound:0.3.8'
+
+    // 控件注解
+    compile 'com.jakewharton:butterknife:6.1.0'
+    // http请求/json解析
+    compile 'com.zhy:okhttputils:2.6.2'
+    compile 'com.alibaba:fastjson:1.2.23'
+//    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.7.3'
+    // 图片加载
+//    compile 'com.nostra13.universalimageloader:universal-image-loader:1.8.6'
+    //条形码二维码生成扫描
+    compile 'com.google.zxing:core:3.2.1'
+    compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
+    compile 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
+
+    //条形码生成扫描
+    compile 'pub.devrel:easypermissions:0.2.1'
+
+    // 头像
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+    //进度条
+    compile 'com.pnikosis:materialish-progress:1.7'
+    compile 'me.drakeet.materialdialog:library:1.2.2'
+    compile 'com.github.justzak:dilatingdotsprogressbar:1.0.1'
+    //PhotoView 图片浏览缩放控件
+    compile 'com.bm.photoview:library:1.4.1'
+    //轮播
+//    compile 'com.bigkoo:convenientbanner:2.0.5'
+    //下拉刷新上拉加载更多控件
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
+    //    compile 'com.lcodecorex:tkrefreshlayout:1.0.3'
+
+    // 网易云信添加依赖。注意，版本号必须一致。
+    // 基础功能 (必需)
+    compile 'com.netease.nimlib:basesdk:3.2.0'
+    // 音视频需要
+    compile 'com.netease.nimlib:avchat:3.2.0'
+    // 聊天室需要
+    compile 'com.netease.nimlib:chatroom:3.2.0'
+    // 实时会话服务需要
+    //    compile 'com.netease.nimlib:rts:3.2.0'
+    // 全文检索服务需要
+    //    compile 'com.netease.nimlib:lucene:3.2.0'
+
+    testCompile 'junit:junit:4.12'
+}

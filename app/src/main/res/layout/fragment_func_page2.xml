@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <LinearLayout
+                android:id="@+id/llVoice"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/FuncImg"
+                    android:background="@drawable/selector_option_item"
+                    android:src="@mipmap/ic_func_voice"/>
+
+                <TextView
+                    style="@style/FuncTv"
+                    android:text="语音输入"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ImageView
+                    style="@style/FuncImg"
+                    android:src="@mipmap/ic_func_record"/>
+
+                <TextView
+                    style="@style/FuncTv"
+                    android:text="小视频"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ImageView
+                    style="@style/FuncImg"
+                    android:src="@mipmap/ic_func_red_packet"/>
+
+                <TextView
+                    style="@style/FuncTv"
+                    android:text="红包"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ImageView
+                    style="@style/FuncImg"
+                    android:src="@mipmap/ic_func_transfer"/>
+
+                <TextView
+                    style="@style/FuncTv"
+                    android:text="转账"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ImageView
+                    style="@style/FuncImg"
+                    android:src="@mipmap/ic_func_collectioin"/>
+
+                <TextView
+                    style="@style/FuncTv"
+                    android:text="我的收藏"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ImageView
+                    style="@style/FuncImg"
+                    android:src="@mipmap/ic_func_location"/>
+
+                <TextView
+                    style="@style/FuncTv"
+                    android:text="位置"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ImageView
+                    style="@style/FuncImg"
+                    android:src="@mipmap/ic_func_video"/>
+
+                <TextView
+                    style="@style/FuncTv"
+                    android:text="视频聊天"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <ImageView
+                    style="@style/FuncImg"
+                    android:src="@mipmap/ic_func_business_card"/>
+
+                <TextView
+                    style="@style/FuncTv"
+                    android:text="名片"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

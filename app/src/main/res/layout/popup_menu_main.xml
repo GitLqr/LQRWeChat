@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/itemCreateGroupCheat"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:drawableLeft="@mipmap/ic_create_group_cheat"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="发起群聊"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimarydark"/>
+
+        <TextView
+            android:id="@+id/itemAddFriend"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:drawableLeft="@mipmap/ic_add_friend"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="添加朋友"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimarydark"/>
+
+        <TextView
+            android:id="@+id/itemScan"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:drawableLeft="@mipmap/ic_scan_white"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="扫一扫"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimarydark"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/itemPaymentReceived"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:drawableLeft="@mipmap/ic_payment_received"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="收付款"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:visibility="gone"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimarydark"/>
+
+        <TextView
+            android:id="@+id/itemHelpAndFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:drawableLeft="@mipmap/ic_help_feedback"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="帮助与反馈"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+</FrameLayout>

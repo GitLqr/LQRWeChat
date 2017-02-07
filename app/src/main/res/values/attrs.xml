@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="NetworkImageView">
+        <attr name="radius" format="dimension"/>
+    </declare-styleable>
+
+    <!--进度条-->
+    <declare-styleable name="RecoderProgress">
+        <attr name="bf_progress_color" format="color"/>
+        <attr name="af_progress_color" format="color"/>
+        <attr name="max_recoder_time" format="integer"/>
+        <attr name="min_recoder_time" format="integer"/>
+    </declare-styleable>
+</resources>

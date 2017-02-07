@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/root"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvIndex"
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:background="#E5E5E5"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="A"
+        android:textColor="#989898"
+        android:textSize="13sp"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:background="@drawable/selector_option_item"
+        android:gravity="center_vertical"
+        android:paddingBottom="7.5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="7.5dp">
+
+        <ImageView
+            android:id="@+id/ivHeader"
+            android:scaleType="centerCrop"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@mipmap/default_header"/>
+
+        <!--九宫格头像-->
+        <com.lqr.ninegridimageview.LQRNineGridImageView
+            android:id="@+id/ngiv"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@color/gray9"
+            android:visibility="gone"
+            app:imgGap="1dp"/>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="沧晓"
+            android:textColor="@color/gray0"
+            android:textSize="16sp"/>
+
+        <CheckBox
+            android:id="@+id/cb"
+            style="@style/CustomCheckboxTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:clickable="false"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vLine"
+        style="@style/Line1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:visibility="visible"
+        />
+
+</LinearLayout>

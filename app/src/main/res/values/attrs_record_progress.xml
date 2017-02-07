@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LQRRecordProgress">
+        <!--进度条时间-->
+        <attr name="rp_record_time" format="integer"/>
+        <!--进度条颜色-->
+        <attr name="rp_progress_color" format="color"/>
+    </declare-styleable>
+</resources>

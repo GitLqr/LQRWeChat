@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/line2">
+
+        <!--订单空提示-->
+        <RelativeLayout
+            android:id="@+id/rlOrderNull"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ivOrderNull"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivOrderNull"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="您还没有相关订单哦~"
+                android:textColor="@color/gray3"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+    <!--进度条-->
+    <RelativeLayout
+        android:id="@+id/rlProgress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#20000000"
+        android:visibility="gone">
+
+        <com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:color="@color/main_bg3"
+            android:radius="5dp"
+            app:dd_animationDuration="500"
+            app:dd_horizontalSpacing="10dp"
+            app:dd_numDots="5"
+            app:dd_scaleMultiplier="1.5"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
