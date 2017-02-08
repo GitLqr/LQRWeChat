@@ -112,7 +112,7 @@ public class MessageFragment extends BaseFragment {
 //    }
 
     private void setAdapter() {
-        if (mAdapter == null) {
+//        if (mAdapter == null) {
             mAdapter = new LQRAdapterForRecyclerView<RecentContact>(getActivity(), R.layout.item_message_rv, mRecentContactList) {
                 @Override
                 public void convert(final LQRViewHolderForRecyclerView helper, final RecentContact item, int position) {
@@ -229,9 +229,9 @@ public class MessageFragment extends BaseFragment {
 //            mAdapter.addHeaderView(mHeaderView);
 //            mCvMessage.setAdapter(mAdapter.getHeaderAndFooterAdapter());
             mCvMessage.setAdapter(mAdapter);
-        } else {
-            mAdapter.notifyDataSetChanged();
-        }
+//        } else {
+//            mAdapter.notifyDataSetChanged();
+//        }
     }
 
     /**
