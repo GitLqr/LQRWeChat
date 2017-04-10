@@ -144,7 +144,7 @@
 ![image](screenshots/main/my/personalInfo/1.png)![image](screenshots/main/my/personalInfo/1.gif)![image](screenshots/main/my/personalInfo/2.gif)![image](screenshots/main/my/personalInfo/3.gif)![image](screenshots/main/my/personalInfo/4.gif)![image](screenshots/main/my/setting/1.png)![image](screenshots/main/my/setting/sub/1.png)![image](screenshots/main/my/setting/sub/2.png)
 # 二、好友、群组
 
-##好友
+## 好友
 1. 查找好友
 	1. 查找已添加好友
 	2. 查找未添加好友
