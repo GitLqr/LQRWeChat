@@ -1,258 +1,150 @@
-# 重大消息！！！
-
-新版高仿微信已经开源，因为基于融云SDK，使用了 Rxjava+Retrofit+MVP+Glide 等新技术开发，代码结构上可以完全不一样，所以另开了一个项目。新版高仿微信使用到了自动布局来适配大部分屏幕，使用LitePal缓存联系人数据，相对这个项目，新版高仿微信还可以发送位置消息，加入发送红包，抢红包，撤回及删除消息等新功能，项目运行更加稳定，代码更加规范，故当前旧版本不再维护，如需体验及学习新版源码，请前往新版高仿微信开源项目下载吧：
-
-[点我进入新版微信：LQRWeChatRongCloud](https://git.oschina.net/CSDNLQR/lqrwechatrongcloud)
-
-
-
-============================================================================================================
-
-# LQRWeChat
-
-	本项目高仿微信6.3.31，使用网易云信SDK 3.2.0版本完成主要的聊天功能（单聊、群聊）、好友关系管理、群组管理等功能。
-
-
-该高仿微信项目是本人大学最后的一个练手项目（主要也是因为没找到工作，不想荒废自己的能力，哈哈~~），我会尽可能的将它做完整，并做到跟微信样式尽可能一致，但其实把它做完整并不是最重要的，重要的是在开发这个项目的过程中学习到的知识和抽取出其它项目可以直接使用的开源库。因为我做过好几个项目后发现总有一些东西在这个项目用到了，在另一个项目也会用到，总是这样复制粘贴不仅效率不高，还会让开发乏味，所以，我希望通过该项目及以后的其他项目开发，将一些通用的东西一个个抽取出来，让包括我在内的各位安卓工程师可以高效清爽的编码。此外，这里要感谢“开源中国”对我发布的开源项目的支持，给了我很大的鼓励，谢谢，我今后还会不断做一些开源的项目出来的**（本说明最后有为该项目而开发的开源库）**。好了，以下是项目界面及功能介绍：
-
-## 应用demo下载：[DemoApp.apk](https://git.oschina.net/CSDNLQR/LQRWeChat/raw/master/app-debug.apk)
-
-不提供注册，目前已有可用账号如下：
-
-***因为前期主要开发聊天等IM功能，没有做手机号注册，同时也为了开发方便，所以在登录时不用手机号登录，请不要在意这些细节~**
-
-<table>
-    <tr>
-        <th>用户名</th>
-		<th>账号</th>
-        <th>密码</th>
-    </tr>
-    <tr>
-        <th>大娃</th>
-        <th>dawa</th>
-        <th>123456</th>
-    </tr>
-    <tr>
-        <th>二娃</th>
-        <th>erwa</th>
-        <th>123456</th>
-    </tr>
-    <tr>
-        <th>三娃</th>
-        <th>sanwa</th>
-        <th>123456</th>
-    </tr>
-    <tr>
-        <th>四娃</th>
-        <th>siwa</th>
-        <th>123456</th>
-    </tr>
-    <tr>
-        <th>五娃</th>
-        <th>wuwa</th>
-        <th>123456</th>
-    </tr>
-    <tr>
-        <th>六娃</th>
-        <th>liuwa</th>
-        <th>123456</th>
-    </tr>
-    <tr>
-        <th>七娃</th>
-        <th>qiwa</th>
-        <th>123456</th>
-    </tr>
-</table>
+高仿微信6.5.7（融云版）
+============
 
 ## 目录
-* [一、主界面](#一主界面)
-	* [菜单](#菜单)
-	* [最近消息](#最近消息)
-	* [通讯录](#通讯录)
-	* [发现](#发现)
-	* [个人](#个人)
-* [二、好友、群组](#二、好友、群组)
-	* [好友](#好友)
-	* [群组](#群组)
-* [三、聊天功能](#三、聊天功能)
-	* [支持的消息类型](#支持的消息类型)
-	* [语音](#语音)
-	* [小视频](#小视频)
-	* [图片](#图片)
-* [四、之后版本将要实现的功能](#四、之后版本将要实现的功能)
-* [五、为该项目而开发的开源库](#五、为该项目而开发的开源库)
+* [一、简述](#一、简述)
+* [二、功能](#二、功能)
+* [三、效果图](#三、效果图)
+* [四、其他相关](#四、其他相关)
+* [五、打赏支持](#五、打赏支持)
 
-# 一、主界面
-![image](screenshots/main/1.gif)
+# 一、简述
 
-
-## 菜单
-1. 发起群聊
-	1. 跳转到“发起群聊”界面
-2. 添加朋友
-	1. 跳转到“添加朋友”界面
-3. 扫一扫
-	1. 跳转到“扫一扫”界面
-4. 帮助与反馈
-	1. 跳转到微信帮助与反馈页面
-
-![image](screenshots/main/menu/1.gif)![image](screenshots/main/menu/2.gif)![image](screenshots/main/menu/3.gif)![image](screenshots/main/menu/4.gif)
-
-## 最近消息
-1. 接收并显示最近的群聊消息
-2. 接收并显示最近的好友聊天消息
-3. 底部小红点提示（新的未读消息数量）
-
-![image](screenshots/main/message/1.gif)
-
-## 通讯录
-1. 好友列表显示
-2. 新的朋友
-3. 群聊
-4. 底部小红点提示（新好友，新群聊）
-
-![image](screenshots/main/contact/1.gif)![image](screenshots/main/contact/2.gif)![image](screenshots/main/contact/3.gif)![image](screenshots/main/contact/4.gif)
-
-## 发现
-1. 朋友圈（未完成）
-2. 扫一扫
-	1. 支持扫描二维码名片添加好友
-	2. 支持从相册中选取要扫描的二维码
-3. 摇一摇（未完成）
-4. 附近的人
-	1. 只完成“附近的人”的界面布局和提示，没有功能。
-5. 购物
-	1. 跳转京东首页
-6. 游戏
-	1. 跳转4399首页
-
-![image](screenshots/main/discovery/1.gif)![image](screenshots/main/discovery/2.gif)![image](screenshots/main/discovery/3.gif)![image](screenshots/main/discovery/4.gif)
-
-## 个人
-1. 个人信息
-	1. 头像查看修改
-	2. 昵称修改
-	3. 二维码名片查看
-	4. 性别修改
-	5. 个人签名修改
-2. 相册（未完成）
-3. 收藏（未完成）
-4. 钱包（未完成）
-5. 卡包
-	1. 只完成“卡包”的多个界面布局和提示，没有功能。
-6. 表情（未完成）
-7. 设置
-	1. 新消息提醒
-	2. 勿扰模式
-	3. 聊天
-	4. 隐私
-	5. 通用
-	6. 账号与安全
-	7. 关于
-	8. 退出
-
-![image](screenshots/main/my/personalInfo/1.png)![image](screenshots/main/my/personalInfo/1.gif)![image](screenshots/main/my/personalInfo/2.gif)![image](screenshots/main/my/personalInfo/3.gif)![image](screenshots/main/my/personalInfo/4.gif)![image](screenshots/main/my/setting/1.png)![image](screenshots/main/my/setting/sub/1.png)![image](screenshots/main/my/setting/sub/2.png)
-# 二、好友、群组
-
-## 好友
-1. 查找好友
-	1. 查找已添加好友
-	2. 查找未添加好友
-2. 添加好友
-3. 修改好友昵称
-4. 删除好友
-5. 拉黑好友
-
-![image](screenshots/friend&team/friend/1.gif)![image](screenshots/friend&team/friend/2.gif)![image](screenshots/friend&team/friend/3.gif)![image](screenshots/friend&team/friend/4.gif)
-
-## 群组
-1. 创建群
-2. 拉人入群
-3. 踢人出群
-4. 修改群名片
-5. 查看群二维码
-6. 群公告（可查看、发布）
-7. 修改我在群中的昵称
-8. 显隐群成员昵称
-9. 退出群组
-
-![image](screenshots/friend&team/team/1.gif)![image](screenshots/friend&team/team/2.gif)![image](screenshots/friend&team/team/3.gif)![image](screenshots/friend&team/team/4.gif)![image](screenshots/friend&team/team/5.gif)![image](screenshots/friend&team/team/6.gif)![image](screenshots/friend&team/team/7.gif)![image](screenshots/friend&team/team/8.gif)![image](screenshots/friend&team/team/9.gif)
-
-# 三、聊天功能
-
-## 支持的消息类型
-1. 文本消息
-2. 小视频消息（上传、下载、播放）
-3. 图片消息（上传、下载、查看）
-4. 表情消息
-5. 贴图消息（目前只支持静态图片）
-6. 语音消息（上传、下载、播放）
-7. 位置消息（未完成）
-
-## 语音
-1. 长按录音（默认10秒）
-2. 上滑取消录音
-
-## 小视频
-1. 长按录视频（默认10秒）
-2. 上滑取消视频录制
-
-## 图片
-1. 仿微信图片选择界面
-2. 支持原图及压缩图片后发送
-
-![image](screenshots/friend&team/cheatFunc/1.gif)![image](screenshots/friend&team/cheatFunc/2.gif)![image](screenshots/friend&team/cheatFunc/3.gif)![image](screenshots/friend&team/cheatFunc/4.gif)![image](screenshots/friend&team/cheatFunc/5.png)![image](screenshots/friend&team/cheatFunc/6.png)
-
-# 四、之后版本将要实现的功能
-1. 红包功能
-2. 视频聊天
-3. @别人
-4. 定位、发送位置信息
-5. 手机号注册、第三方登录
-
-
-
-# 五、为该项目而开发的开源库
-
-1. LQRRecyclerViewLibrary
+>本项目由 CSDN_LQR 个人独立开发。
+>
+>项目博客地址：[高仿微信6.5.7（融云版）](http://www.jianshu.com/p/f119810520e4)
+>
+>项目源码地址：[码云：LQRWeChatRongCloud](https://git.oschina.net/CSDNLQR/lqrwechatrongcloud)
+>
+>项目DemoApp下载：[Demo](https://git.oschina.net/CSDNLQR/lqrwechatrongcloud/blob/master/app-debug.apk?dir=0&filepath=app-debug.apk&oid=80f630859d9894c62406951929448f68ec7205e3&sha=1c65a0feab5c134a4c87889f8a5e21c7910a9a8f)
 	
-	>对RecyclerView的封装，让其使用更加简单，得心应手
-	- GitHub:https://github.com/GitLqr/LQRRecyclerViewLibrary
-	- 码云:https://www.oschina.net/p/lqrrecyclerviewlibrary
-	
-2. LQRAdapterLibrary
-	
-	>万能适配器（RecyclerView、ListView、GridView）
-	- GitHub:https://github.com/GitLqr/LQRAdapterLibrary
-	- 码云:https://www.oschina.net/p/lqradapterlibrary
-	
-3. LQREmojiLibrary
-	
-	>网易云信表情功能抽离，支持经典表情及贴图，加入仿微信软键盘切换时平滑过渡
-	- GitHub:https://github.com/GitLqr/LQREmojiLibrary
-	- 码云:https://www.oschina.net/p/lqremojilibrary
-	
-4. LQRImagePicker
-	
-	>完全仿微信的图片选择，并且提供了多种图片加载接口，选择图片后可以旋转，可以裁剪成矩形或圆形，可以配置各种其他的参数
-	- GitHub:https://github.com/GitLqr/LQRImagePicker
-	- 码云:https://www.oschina.net/p/lqrimagepicker
-	
-5. LQRViedoRecordView
-	
-	>安卓视频录制控件，可以用来仿微信小视频
-	- GitHub:https://github.com/GitLqr/LQRViedoRecordView
-	- 码云:https://www.oschina.net/p/lqrviedorecordview
-	
-6. LQRNineGridImageView
-	
-	>仿微信群头像九宫格控件
-	- GitHub:https://github.com/GitLqr/LQRNineGridImageView
-	- 码云:https://git.oschina.net/CSDNLQR/LQRNineGridImageView
-	
-7. LQROptionItemView
-	
-	>项目中常用选项条目布局控件
-	- GitHub:https://github.com/GitLqr/LQROptionItemView
-	- 码云:https://www.oschina.net/p/lqroptionitemview
+## 1、简单介绍一下：
+这个项目是本人独立开发的第二个高仿微信项目，仿最新版微信6.5.7（除图片选择器外）。本项目基于融云SDK，使用目前较火的 Rxjava+Retrofit+MVP+Glide 技术开发。相比上个版本，加入发送位置消息，红包消息等功能。本项目由码云平台托管，欢迎start和fork~~
+
+## 2、制作该开源项目的原因有：
+
+1. 熟练使用 Rxjava+Retrofit+MVP+lambda 等新安卓技术。
+2. 熟悉融云等SDK的使用。
+3. 向高手进阶过渡。
+
+## 3、统一回复下网友的问题：
+有网友说看我上一个项目有别人提出的很多问题，而且我都没有回复并解决，实际是有的，只不过那时已经在着手准备开发这个新的高仿微信，而且因为上一个版本使用的是网易云SDK，开发上比较简单，同时该SDK的封装实在是太好了，所以没地方可以施展Retrofit，达不到我预计的提升要求，于是便选用了融云SDK干脆做了一个新的，上版中存在的一些问题已经在这个版本中基本解决，同时制作并更新了几个自己的库（如：表情库和语音库等）。
+
+# 二、功能
+
+## 1、好友
+
+1. 查询好友
+1. 发起添加好友请求
+1. 查看好友个人信息
+1. 设置备注
+1. 删除好友
+1. 扫码加好友
+1. 查看新加朋友
+
+## 2、群组
+
+1. 拉人进群
+1. 踢人去群
+1. 修改群昵称
+1. 查看群二级码
+1. 扫码加入群组
+1. 解散群（群主）
+1. 退出群（群成员）
+
+## 3、个人
+
+1. 查看头像
+1. 上传更新头像
+1. 修改个人昵称
+1. 查看个人二维码
+
+## 4、会话
+
+1. 会话置顶
+1. 取消置顶
+1. 删除会话
+1. 撤回消息
+1. 发送文本消息
+1. 发送图片消息
+1. 发送视频消息
+1. 发送语音消息
+1. 发送贴图消息
+1. 发送位置消息
+1. 发送红包消息
+
+## 5、系统
+
+1. 登录
+1. 注册
+1. 退出当前账号
+1. 退出APP
+
+## 6、尚未完成
+
+1. 消息通知
+1. @功能
+1. 对方输入状态提示
+
+# 三、效果图
+
+![主界面](screenshots/1.gif)
+![会话控制](screenshots/2.gif)
+![录制、发送语音](screenshots/3.gif)
+![发送表情文字](screenshots/4.gif)
+![发送红包](screenshots/5.gif)
+![抢红包](screenshots/6.gif)
+![发送位置](screenshots/7.gif)
+![录制、发送小视频](screenshots/8.gif)
+![选择、发送图片](screenshots/9.gif)
+![查看、撤回消息](screenshots/10.gif)
+![拉人入群](screenshots/11.gif)
+![踢人出群](screenshots/12.gif)
+![修改群昵称](screenshots/13.gif)
+![发起群聊](screenshots/14.gif)
+
+
+# 四、其他相关
+
+## 1、该项目使用到的技术有：
+
+1. Rxjava 2.0
+1. Retrofit 2.0
+1. MVP 
+1. Glide
+1. lambda
+1. ...
+
+## 2、用到的主要库有：
+
+### 主要的大神库：
+
+1. [鸿神的AutoLayout](https://github.com/hongyangAndroid/AndroidAutoLayout)
+1. [郭神的LitePal](https://github.com/LitePalFramework/LitePal)
+1. [bingoogolapple的万能刷新控件](https://github.com/bingoogolapple/BGARefreshLayout-Android)
+1. [bingoogolapple的二维码控件扫描库](https://github.com/bingoogolapple/BGAQRCode-Android)
+1. [CJT2325的仿微信拍照Android控件](https://github.com/CJT2325/CameraView)
+1. ...
+
+### 自己(CSDN_LQR)做的库：
+
+1. [万能适配器](https://github.com/GitLqr/LQRAdapterLibrary)
+1. [包装过的RecyclerView](https://github.com/GitLqr/LQRRecyclerViewLibrary)
+1. [高仿微信表情库](https://github.com/GitLqr/LQREmojiLibrary)
+1. [高仿微信主意库](https://github.com/GitLqr/LQRAudioRecord)
+1. [高仿微信图片选择器](https://github.com/GitLqr/LQRImagePicker)
+1. [高仿微信九宫格控件](https://github.com/GitLqr/LQRNineGridImageView)
+1. [常用选项条目库](https://github.com/GitLqr/LQROptionItemView)
+
+## 3、说明与鸣谢：
+
+不提供测试号，请使用自己手机注册后登录，因为本人手机号有限，测试上很有局限，可能存在一些我不知道的bug，请多包涵，可在项目中提出issue。本人做这个项目只为提升个人安卓开发能力，故依赖融云官方给出的server端做为本项目的后台服务，该server源码使用Node.js开发，目前本人只会用java开发后端，所以如果要搞点别的功能的话，目前是不可能啦，有兴趣的同学可以看看这个[嗨豹 IM 应用服务器](https://github.com/sealtalk/sealtalk-server)，当然融云也有它的坑，特别是红包module，我干脆不用它的了，希望该项目可以帮到那些正在踩坑的人（至少我已经踩了一次了，嘿嘿），此外，很感谢很多网友对我的支持，还有专门跑到CSDN跟我私信给我鼓励的，真的很感动，谢谢。
+
+# 五、打赏支持
+
+最后，如果觉得本项目对您有用，请随意打赏，鼓励我继续创作，谢谢啦。
+
+![wechat](screenshots/wechat_pay.png)
+![alipay](screenshots/alipay.png)
+
 

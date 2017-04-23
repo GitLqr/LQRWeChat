@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/rlAlbum"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/ivAlbum"
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:layout_centerInParent="true"
+                android:background="@drawable/selector_session_func"
+                android:src="@mipmap/ic_func_pic"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivAlbum"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15px"
+                android:text="@string/album"
+                android:textSize="12sp"/>
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/rlTakePhoto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/ivShot"
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:layout_centerInParent="true"
+                android:background="@drawable/selector_session_func"
+                android:src="@mipmap/ic_func_shot"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivShot"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15px"
+                android:text="@string/shot"
+                android:textSize="12sp"/>
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/rlLocation"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/ivLocation"
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:layout_centerInParent="true"
+                android:background="@drawable/selector_session_func"
+                android:src="@mipmap/ic_func_location"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivLocation"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15px"
+                android:text="@string/location"
+                android:textSize="12sp"/>
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/rlRedPacket"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/ivRedPack"
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:layout_centerInParent="true"
+                android:background="@drawable/selector_session_func"
+                android:src="@mipmap/ic_func_red_pack"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivRedPack"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15px"
+                android:text="@string/red_pack"
+                android:textSize="12sp"/>
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </com.zhy.autolayout.AutoLinearLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

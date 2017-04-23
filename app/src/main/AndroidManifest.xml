@@ -2,308 +2,314 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.lqr.wechat">
 
-    <!-- 视频录制的权限star   -->
-    <!-- sd卡写入权限  -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <!-- 硬件支持   -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
     <uses-feature android:name="android.hardware.camera"/>
     <uses-feature android:name="android.hardware.camera.autofocus"/>
-    <!-- 视频录制的权限end   -->
 
-    <!-- 权限声明 -->
-    <!-- 访问网络状态-->
+    <!-- 通过GPS得到精确位置 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 通过网络得到粗略位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 访问网络. 某些位置信息需要从网络服务器获取 -->
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 访问WiFi状态. 需要WiFi信息用于网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <!-- 控制呼吸灯，振动器等，用于新消息提醒 -->
-    <uses-permission android:name="android.permission.FLASHLIGHT"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <!-- 外置存储存取权限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
-    <!-- 多媒体相关 -->
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- 修改WiFi状态. 发起WiFi扫描, 需要WiFi信息用于网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!-- 访问网络状态, 检测网络的可用性. 需要网络运营商相关信息用于网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 访问网络的变化, 需要某些信息用于网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <!-- 访问手机当前状态, 需要某些信息用于网络定位 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
-    <!-- 如果需要实时音视频通话模块，下面的权限也是必须的。否则，可以不加 -->
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <!-- 蓝牙分享所需的权限 -->
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
-    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
-
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
-    <uses-feature
-        android:glEsVersion="0x00020000"
-        android:required="true"/>
-
-    <!-- SDK 权限申明, 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
-    <!-- 和下面的 uses-permission 一起加入到你的 AndroidManifest 文件中。 -->
-    <permission
-        android:name="com.lqr.wechat.permission.RECEIVE_MSG"
-        android:protectionLevel="signature"/>
-    <!-- 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
-    <uses-permission android:name="com.lqr.wechat.RECEIVE_MSG"/>
 
     <application
-        android:name=".App"
+        android:name=".app.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--###############################网易云信配置 begin###############################-->
-        <!-- APP key, 可以在这里设置，也可以在 SDKOptions 中提供。
-            如果 SDKOptions 中提供了，取 SDKOptions 中的值。 -->
         <meta-data
-            android:name="com.netease.nim.appKey"
-            android:value="5c6b874a1803f3500e26a984f5ad33a7"/>
-        <!-- 声明云信后台服务，如需保持后台推送，使用独立进程效果会更好。 -->
-        <service
-            android:name="com.netease.nimlib.service.NimService"
-            android:process=":core"/>
+            android:name="design_width"
+            android:value="720">
+        </meta-data>
+        <meta-data
+            android:name="design_height"
+            android:value="1280">
+        </meta-data>
+
+        <!--地图-->
+        <meta-data
+            android:name="TencentMapSDK"
+            android:value="TYQBZ-MRBKU-K7FVL-4JBW5-DOG5O-SZB4A"/>
+
+        <!-- imlib config begin -->
+        <meta-data
+            android:name="RONG_CLOUD_APP_KEY"
+            android:value="n19jmcy59f1q9"/>
 
         <service
-            android:name="com.netease.nimlib.service.NimService$Aux"
-            android:process=":core"/>
+            android:name="io.rong.imlib.ipc.RongService"
+            android:exported="true"
+            android:process=":ipc"/>
 
-        <!-- 云信SDK的监视系统启动和网络变化的广播接收器，用户开机自启动以及网络变化时候重新登录，
-            保持和 NimService 同一进程 -->
+        <service
+            android:name="io.rong.imlib.ReConnectService"
+            android:exported="true"/>
+
         <receiver
-            android:name="com.netease.nimlib.service.NimReceiver"
-            android:exported="false"
-            android:process=":core">
+            android:name="io.rong.imlib.ConnectChangeReceiver"
+            android:exported="true"/>
+
+        <receiver
+            android:name="io.rong.imlib.HeartbeatReceiver"
+            android:process=":ipc"/>
+        <!-- imlib config end -->
+
+
+        <!--必选： SDK 核心功能-->
+        <!--第三方相关,向第三方推送服务请求 token 的服务 -->
+        <service
+            android:name="io.rong.push.core.PushRegistrationService"
+            android:exported="false">
+        </service>
+
+        <!-- 处理 push 消息相关的服务 -->
+        <service
+            android:name="io.rong.push.core.MessageHandleService"
+            android:exported="true">
+        </service>
+
+        <!-- push服务 -->
+        <service
+            android:name="io.rong.push.PushService"
+            android:exported="true"
+            android:process="io.rong.push">  <!-- push进程，可以改名 -->
+        </service>
+
+        <!-- push 相关事件接收器 -->
+        <receiver
+            android:name="io.rong.push.PushReceiver"
+            android:process="io.rong.push">   <!-- 此处进程可以改名，名称需要和PushService所在进程统一 -->
+            <!-- 心跳事件 -->
+            <intent-filter>
+                <action android:name="io.rong.push.intent.action.HEART_BEAT"/>
+            </intent-filter>
+            <!-- 网络变动事件 -->
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+            <!-- 部分用户事件 -->
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
             </intent-filter>
         </receiver>
 
-        <!-- 云信进程间通信 Receiver -->
-        <receiver android:name="com.netease.nimlib.service.ResponseReceiver"/>
+        <!--必选： SDK 核心功能-->
 
-        <!-- 安卓保活配置 -->
-        <service
-            android:name="com.netease.cosine.core.CosineService"
-            android:process=":cosine">
-        </service>
-
-        <receiver
-            android:name="com.netease.cosine.target.CosineReceiver"
-            android:exported="true"
-            android:process=":cosine">
-        </receiver>
-
-        <meta-data
-            android:name="com.netease.cosine.target"
-            android:value=""/>
-        <meta-data
-            android:name="com.netease.cosine.target.receiver"
-            android:value="com.netease.nimlib.service.NimReceiver"/>
-
-        <!--###############################网易云信配置 end###############################-->
-
+        <!-- end -->
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
-            android:launchMode="singleTask"
+            android:name=".ui.activity.SessionActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activity.MainActivity"
-            android:launchMode="singleTask"
+            android:name=".ui.activity.WebViewActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activity.OtherLoginActivity"
+            android:name=".ui.activity.MainActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.RegisterActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.NewFriendActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.AddFriendActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.ScanActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.SearchUserActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.UserInfoActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.PostScriptActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.SetAliasActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.MyInfoActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.QRCodeCardActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.ChangeMyNameActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.CreateGroupActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.TakePhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullWindowTheme">
+        </activity>
+        <activity
+            android:name=".ui.activity.MyLocationActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.GroupListActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.SessionInfoActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.RemoveGroupMemberActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.SetGroupNameActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.ShowBigImageActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.SettingActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.activity.AboutActivity"
             android:screenOrientation="portrait">
         </activity>
 
-        <!--会话聊天-->
+        <!--发红包页面-->
         <activity
-            android:name=".activity.SessionActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:name="com.yunzhanghu.redpacketui.ui.activity.RPRedPacketActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateVisible"/>
+        <!--红包详情页面-->
         <activity
-            android:name=".activity.RedPacketActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:name="com.yunzhanghu.redpacketui.ui.activity.RPDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <!--红包记录页面-->
         <activity
-            android:name=".activity.TransferActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:name="com.yunzhanghu.redpacketui.ui.activity.RPRecordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <!--群成员列表页面-->
         <activity
-            android:name=".activity.LocationActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:name="com.yunzhanghu.redpacketui.ui.activity.RPGroupMemberActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <!--支付宝H5支付页面-->
         <activity
-            android:name=".activity.FilePreviewActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <!--支付宝H5授权页面-->
         <activity
-            android:name=".activity.UserInfoActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.AliasActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.FriendCirclePrivacySetActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.PostscriptActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.ImageWatchActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.FileWallActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.NewFriendActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.AddFriendActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.SearchUserActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <!--设置-->
-        <activity
-            android:name=".activity.SettingActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.NewMsgNotifySetActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.DontDistorbSetActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.CheatSetActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.PrivacySetActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.CommonSetActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.AccountAndSafeSetActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.AboutActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <!--卡包-->
-        <activity
-            android:name=".activity.CardPaketActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.MsgNotificationActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.VipCardActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.MyCouponActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.FriendsCouponActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <!--支付宝版 end-->
 
-        <!--个人信息-->
         <activity
-            android:name=".activity.MyInfoActivity"
-            android:screenOrientation="portrait">
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <!-- QQ和QQ空间分享 QQ登录的回调必须要配置的 -->
+            <intent-filter>
+                <data android:scheme="tencent100371282"/>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <!-- 新浪微博客户端分享回调必须配置 -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
+        <!--微信分享回调 -->
         <activity
-            android:name=".activity.ShowBigImageActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <!-- 支付宝分享回调 -->
         <activity
-            android:name=".activity.ChangeNameActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.ChangeSignatureActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.QRCodeCardActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.WebViewActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.ScanActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.NearbyPerpleActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <!--群组-->
-        <activity
-            android:name=".activity.TeamCheatCreateActvitiy"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.TeamCheatInfoActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.TeamNameSetActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.TeamCheatListActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.AllTagActvitiy"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.TeamAnnouncementEditActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".activity.TeamCheatRemoveMemberActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:name=".apshare.ShareEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     </application>
-
 </manifest>

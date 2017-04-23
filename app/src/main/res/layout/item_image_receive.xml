@@ -59,7 +59,7 @@
                 android:textSize="12sp"
                 android:visibility="visible"/>
 
-            <com.lqr.wechat.view.BubbleImageView
+            <com.lqr.wechat.widget.BubbleImageView
                 android:id="@+id/bivPic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,54 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/gray5"
-              android:orientation="vertical">
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray5"
+    android:orientation="vertical">
 
-    <include layout="@layout/include_toolbar"/>
+    <include
+        layout="@layout/include_toolbar"
+        />
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/llNoNewFriend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@color/white"
+        android:gravity="center"
         android:orientation="vertical"
-        android:paddingBottom="8dp"
-        android:paddingTop="10dp">
+        android:visibility="gone">
 
-        <EditText
-            android:id="@+id/etContent"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="190px"
+            android:text="@string/no_recommend_friend"
+            android:textColor="@color/gray3"
+            android:textSize="42px"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28px"
+            android:text="@string/no_recommend_friend_tip"
+            android:textColor="@color/gray3"
+            android:textSize="30px"/>
+
+        <com.lqr.optionitemview.OptionItemView
+            style="@style/OptionItem"
+            android:layout_height="130px"
+            android:layout_marginTop="85px"
+            android:background="@drawable/selector_common_item"
+            app:left_image_margin_left="@dimen/option_item_margin_left"
+            app:left_image_margin_right="@dimen/option_item_margin_right"
+            app:left_src="@mipmap/ic_phone"
+            app:left_text="@string/add_phone_contact"
+            app:left_text_color="@color/black0"
+            app:left_text_size="16sp"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/llHasNewFriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@null"
-            android:drawableBottom="@drawable/shape_bottom_gray"
-            android:drawableLeft="@mipmap/ic_friend_search_gray"
-            android:drawablePadding="10dp"
-            android:focusable="false"
-            android:gravity="bottom"
-            android:hint="微信号/QQ号/手机号"
-            android:textColorHint="@color/gray3"
-            android:textSize="14sp"
-            android:visibility="visible"/>
+            android:layout_marginTop="30px"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="16px"
+            android:paddingTop="20px">
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/etSearchContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:background="@null"
+                android:drawableBottom="@drawable/shape_bottom_gray"
+                android:drawableLeft="@mipmap/ic_friend_search_gray"
+                android:drawablePadding="20px"
+                android:focusable="false"
+                android:gravity="bottom"
+                android:hint="@string/wechat_qq_phone"
+                android:textColorHint="@color/gray3"
+                android:textSize="14sp"
+                android:visibility="visible"/>
 
-    <TextView
-        android:id="@+id/tvNewFriend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:text="新的朋友"
-        android:textColor="@color/gray1"
-        android:textSize="12sp"/>
+        </com.zhy.autolayout.AutoLinearLayout>
 
-    <com.lqr.recyclerview.LQRRecyclerView
-        android:id="@+id/rvNewFriend"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tvNewFriend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10px"
+            android:layout_marginLeft="30px"
+            android:layout_marginTop="30px"
+            android:text="@string/new_friend"
+            android:textColor="@color/gray1"
+            android:textSize="12sp"/>
 
-</LinearLayout>
+        <com.lqr.recyclerview.LQRRecyclerView
+            android:id="@+id/rvNewFriend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:rv_divider_color="@color/line"
+            app:rv_divider_size="1px"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

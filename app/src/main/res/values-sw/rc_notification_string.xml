@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="rc_notification_ticker_text">Umepokea Ujumbe Mpya</string>
+    <string name="rc_notification_new_msg">%1$s&#160;ametuma&#160;ujumbe&#160; %2$d</string>
+    <string name="rc_notification_new_plural_msg">Mrafiki.%1$d&#160;wametuma&#160;ujumbe&#160; %2$d</string>
+</resources>

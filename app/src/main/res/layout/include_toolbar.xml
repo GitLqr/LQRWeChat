@@ -1,45 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar
+<android.support.design.widget.AppBarLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/toolbar"
+    android:id="@+id/appBar"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:background="?attr/colorPrimary"
-    android:minHeight="?attr/actionBarSize"
-    app:popupTheme="@style/ToolbarPopupTheme"
-    app:subtitleTextAppearance="@style/ToolbarSubTitle"
-    app:theme="@style/ToolbarTheme"
-    app:titleTextAppearance="@style/ToolbarTitle"
+    android:layout_height="wrap_content"
     >
 
-    <EditText
-        android:id="@+id/etSearch"
+    <com.zhy.autolayout.AutoFrameLayout
+        android:id="@+id/flToolbar"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:background="@color/colorPrimary"
-        android:drawableBottom="@drawable/shape_bottom_green"
-        android:drawableLeft="@mipmap/ic_search2"
-        android:drawablePadding="0dp"
-        android:hint="搜索"
-        android:imeOptions="actionSearch"
-        android:textCursorDrawable="@drawable/edit_cursor"
-        android:textSize="14sp"
-        android:visibility="gone"/>
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnOk"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:layout_gravity="right"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/shape_btn_send"
-        android:text="保存"
-        android:textColor="@color/white"
-        android:textSize="13sp"
-        android:visibility="gone"/>
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="96px"
+            android:background="@color/colorPrimary">
 
-</android.support.v7.widget.Toolbar>
+            <ImageView
+                android:id="@+id/ivToolbarNavigation"
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20px"
+                android:src="@mipmap/ic_back"/>
+
+            <View
+                android:id="@+id/vToolbarDivision"
+                android:layout_width="40px"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/ivToolbarNavigation"
+                android:background="@drawable/shape_vertical_line"
+                android:visibility="visible"/>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/llToolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/vToolbarDivision"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvToolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="34px"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/tvToolbarSubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="25px"
+                    android:visibility="gone"/>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <!--加号菜单-->
+            <ImageButton
+                android:id="@+id/ibAddMenu"
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/item_margin_left_and_right"
+                android:background="@null"
+                android:src="@mipmap/ic_add"
+                android:visibility="gone"/>
+
+            <!--添加朋友-->
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/llToolbarAddFriend"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="40px"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/ivToolbarNavigation"
+                    android:background="@drawable/shape_vertical_line"
+                    android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/tvToolbarAddFriend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20px"
+                    android:text="@string/add_friend"
+                    android:textColor="@color/white"
+                    android:textSize="30px"/>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <!--搜索-->
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/llToolbarSearch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="100px"
+                android:layout_marginRight="20px"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/etSearchContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10px"
+                    android:background="@null"
+                    android:drawableLeft="@mipmap/ic_search"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/search"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/gray1"
+                    android:textSize="12sp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3px"
+                    android:layout_marginTop="10px"
+                    android:background="@drawable/shape_bottom_green"/>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <!--发送按钮-->
+            <Button
+                android:id="@+id/btnToolbarSend"
+                android:layout_width="120px"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="20px"
+                android:background="@drawable/selector_login_btn"
+                android:text="@string/send"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
+
+            <!--更多按钮-->
+            <ImageButton
+                android:id="@+id/ibToolbarMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="20px"
+                android:background="@null"
+                android:src="@mipmap/ic_friend_more"
+                android:visibility="gone"/>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoFrameLayout>
+</android.support.design.widget.AppBarLayout>

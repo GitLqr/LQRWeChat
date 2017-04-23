@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 >
 
-                <com.lqr.wechat.view.BubbleImageView
+                <com.lqr.wechat.widget.BubbleImageView
                     android:id="@+id/bivPic"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
@@ -82,7 +82,7 @@
                     app:bubble_showText="false"
                     />
 
-                <com.lqr.wechat.view.CircularProgressBar
+                <com.lqr.wechat.widget.CircularProgressBar
                     android:id="@+id/cpbLoading"
                     android:layout_width="30dp"
                     android:layout_height="30dp"

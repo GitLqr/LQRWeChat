@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="40px"
+        android:text="@string/alias"
+        android:textColor="@color/gray2"
+        android:textSize="14sp"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40px">
+
+        <EditText
+            android:id="@+id/etAlias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            android:background="@null"
+            android:drawableBottom="@drawable/selector_edit_focus"
+            android:drawablePadding="20px"
+            android:gravity="bottom"
+            android:hint=""
+            android:textColorHint="@color/gray3"
+            android:textSize="14sp"
+            android:visibility="visible"/>
+
+        <ImageButton
+            android:id="@+id/ibClearAlias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40px"
+            android:background="@null"
+            android:src="@mipmap/ic_delete"
+            android:visibility="gone"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="40px"
+        android:text="@string/tag"
+        android:textColor="@color/gray2"
+        android:textSize="14sp"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40px">
+
+        <EditText
+            android:id="@+id/etTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            android:background="@null"
+            android:drawableBottom="@drawable/selector_edit_focus"
+            android:drawablePadding="20px"
+            android:focusable="false"
+            android:gravity="bottom"
+            android:hint="@string/add_tag_to_classfy_contacts"
+            android:textColorHint="@color/gray3"
+            android:textSize="14sp"
+            android:visibility="visible"/>
+
+        <ImageButton
+            android:id="@+id/ibClearTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40px"
+            android:background="@null"
+            android:src="@mipmap/ic_delete"
+            android:visibility="gone"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="40px"
+        android:text="@string/phone_number"
+        android:textColor="@color/gray2"
+        android:textSize="14sp"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40px">
+
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            android:background="@null"
+            android:drawableBottom="@drawable/selector_edit_focus"
+            android:drawablePadding="20px"
+            android:focusable="false"
+            android:gravity="bottom"
+            android:hint="@string/add_phone_number"
+            android:textColorHint="@color/gray3"
+            android:textSize="14sp"
+            android:visibility="visible"/>
+
+        <ImageButton
+            android:id="@+id/ibClearPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40px"
+            android:background="@null"
+            android:src="@mipmap/ic_delete"
+            android:visibility="gone"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="40px"
+        android:text="@string/describe"
+        android:textColor="@color/gray2"
+        android:textSize="14sp"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40px">
+
+        <ImageButton
+            android:id="@+id/ibClearDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40px"
+            android:background="@null"
+            android:src="@mipmap/ic_delete"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/etDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            android:background="@null"
+            android:drawableBottom="@drawable/selector_edit_focus"
+            android:drawablePadding="20px"
+            android:focusable="false"
+            android:gravity="bottom"
+            android:hint="添加更多备注信息"
+            android:textColorHint="@color/gray3"
+            android:textSize="14sp"
+            android:visibility="visible"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="40px"
+        android:text="@string/add_picture"
+        android:textColor="@color/gray2"
+        android:textSize="14sp"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40px">
+
+        <EditText
+            android:id="@+id/etPicture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            android:background="@null"
+            android:drawableBottom="@drawable/selector_edit_focus"
+            android:drawablePadding="20px"
+            android:focusable="false"
+            android:gravity="bottom"
+            android:hint="@string/add_business_card_or_pic"
+            android:textColorHint="@color/gray3"
+            android:textSize="14sp"
+            android:visibility="visible"/>
+
+        <ImageButton
+            android:id="@+id/ibClearPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40px"
+            android:background="@null"
+            android:src="@mipmap/ic_delete"
+            android:visibility="gone"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

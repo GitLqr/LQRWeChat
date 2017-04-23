@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="128px"
+        android:background="@drawable/selector_common_item"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="28px"
+        android:paddingRight="30px"
+        >
+
+        <ImageView
+            android:id="@+id/ivHeader"
+            android:layout_width="110px"
+            android:layout_height="110px"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="15px"
+            android:layout_marginTop="15px"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/default_header"/>
+
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:singleLine="true"
+                android:text="沧晓"
+                android:textColor="@color/gray0"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:layout_marginTop="6px"
+                android:singleLine="true"
+                android:text="对方请求添加你为朋友"
+                android:textColor="@color/gray3"
+                android:textSize="12sp"/>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <TextView
+            android:id="@+id/tvAdded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text="已添加"
+            android:textColor="@color/gray3"
+            android:textSize="12sp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvWait"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text="等待验证"
+            android:textColor="@color/gray3"
+            android:textSize="12sp"
+            android:visibility="gone"/>
+
+
+        <Button
+            android:id="@+id/btnAck"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="120px"
+            android:layout_height="60px"
+            android:layout_marginLeft="20px"
+            android:background="@drawable/shape_new_friend_agree"
+            android:text="接受"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:visibility="gone"/>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoFrameLayout>

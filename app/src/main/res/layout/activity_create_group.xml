@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray5"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--联系人选择列表-->
+        <com.lqr.recyclerview.LQRRecyclerView
+            android:id="@+id/rvContacts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/llTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#99ffffff"
+            android:orientation="vertical"
+            android:paddingTop="20px">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="10px"
+                android:paddingTop="10px">
+
+                <!--被选中的联系人头像列表-->
+                <com.lqr.recyclerview.LQRRecyclerView
+                    android:id="@+id/rvSelectedContacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70px"
+                    app:rv_column="1"
+                    app:rv_orientation="horizontal"/>
+
+                <EditText
+                    android:id="@+id/etKey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableLeft="@mipmap/ic_search1"
+                    android:drawablePadding="10px"
+                    android:hint="@string/search"
+                    android:textColorHint="@color/gray2"
+                    android:textSize="14sp"/>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                style="@style/Line"
+                android:layout_marginLeft="0px"
+                android:layout_marginRight="0px"
+                />
+
+            <View
+                android:id="@+id/vTop"
+                style="@style/Line"
+                android:layout_marginTop="20px"
+                android:visibility="gone"
+                />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <!--快速导航条-->
+        <com.lqr.wechat.widget.QuickIndexBar
+            android:id="@+id/qib"
+            android:layout_width="40px"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/llTop"/>
+
+
+        <TextView
+            android:id="@+id/tvLetter"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shape_corner_rect_solid_gray"
+            android:gravity="center"
+            android:text="A"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="gone"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

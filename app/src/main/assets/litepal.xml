@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="lqr_wechat"></dbname>
+
+    <version value="1"></version>
+
+    <list>
+        <mapping class="com.lqr.wechat.db.model.Friend"></mapping>
+        <mapping class="com.lqr.wechat.db.model.Groups"></mapping>
+        <mapping class="com.lqr.wechat.db.model.GroupMember"></mapping>
+    </list>
+</litepal>

@@ -19,12 +19,12 @@
             android:gravity="left|center_vertical"
             android:padding="20dp"
             android:paddingLeft="20dp"
-            android:text="退出当前账号"
+            android:text="@string/exit_account"
             android:textColor="@color/gray0"
             android:textSize="16sp"/>
 
         <View
-            style="@style/Line1"/>
+            style="@style/Line"/>
 
         <TextView
             android:id="@+id/tvExitApp"
@@ -36,7 +36,7 @@
             android:gravity="left|center_vertical"
             android:padding="20dp"
             android:paddingLeft="20dp"
-            android:text="关闭微信"
+            android:text="@string/exit_app"
             android:textColor="@color/gray0"
             android:textSize="16sp"/>
 

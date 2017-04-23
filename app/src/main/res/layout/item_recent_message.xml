@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/flRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="5px"
+        android:paddingRight="25px"
+        >
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/rlHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/item_margin_top_and_bottom"
+                android:layout_marginLeft="20px"
+                android:layout_marginTop="@dimen/item_margin_top_and_bottom">
+                <!--头像-->
+                <ImageView
+                    android:id="@+id/ivHeader"
+                    android:layout_width="100px"
+                    android:layout_height="100px"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/ic_launcher"/>
+                <!--九宫格头像-->
+                <com.lqr.ninegridimageview.LQRNineGridImageView
+                    android:id="@+id/ngiv"
+                    android:layout_width="100px"
+                    android:layout_height="100px"
+                    android:layout_centerInParent="true"
+                    android:background="@color/gray9"
+                    android:visibility="gone"
+                    app:imgGap="1px"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+            <!--未读消息数-->
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_alignTop="@id/rlHeader"
+                android:layout_marginLeft="-30px"
+                android:layout_marginTop="-10px"
+                android:layout_toRightOf="@id/rlHeader"
+                android:background="@drawable/shape_red_dot"
+                android:gravity="center"
+                android:text="99"
+                android:textColor="@color/white"
+                android:textSize="22px"
+                android:visibility="gone"/>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_marginLeft="20px"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+                <!--昵称或群名-->
+                <TextView
+                    android:id="@+id/tvDisplayName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="35px"/>
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/gray3"
+                    android:textSize="25px"/>
+            </com.zhy.autolayout.AutoLinearLayout>
+            <!--消息-->
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvDraft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/draft"
+                    android:textColor="@color/red7"
+                    android:textSize="28px"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/tvContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/gray1"
+                    android:textSize="28px"/>
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+</com.zhy.autolayout.AutoFrameLayout>

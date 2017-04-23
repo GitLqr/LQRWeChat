@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="240dp"
-        android:layout_height="80dp"
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="480px"
+        android:layout_height="160px"
         android:background="@drawable/dialog_waiting">
 
 
@@ -14,16 +15,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="正在登录..."
             android:textColor="@color/white"
-            android:textSize="16sp"/>
+            android:textSize="32px"/>
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="30px"
             android:layout_toLeftOf="@id/tvTip"/>
 
-    </RelativeLayout>
-</FrameLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoFrameLayout>

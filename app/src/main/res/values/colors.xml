@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#393A3F</color>
-    <color name="colorPrimarydark">#303135</color>
-    <color name="coloraccent">#7e7e7e</color>
-    <!--<color name="coloraccent">#ff4081</color>-->
+    <color name="colorPrimaryDark">#303135</color>
+    <color name="colorAccent">#7e7e7e</color>
+
+    <color name="white">#ffffff</color>
+    <color name="line">#D2D2D2</color>
 
     <color name="main">#26AAFD</color>
     <color name="main_bg0">#f0f0f0</color>
@@ -17,10 +19,6 @@
     <color name="assist_blue_down">#3489ff</color>
     <color name="assist_green">#6ae068</color>
     <color name="assist_yellow">#fcce0b</color>
-
-    <color name="line">#D2D2D2</color>
-    <color name="line2">#1896E5</color>
-    <color name="select_down">#ededed</color>
 
     <color name="gray0">#464646</color>
     <color name="gray1">#7e7e7e</color>
@@ -41,6 +39,7 @@
     <color name="red5">#FA6F5F</color>
     <color name="red6">#D54A47</color>
     <color name="red7">#E64340</color>
+    <color name="red8">#FF3E3E</color>
 
     <color name="green0">#45C01A</color>
     <color name="green1">#45C01A</color>
@@ -51,7 +50,6 @@
 
     <color name="black0">#000000</color>
     <color name="black1">#99000000</color>
-    <color name="white">#ffffff</color>
 
     <color name="yellow0">#FFC51B</color>
     <color name="yellow1">#E5A134</color>

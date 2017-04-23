@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray5"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--群成员头像列表（5列）-->
+            <com.lqr.recyclerview.LQRRecyclerView
+                android:id="@+id/rvMember"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="10px"
+                android:paddingLeft="15px"
+                android:paddingRight="15px"
+                android:paddingTop="30px"
+                app:rv_column="5"
+                app:rv_type="grid"/>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/llGroupPart1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/option_item_margin_top"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <com.lqr.optionitemview.OptionItemView
+                    android:id="@+id/oivGroupName"
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    app:left_text="@string/group_name"
+                    app:left_text_color="@color/black0"
+                    app:left_text_margin_left="@dimen/option_item_margin_left"
+                    app:left_text_size="16sp"
+                    app:right_text="@string/untitled"
+                    app:right_text_color="@color/gray2"
+                    app:right_text_margin_right="@dimen/option_item_margin_right"
+                    app:right_text_size="14sp"/>
+
+                <View
+                    style="@style/Line"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px"
+                    />
+
+                <com.lqr.optionitemview.OptionItemView
+                    android:id="@+id/oivQRCordCard"
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    app:left_text="@string/group_qr_code"
+                    app:left_text_color="@color/black0"
+                    app:left_text_margin_left="@dimen/option_item_margin_left"
+                    app:left_text_size="16sp"
+                    app:right_image_margin_right="@dimen/option_item_margin_right"
+                    app:right_src="@mipmap/ic_qr_code"/>
+
+                <View
+                    style="@style/Line"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px"
+                    />
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/llAnnouncement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80px"
+                        android:gravity="center_vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/option_item_margin_left"
+                            android:layout_weight="1"
+                            android:text="@string/group_announcement"
+                            android:textColor="@color/black0"
+                            android:textSize="16sp"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvAnnouncement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20px"
+                        android:layout_marginLeft="50px"
+                        android:layout_marginRight="50px"
+                        android:layout_marginTop="10px"
+                        android:text=""
+                        android:textColor="@color/gray2"
+                        android:textSize="14sp"
+                        android:visibility="gone"/>
+
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <View
+                    android:id="@+id/vLineTeamManage"
+                    style="@style/Line"
+                    android:layout_marginLeft="@dimen/option_item_margin_left"
+                    android:layout_marginRight="@dimen/option_item_margin_right"
+                    android:visibility="gone"
+                    />
+
+                <com.lqr.optionitemview.OptionItemView
+                    android:id="@+id/oivTeamManage"
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    android:visibility="gone"
+                    app:left_text="群管理"
+                    app:left_text_color="@color/black0"
+                    app:left_text_margin_left="@dimen/option_item_margin_left"
+                    app:left_text_size="16sp"/>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/option_item_margin_top"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="96px"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_weight="1"
+                        android:text="@string/message_free"
+                        android:textColor="@color/black0"
+                        android:textSize="16sp"/>
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/option_item_margin_right"
+                        app:kswBackDrawable="@drawable/ios_back_drawable"
+                        app:kswBackMeasureRatio="1.8"
+                        app:kswThumbDrawable="@drawable/ios_thumb_selector"
+                        app:kswThumbMarginBottom="-4dp"
+                        app:kswThumbMarginLeft="-2dp"
+                        app:kswThumbMarginRight="-2dp"
+                        app:kswThumbMarginTop="-0dp"
+                        app:kswThumbWidth="10dp"/>
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <View
+                    style="@style/Line"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px"
+                    />
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="96px"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_weight="1"
+                        android:text="@string/set_conversation_to_top"
+                        android:textColor="@color/black0"
+                        android:textSize="16sp"/>
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/sbToTop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/option_item_margin_right"
+                        app:kswBackDrawable="@drawable/ios_back_drawable"
+                        app:kswBackMeasureRatio="1.8"
+                        app:kswThumbDrawable="@drawable/ios_thumb_selector"
+                        app:kswThumbMarginBottom="-4dp"
+                        app:kswThumbMarginLeft="-2dp"
+                        app:kswThumbMarginRight="-2dp"
+                        app:kswThumbMarginTop="-0dp"
+                        app:kswThumbWidth="10dp"/>
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <View
+                    style="@style/Line"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:text="保存到通讯录"
+                        android:textColor="@color/black0"
+                        android:textSize="16sp"/>
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        app:kswBackDrawable="@drawable/ios_back_drawable"
+                        app:kswBackMeasureRatio="1.8"
+                        app:kswThumbDrawable="@drawable/ios_thumb_selector"
+                        app:kswThumbMarginBottom="-4dp"
+                        app:kswThumbMarginLeft="-2dp"
+                        app:kswThumbMarginRight="-2dp"
+                        app:kswThumbMarginTop="-0dp"
+                        app:kswThumbWidth="10dp"/>
+                </LinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/llGroupPart2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/option_item_margin_top"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <com.lqr.optionitemview.OptionItemView
+                    android:id="@+id/oivNickNameInGroup"
+                    style="@style/OptionItem"
+                    android:background="@drawable/selector_option_item"
+                    app:left_text="@string/my_nickname_in_this_group"
+                    app:left_text_color="@color/black0"
+                    app:left_text_margin_left="@dimen/option_item_margin_left"
+                    app:left_text_size="16sp"
+                    app:right_text="沧晓"
+                    app:right_text_color="@color/gray2"
+                    app:right_text_margin_right="@dimen/option_item_margin_right"
+                    app:right_text_size="14sp"/>
+
+
+                <View
+                    style="@style/Line"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px"
+                    />
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/llShowNickName"
+                    android:layout_width="match_parent"
+                    android:layout_height="96px"
+                    android:background="@drawable/selector_option_item"
+                    android:gravity="center_vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_weight="1"
+                        android:text="@string/show_group_member_name"
+                        android:textColor="@color/black0"
+                        android:textSize="16sp"/>
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/sbShowNickName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/option_item_margin_right"
+                        android:clickable="false"
+                        app:kswBackDrawable="@drawable/ios_back_drawable"
+                        app:kswBackMeasureRatio="1.8"
+                        app:kswThumbDrawable="@drawable/ios_thumb_selector"
+                        app:kswThumbMarginBottom="-4dp"
+                        app:kswThumbMarginLeft="-2dp"
+                        app:kswThumbMarginRight="-2dp"
+                        app:kswThumbMarginTop="-0dp"
+                        app:kswThumbWidth="10dp"/>
+                </com.zhy.autolayout.AutoLinearLayout>
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.lqr.optionitemview.OptionItemView
+                android:id="@+id/oivClearMsgRecord"
+                style="@style/OptionItem"
+                android:layout_marginTop="@dimen/option_item_margin_top"
+                android:background="@drawable/selector_option_item"
+                app:left_text="@string/clear_chat_log"
+                app:left_text_color="@color/black0"
+                app:left_text_margin_left="@dimen/option_item_margin_left"
+                app:left_text_size="16sp"/>
+
+            <Button
+                android:id="@+id/btnQuit"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="90px"
+                android:layout_marginBottom="40px"
+                android:layout_marginLeft="@dimen/option_item_margin_left"
+                android:layout_marginRight="@dimen/option_item_margin_right"
+                android:layout_marginTop="@dimen/option_item_margin_top"
+                android:background="@drawable/shape_btn_delete"
+                android:text="@string/delete_and_exit"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </ScrollView>
+</com.zhy.autolayout.AutoLinearLayout>
