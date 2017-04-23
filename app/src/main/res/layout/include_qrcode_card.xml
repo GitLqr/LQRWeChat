@@ -1,63 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp"
+            android:layout_margin="50px"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/ivHeader"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="130px"
+                android:layout_height="130px"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/default_header"/>
 
             <!--九宫格头像-->
             <com.lqr.ninegridimageview.LQRNineGridImageView
                 android:id="@+id/ngiv"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="130px"
+                android:layout_height="130px"
                 android:background="@color/gray9"
                 android:visibility="gone"
-                app:imgGap="4dp"/>
+                app:imgGap="8px"/>
 
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                android:layout_marginTop="20px"
                 android:text="CSDN_LQR"
                 android:textColor="@color/gray0"
                 android:textSize="14sp"/>
 
             <ImageView
                 android:id="@+id/ivGender"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginTop="11dp"
+                android:layout_width="30px"
+                android:layout_height="30px"
+                android:layout_marginTop="22px"
                 android:scaleType="fitXY"
-                android:src="@mipmap/ic_gender_female"/>
+                android:src="@mipmap/ic_gender_female"
+                android:visibility="gone"/>
 
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
         <ImageView
             android:id="@+id/ivCard"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="300px"
+            android:layout_height="300px"
             android:layout_gravity="center"
+            android:layout_marginBottom="40px"
+            android:layout_marginTop="20px"
             />
 
         <TextView
@@ -65,11 +69,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40px"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:layout_marginTop="40px"
             android:textColor="@color/gray1"
             android:textSize="12sp"/>
-    </LinearLayout>
-</FrameLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoFrameLayout>

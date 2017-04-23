@@ -12,7 +12,7 @@
                 />
         </shape>
     </item>
-    <item android:id="@id/progress">
+    <item android:id="@android:id/progress">
         <clip>
             <shape>
                 <corners android:radius="2dp"/>

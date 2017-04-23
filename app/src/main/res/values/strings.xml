@@ -1,8 +1,271 @@
 <resources>
     <string name="app_name">LQRWeChat</string>
 
+    <string name="error_code">异常码：</string>
+    <string name="please_check_net">请检查网络</string>
+    <string name="load_error">加载失败</string>
+    <string name="please_wait">请稍等</string>
+    <string name="content_no_empty">内容不能为空</string>
+    <string name="complete">完成</string>
+    <string name="change_success">修改成功</string>
+    <string name="change_fail">修改失败</string>
+    <string name="set_success">设置成功</string>
+    <string name="set_fail">设置失败</string>
+    <string name="save">保存</string>
+    <string name="save_success">保存成功</string>
+    <string name="save_fail">保存失败</string>
+    <string name="cancel">取消</string>
+    <string name="sure">确定</string>
+    <string name="sure_with_count">确定(%1$d)</string>
+
+    <!--闪屏页-->
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+
+    <!--登录-->
+    <string name="login_error">登录失败</string>
+    <string name="phone_format_error">手机格式有误</string>
+    <string name="phone_not_empty">手机号不能为空</string>
+    <string name="password_not_empty">密码不能为空</string>
+    <string name="nickname_not_empty">昵称不能为空</string>
+    <string name="vertify_code_not_empty">验证码不能为空</string>
+    <string name="disconnect_server">与服务器失联</string>
+
+    <!--注册-->
+    <string name="nickname">昵称</string>
+    <string name="password">密码</string>
+    <string name="area">国家/地区</string>
+    <string name="verification_code">验证码</string>
+
+    <string name="phone_not_available">手机号不可用</string>
+    <string name="send_code_error">发送验证码失败</string>
+    <string name="vertify_code_error">验证码有误</string>
+    <string name="send_code_btn_normal_tip">发送验证码</string>
+    <string name="register_error">注册出错</string>
+
+    <!--主界面-->
     <string name="message">微信</string>
     <string name="contacts">通讯录</string>
     <string name="discovery">发现</string>
     <string name="me">我</string>
+
+    <!--最近会话-->
+    <string name="draft">[草稿]</string>
+    <string name="picture">图片</string>
+    <string name="voice">语音</string>
+    <string name="sticker">贴图</string>
+    <string name="video">视频</string>
+    <string name="set_conversation_to_top">置顶聊天</string>
+    <string name="cancel_conversation_to_top">取消置顶</string>
+    <string name="delete_conversation">删除该聊天</string>
+
+    <!--联系人-->
+    <string name="new_friend">新的朋友</string>
+    <string name="group_cheat">群聊</string>
+    <string name="group_tag">标签</string>
+    <string name="group_public_number">公众号</string>
+    <string name="load_contacts_error">加载联系人失败</string>
+    <string name="count_of_contacts">%1$d位联系人</string>
+
+    <!--发现-->
+    <string name="friend_cicle">朋友圈</string>
+    <string name="scan">扫一扫</string>
+    <string name="shake">摇一摇</string>
+    <string name="people_nearby">附近的人</string>
+    <string name="shopping">购物</string>
+    <string name="game">游戏</string>
+
+    <!--我-->
+    <string name="my_chat_account">微信号:%1$s</string>
+    <string name="album">相册</string>
+    <string name="collection">收藏</string>
+    <string name="wallet">钱包</string>
+    <string name="card_package">卡包</string>
+    <string name="jian_shu">简书</string>
+    <string name="csdn">CSDN</string>
+    <string name="oschina">码云</string>
+    <string name="github">GitHub</string>
+    <string name="emotion">表情</string>
+    <string name="setting">设置</string>
+    <string name="qr_code_card_tip">扫一扫上面的二维码图案，加我微信</string>
+
+    <!--我的个人信息-->
+    <string name="header_pic">头像</string>
+    <string name="wechat_account">微信号</string>
+    <string name="qr_code_card">二维码名片</string>
+    <string name="my_location">我的地址</string>
+    <string name="gender">性别</string>
+    <string name="not_fill">未填写</string>
+
+    <!--新的朋友-->
+    <string name="add_friend">添加朋友</string>
+    <string name="no_recommend_friend">还没有推荐的朋友</string>
+    <string name="no_recommend_friend_tip">你可以绑定手机/QQ账号，以便找到更多好友</string>
+    <string name="add_phone_contact">添加手机联系人</string>
+    <string name="wechat_qq_phone">微信号/QQ号/手机号</string>
+    <string name="agree_friend_fail">同意添加好友失败</string>
+
+    <string name="create_group">发起群聊</string>
+    <string name="scan_one_scan">扫一扫</string>
+    <string name="payment_received">收付款</string>
+    <string name="help_feedback">帮助与反馈</string>
+
+    <!--添加朋友-->
+    <string name="my_wechat_account">我的微信号:</string>
+    <string name="radar_add_friend">雷达加朋友</string>
+    <string name="add_near_friend">添加身边的朋友</string>
+    <string name="create_group_face_to_face">面对面建群</string>
+    <string name="create_group_with_near_friend">与身边的朋友进入同一个群聊</string>
+    <string name="scan_qr_code_business_card">扫描二维码名片</string>
+    <string name="phone_contacts">手机联系人</string>
+    <string name="add_friend_from_contact">添加或邀请通讯录中的朋友</string>
+    <string name="public_number">公众号</string>
+    <string name="get_more_info_and_service">获取更多资讯和服务</string>
+
+    <!--扫一扫-->
+    <string name="scan_code">扫码</string>
+    <string name="cover">封面</string>
+    <string name="street_scape">街景</string>
+    <string name="translate">翻译</string>
+    <string name="qr_cord_or_bar_code">二级码/条码</string>
+    <string name="cover_or_movie_poster">封面/电影海报</string>
+    <string name="select_qr_code_from_ablum">从相册选取二维码</string>
+    <string name="scan_fail">扫描失败</string>
+    <string name="open_camera_error">打开相机出错</string>
+    <string name="this_account_was_your_friend">该用户已经是您的好友</string>
+    <string name="you_already_in_this_group">您已经在群聊中</string>
+    <string name="select_group_info_fail_please_restart_app">已加入群聊，但查询群信息失败，请重启APP</string>
+    <string name="join_group_fail">入群失败</string>
+
+    <!--搜索用户-->
+    <string name="user_no_found">该用户不存在</string>
+    <string name="search_colon">搜索:</string>
+    <string name="search">搜索</string>
+
+    <!--用户信息-->
+    <string name="nickname_colon">昵称:%1$s</string>
+    <string name="set_alias_and_tag">设置备注和标签</string>
+    <string name="signature">个性签名</string>
+    <string name="send_message">发消息</string>
+    <string name="add_to_contact">添加到通讯录</string>
+    <string name="add_to_black_list">加入黑名单</string>
+    <string name="delete">删除</string>
+    <string name="add_to_desktop">添加到桌面</string>
+    <string name="change_my_name_tip">好名字可以让你的朋友 更容易记住你。</string>
+    <string name="delete_contact">删除联系人</string>
+    <string name="delete_contact_content">将联系人%1$s删除，将同时删除与该联系人的聊天记录</string>
+    <string name="delete_success">删除成功</string>
+    <string name="delete_fail">删除失败</string>
+    <string name="save_to_phone">保存到手机</string>
+
+    <!--修改备注-->
+    <string name="alias">备注名</string>
+    <string name="tag">标签</string>
+    <string name="add_tag_to_classfy_contacts">添加标签对联系人进行分类</string>
+    <string name="phone_number">电话号码</string>
+    <string name="add_phone_number">添加电话号码</string>
+    <string name="describe">描述</string>
+    <string name="add_picture">附加图片</string>
+    <string name="add_business_card_or_pic">添加名片或相关图片</string>
+    <string name="alias_no_empty">备注名不能为空</string>
+
+    <!--附言界面-->
+    <string name="postscript_tip">你需要发送验证申请，等对方通过</string>
+    <string name="disallow_it_see_my_circle">不让他(她)看我的朋友圈</string>
+    <string name="send">发送</string>
+    <string name="rquest_sent_success">请求已发送</string>
+    <string name="rquest_sent_fail">请求发送失败</string>
+
+    <!--会话界面-->
+    <string name="please_to_talk">按住 说话</string>
+    <string name="shot">拍摄</string>
+    <string name="location">位置</string>
+    <string name="red_pack">红包</string>
+    <string name="wx_red_pack">微信红包</string>
+    <string name="file_out_of_date">文件已过期</string>
+    <string name="SET_TEXT_TYPING_TITLE">对方正在输入</string>
+    <string name="SET_VOICE_TYPING_TITLE">对方正在讲话</string>
+
+    <string name="voice_rec">手指上滑，取消发送</string>
+    <string name="voice_cancel">松开手指，取消发送</string>
+    <string name="voice_short">录音时间太短</string>
+    <string name="voice_failure">录音失败！</string>
+    <string name="send_audio_fail">发送语音失败，文件长度为0或语音权限没有开启</string>
+
+    <string name="remove_group_before_str">将</string>
+    <string name="remove_group_after_str">移出了群组</string>
+    <string name="created_group">%1$s创建了群组</string>
+    <string name="invitation">%1$s邀请%2$s加入了群组</string>
+    <string name="remove_group_member">%1$s将%2$s移出了群组</string>
+    <string name="remove_self">%1$s被%2$s移出了群组</string>
+    <string name="change_group_name">%1$s修改群名称为%2$s</string>
+    <string name="you">你</string>
+    <string name="other_party">对方</string>
+    <string name="divided_string">、</string>
+    <string name="group_notification_summary">[群组通知]</string>
+    <string name="quit_groups">退出了群组</string>
+    <string name="dismiss_groups">解散了群组</string>
+    <string name="join_group">加入了群组</string>
+    <string name="no_support_msg_type">不支持的消息类型</string>
+
+    <string name="copy">复制</string>
+    <string name="send_to_friend">发送给朋友</string>
+    <string name="recall">撤回</string>
+
+    <string name="recall_success">撤回成功</string>
+    <string name="recall_fail">撤回失败</string>
+    <string name="recall_one_message">%1$s撤回了一条消息</string>
+
+    <!--地图-->
+    <string name="fetching">获取中......</string>
+
+    <!--创建群-->
+    <string name="select_one_group">选择一个群</string>
+    <string name="create_group_success">创建群成功</string>
+    <string name="create_group_fail">创建群失败</string>
+    <string name="no_group_now">暂无群聊</string>
+
+    <!--群信息-->
+    <string name="group_name">群聊名称</string>
+    <string name="untitled">未命名</string>
+    <string name="group_qr_code">群二维码</string>
+    <string name="group_announcement">群公告</string>
+    <string name="message_free">消息免打扰</string>
+    <string name="my_nickname_in_this_group">我在本群的昵称</string>
+    <string name="show_group_member_name">显示群成员昵称</string>
+    <string name="clear_chat_log">清空聊天记录</string>
+    <string name="delete_and_exit">删除并退出</string>
+    <string name="dismiss_this_group">解散该群</string>
+    <string name="add_member_success">添加群成员成功</string>
+    <string name="add_member_fail">添加群成员失败</string>
+    <string name="del_member_success">删除群成员成功</string>
+    <string name="del_member_fail">删除群成员失败</string>
+    <string name="are_you_sure_to_clear_msg_record">确定删除群的聊天记录吗？</string>
+    <string name="clear">清空</string>
+    <string name="you_will_never_receive_any_msg_after_quit">删除并退出后，将不再接收此群聊信息</string>
+    <string name="are_you_sure_to_dismiss_this_group">你确定要解散该群吗?</string>
+    <string name="my_display_name_in_group">我在本群中的昵称</string>
+    <string name="set_your_display_name_in_group">设置你在群里的昵称，这个昵称只会在这个群内显示</string>
+    <string name="exit_group_fail">退出失败</string>
+
+    <!--设置-->
+    <string name="new_message_remind">新消息提醒</string>
+    <string name="do_not_disturb_mode">勿扰模式</string>
+    <string name="chat">聊天</string>
+    <string name="privacy">隐私</string>
+    <string name="currency">通用</string>
+    <string name="account_and_safe">账号与安全</string>
+    <string name="about">关于微信</string>
+    <string name="exit">退出</string>
+    <string name="exit_account">退出当前账号</string>
+    <string name="exit_app">关闭微信</string>
+
+    <!--关于-->
+    <string name="app_name_in_about">高仿微信 6.5.7 (融云版)</string>
+    <string name="function_introduction">功能介绍</string>
+    <string name="complaint">投诉</string>
+    <string name="check_update">检查更新</string>
+    <string name="terms_of_use_and_privacy_policy">使用条款和隐私政策</string>
+    <string name="CSDN_LQR_personal_development">CSDN_LQR个人开发</string>
+    <string name="fun_and_enjoy">兴趣使然</string>
 </resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100px"/>
+
+    <TextView
+        android:id="@+id/tvSelectOneGroup"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:background="@drawable/selector_option_item"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px"
+        android:paddingRight="30px"
+        android:singleLine="true"
+        android:text="@string/select_one_group"
+        android:textColor="@color/gray0"
+        android:textSize="16sp"/>
+
+    <View
+        style="@style/Line"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        />
+
+    <TextView
+        android:id="@+id/tvCreateGroupFaceToFace"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:background="@drawable/selector_option_item"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px"
+        android:paddingRight="30px"
+        android:singleLine="true"
+        android:text="@string/create_group_face_to_face"
+        android:textColor="@color/gray0"
+        android:textSize="16sp"/>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

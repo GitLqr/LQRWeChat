@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray5"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/llGroups"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:background="#E5E5E5"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="@string/group_cheat"
+            android:textColor="#989898"
+            android:textSize="13sp"
+            android:visibility="visible"/>
+
+        <com.lqr.recyclerview.LQRRecyclerView
+            android:id="@+id/rvGroupList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:id="@+id/tvTip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/no_group_now"
+        android:textColor="@color/gray2"
+        android:textSize="14sp"/>
+</com.zhy.autolayout.AutoLinearLayout>

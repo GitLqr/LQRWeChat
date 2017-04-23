@@ -1,62 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.zhy.autolayout.AutoLinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.lqr.wechat.activity.MainActivity">
+    android:orientation="vertical">
 
     <include layout="@layout/include_toolbar"/>
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="100px"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20px"
                 android:layout_weight="1"
                 android:text="国家/地区"
-                android:textColor="@color/black0"/>
+                android:textColor="@color/black0"
+                android:textSize="28px"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20px"
                 android:text="中国"
-                android:textColor="@color/green1"/>
+                android:textColor="@color/green1"
+                android:textSize="28px"/>
 
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
         <View
-            style="@style/Line1"
+            style="@style/Line"
             />
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="100px"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp">
+            android:paddingLeft="30px"
+            android:paddingRight="30px">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="120px"
                 android:layout_height="wrap_content"
                 android:text="+86"
                 android:textColor="@color/black0"
-                android:textSize="14sp"/>
+                android:textSize="28px"/>
 
             <EditText
                 android:id="@+id/etPhone"
@@ -64,31 +65,32 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="你的手机号码"
+                android:inputType="phone"
                 android:text=""
                 android:textColorHint="@color/gray3"
-                android:textSize="14sp"/>
+                android:textSize="28px"/>
 
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
         <View
             android:id="@+id/vLinePhone"
-            style="@style/Line1"
+            style="@style/Line"
             />
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="100px"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp">
+            android:paddingLeft="30px"
+            android:paddingRight="30px">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="120px"
                 android:layout_height="wrap_content"
                 android:text="密码"
                 android:textColor="@color/black0"
-                android:textSize="14sp"/>
+                android:textSize="28px"/>
 
             <EditText
                 android:id="@+id/etPwd"
@@ -99,26 +101,26 @@
                 android:inputType="textPassword"
                 android:text=""
                 android:textColorHint="@color/gray3"
-                android:textSize="14sp"/>
+                android:textSize="28px"/>
 
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
         <View
             android:id="@+id/vLinePwd"
-            style="@style/Line1"
+            style="@style/Line"
             />
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/selector_btn_enable"
-            android:enabled="false"
+            android:layout_height="80px"
+            android:layout_marginBottom="30px"
+            android:layout_marginTop="30px"
+            android:background="@drawable/selector_login_btn"
+            android:enabled="true"
             android:text="登录"
-            android:textColor="@color/selector_btn_enable"
-            android:textSize="15sp"/>
+            android:textColor="@color/selector_login_btn"
+            android:textSize="30px"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -126,35 +128,36 @@
             android:gravity="center"
             android:text="用短信验证码登录"
             android:textColor="@color/blue0"
-            android:textSize="13sp"/>
-    </LinearLayout>
+            android:textSize="28px"/>
+    </com.zhy.autolayout.AutoLinearLayout>
 
-    <RelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5">
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="40px"
             android:orientation="horizontal">
 
 
             <TextView
+                android:id="@+id/tvProblems"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="10px"
                 android:text="登录遇到问题?"
                 android:textColor="@color/blue0"
-                android:textSize="14sp"/>
+                android:textSize="28px"/>
 
             <View
-                android:layout_width="20dp"
-                android:layout_height="30dp"
+                android:layout_width="40px"
+                android:layout_height="60px"
                 android:background="@drawable/shape_vertical_line"/>
 
             <TextView
@@ -163,11 +166,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="10px"
                 android:text="使用其他方式登录"
                 android:textColor="@color/blue0"
-                android:textSize="14sp"/>
-        </LinearLayout>
-    </RelativeLayout>
+                android:textSize="28px"/>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="rc_quit_custom_service">客服已结束</string>
+    <string name="rc_init_failed">连接客服失败</string>
+    <string name="rc_location_sharing_ended">位置共享已结束</string>
+
+    <string name="rc_notification_ticker_text">您有了一条新消息</string>
+    <string name="rc_notification_new_msg">%1$s发来了%2$d条消息</string>
+    <string name="rc_notification_new_plural_msg">%1$d个联系人发来了%2$d条消息</string>
+</resources>

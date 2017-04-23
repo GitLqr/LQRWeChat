@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<com.zhy.autolayout.AutoRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -9,25 +9,26 @@
         android:id="@+id/rvContacts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:rv_orientation="vertical"
-        app:rv_type="grid"/>
+        app:rv_divider_color="@color/line"
+        app:rv_divider_size="1px"/>
 
-    <com.lqr.wechat.view.QuickIndexBar
-        android:id="@+id/quickIndexBar"
-        android:layout_width="20dp"
+    <com.lqr.wechat.widget.QuickIndexBar
+        android:id="@+id/qib"
+        android:layout_width="40px"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"/>
 
+    <!--字母对话框-->
     <TextView
         android:id="@+id/tvLetter"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="150px"
+        android:layout_height="150px"
         android:layout_centerInParent="true"
-        android:background="@drawable/shape_corner_rect_solid_gray"
+        android:background="@drawable/shape_contact_letter_bg"
         android:gravity="center"
         android:text="A"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:visibility="gone"/>
 
-</RelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

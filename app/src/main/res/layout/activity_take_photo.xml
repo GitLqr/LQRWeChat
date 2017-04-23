@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/include_toolbar"
+        android:visibility="gone"/>
+
+    <com.cjt2325.cameralibrary.JCameraView
+        android:id="@+id/cameraview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:iconMargin="20dp"
+        app:iconSrc="@drawable/ic_camera_enhance_black_24dp"
+        app:iconWidth="30dp"/>
+
+</com.zhy.autolayout.AutoRelativeLayout>

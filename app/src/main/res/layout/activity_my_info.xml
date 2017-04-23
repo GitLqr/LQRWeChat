@@ -1,170 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/gray5"
-              android:orientation="vertical">
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray5"
+    android:orientation="vertical">
 
     <include layout="@layout/include_toolbar"/>
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40px"
         android:orientation="vertical">
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:id="@+id/llHeader"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="160px"
             android:background="@drawable/selector_option_item"
             android:gravity="center_vertical"
-            android:paddingRight="3dp">
+            android:paddingRight="6px">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="6px"
+                android:layout_marginLeft="30px"
                 android:layout_weight="1"
                 android:singleLine="true"
-                android:text="头像"
+                android:text="@string/header_pic"
                 android:textColor="@color/black0"
                 android:textSize="15sp"/>
 
             <ImageView
                 android:id="@+id/ivHeader"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_width="130px"
+                android:layout_height="130px"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/default_header"/>
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
         <View
-            style="@style/Line1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            style="@style/Line"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
             />
 
         <com.lqr.optionitemview.OptionItemView
             android:id="@+id/oivName"
             style="@style/OptionItem"
             android:background="@drawable/selector_option_item"
-            app:left_text="昵称"
+            app:left_text="@string/nickname"
             app:left_text_color="@color/black0"
-            app:left_text_margin_left="15dp"
+            app:left_text_margin_left="30px"
             app:left_text_size="16sp"
             app:right_text="CSDN_LQR"
             app:right_text_color="@color/gray2"
-            app:right_text_margin_right="20dp"
+            app:right_text_margin_right="40px"
             app:right_text_size="14sp"/>
 
         <View
-            style="@style/Line1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            style="@style/Line"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
             />
 
         <com.lqr.optionitemview.OptionItemView
             android:id="@+id/oivAccount"
             style="@style/OptionItem"
             android:background="@drawable/selector_option_item"
-            app:left_text="微信号"
+            app:left_text="@string/wechat_account"
             app:left_text_color="@color/black0"
-            app:left_text_margin_left="15dp"
+            app:left_text_margin_left="30px"
             app:left_text_size="16sp"
             app:right_text="sky_lqr"
             app:right_text_color="@color/gray2"
-            app:right_text_margin_right="20dp"
+            app:right_text_margin_right="40px"
             app:right_text_size="14sp"/>
 
         <View
-            style="@style/Line1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            style="@style/Line"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
             />
 
         <com.lqr.optionitemview.OptionItemView
-            android:id="@+id/oivQRCordCard"
+            android:id="@+id/oivQRCodeCard"
             style="@style/OptionItem"
-            app:left_text="二维码名片"
             android:background="@drawable/selector_option_item"
+            app:left_text="@string/qr_code_card"
             app:left_text_color="@color/black0"
-            app:left_text_margin_left="15dp"
+            app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_image_margin_right="20dp"
+            app:right_image_margin_right="40px"
             app:right_src="@mipmap/ic_qr_code"/>
 
         <View
-            style="@style/Line1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            style="@style/Line"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
             />
 
         <com.lqr.optionitemview.OptionItemView
             style="@style/OptionItem"
-            app:left_text="我的地址"
             android:background="@drawable/selector_option_item"
+            app:left_text="@string/my_location"
             app:left_text_color="@color/black0"
-            app:left_text_margin_left="15dp"
+            app:left_text_margin_left="30px"
             app:left_text_size="16sp"/>
-    </LinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40px"
         android:orientation="vertical">
 
         <com.lqr.optionitemview.OptionItemView
-            android:background="@drawable/selector_option_item"
             android:id="@+id/oivGender"
             style="@style/OptionItem"
-            app:left_text="性别"
+            android:background="@drawable/selector_option_item"
+            app:left_text="@string/gender"
             app:left_text_color="@color/black0"
-            app:left_text_margin_left="15dp"
+            app:left_text_margin_left="30px"
             app:left_text_size="16sp"
             app:right_text=""
             app:right_text_color="@color/gray2"
-            app:right_text_margin_right="20dp"
+            app:right_text_margin_right="40px"
             app:right_text_size="14sp"/>
 
         <View
-            style="@style/Line1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            style="@style/Line"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
             />
 
         <com.lqr.optionitemview.OptionItemView
             style="@style/OptionItem"
             android:background="@drawable/selector_option_item"
-            app:left_text="地区"
+            app:left_text="@string/area"
             app:left_text_color="@color/black0"
-            app:left_text_margin_left="15dp"
+            app:left_text_margin_left="30px"
             app:left_text_size="16sp"/>
 
         <View
-            style="@style/Line1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            style="@style/Line"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
             />
 
         <com.lqr.optionitemview.OptionItemView
             android:id="@+id/oivSignature"
             style="@style/OptionItem"
             android:background="@drawable/selector_option_item"
-            app:left_text="个性签名"
+            app:left_text="@string/signature"
             app:left_text_color="@color/black0"
-            app:left_text_margin_left="15dp"
+            app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="未填写"
+            app:right_text="@string/not_fill"
             app:right_text_color="@color/gray2"
-            app:right_text_margin_right="20dp"
+            app:right_text_margin_right="40px"
             app:right_text_size="14sp"/>
 
-    </LinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
 
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

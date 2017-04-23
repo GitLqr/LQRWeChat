@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DevInfor>
+    <!--
+    	说明：
+    	
+    	1、表格中的第一项
+    		<ShareSDK 
+        		AppKey="api20" />
+    	是必须的，其中的AppKey是您在ShareSDK上注册的开发者帐号的AppKey
+    	
+    	2、所有集成到您项目的平台都应该为其在表格中填写相对应的开发者信息，以新浪微博为例：
+    	    <SinaWeibo
+                Id="1"
+                SortId="1"
+                AppKey="568898243"
+                AppSecret="38a4f8204cc784f81f9f0daaf31e02e3"
+                RedirectUrl="http://www.mob.com"
+                Enable="true" />
+    	其中的SortId是此平台在分享列表中的位置，由开发者自行定义，可以是任何整型数字，数值越大
+    	越靠后AppKey、AppSecret和RedirectUrl是您在新浪微博上注册开发者信息和应用后得到的信息
+    	Id是一个保留的识别符，整型，ShareSDK不使用此字段，供您在自己的项目中当作平台的识别符。
+    	Enable字段表示此平台是否有效，布尔值，默认为true，如果Enable为false，即便平台的jar包
+    	已经添加到应用中，平台实例依然不可获取。
+    	
+    	各个平台注册应用信息的地址如下：
+			新浪微博        http://open.weibo.com
+			腾讯微博        http://dev.t.qq.com
+			QQ空间          http://connect.qq.com/intro/login/
+			微信好友        http://open.weixin.qq.com
+			Facebook       https://developers.facebook.com
+			Twitter        https://dev.twitter.com
+			人人网          http://dev.renren.com
+			开心网          http://open.kaixin001.com
+			搜狐微博        http://open.t.sohu.com
+			网易微博        http://open.t.163.com
+			豆瓣           http://developers.douban.com
+			
+			有道云笔记      http://note.youdao.com/open/developguide.html#app
+			印象笔记        https://dev.evernote.com/
+			Linkedin       https://developer.linkedin.com
+			FourSquare     https://developer.foursquare.com/
+			搜狐随身看      https://open.sohu.com/
+			Flickr         http://www.flickr.com/services/
+			Pinterest      http://developers.pinterest.com/
+			Tumblr         http://www.tumblr.com/developers
+			Dropbox        https://www.dropbox.com/developers
+			Instagram      http://instagram.com/developer#
+			VKontakte      http://vk.com/dev
+			易信好友        http://open.yixin.im/
+			明道	           http://open.mingdao.com/
+			Line           http://media.line.me/zh-hant/
+			Pocket         http://getpocket.com/developer/apps/new
+			KakaoTalk      https://developers.kakao.com/
+			KakaoStory     https://developers.kakao.com/
+			Plurk          http://www.plurk.com/API
+    -->
+    
+    <ShareSDK 
+        AppKey = "androidv1101"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
+    
+    <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
+    <SinaWeibo
+        Id="1"
+        SortId="1"
+        AppKey="568898243"
+        AppSecret="38a4f8204cc784f81f9f0daaf31e02e3"
+        RedirectUrl="http://www.sharesdk.cn"
+        ShareByAppClient="true"
+        Enable="true" />
+
+    <TencentWeibo
+        Id="2" 
+        SortId="2"
+        AppKey="801307650"
+        AppSecret="ae36f4ee3946e1cbb98d6965b0b2ff5c"
+        RedirectUri="http://sharesdk.cn"
+        Enable="true" />
+    
+    <QZone
+        Id="3"
+        SortId="3"
+        AppId="100371282"
+        AppKey="aed9b0303e3ed1e27bae87c33761161d"
+        Enable="true" />
+    
+    <!-- 
+    	Wechat微信和WechatMoments微信朋友圈的appid是一样的；
+    
+                       注意：开发者不能用我们这两个平台的appid,否则分享不了
+    
+       	  微信测试的时候，微信测试需要先签名打包出apk,
+		sample测试微信，要先签名打包，keystore在sample项目中，密码123456
+		
+		BypassApproval是绕过审核的标记，设置为true后AppId将被忽略，故不经过
+		审核的应用也可以执行分享，但是仅限于分享文字和图片，不能分享其他类型，
+		默认值为false。此外，微信收藏不支持此字段。
+	-->
+    <Wechat
+        Id="4"
+        SortId="4"
+        AppId="wx4868b35061f87885"
+        AppSecret="64020361b8ec4c99936c0e3999a9f249"
+        BypassApproval="false"
+        Enable="true" />
+    
+    <WechatMoments
+        Id="5"
+        SortId="5"
+        AppId="wx4868b35061f87885"
+        AppSecret="64020361b8ec4c99936c0e3999a9f249"
+        BypassApproval="false"
+        Enable="true" />
+        
+	<WechatFavorite
+        Id="6"
+        SortId="6"
+        AppId="wx4868b35061f87885"
+        AppSecret="64020361b8ec4c99936c0e3999a9f249"
+        Enable="true" />
+    
+	<!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
+	<QQ
+        Id="7"
+        SortId="7"
+        AppId="100371282"
+        AppKey="aed9b0303e3ed1e27bae87c33761161d"
+        ShareByAppClient="true"
+        Enable="true" />
+    
+    <Facebook
+        Id="8"
+        SortId="8"
+        ConsumerKey="107704292745179"
+        ConsumerSecret="38053202e1a5fe26c80c753071f0b573"
+        RedirectUrl="http://mob.com"
+        Enable="true" />
+
+    <Twitter
+        Id="9"
+        SortId="9"
+        ConsumerKey="LRBM0H75rWrU9gNHvlEAA2aOy"
+        ConsumerSecret="gbeWsZvA9ELJSdoBzJ5oLKX0TU09UOwrzdGfo9Tg7DjyGuMe8G"
+        CallbackUrl="http://mob.com"
+        Enable="true" />
+    
+    <Renren
+        Id="10"
+        SortId="10"
+        AppId="226427"
+        ApiKey="fc5b8aed373c4c27a05b712acba0f8c3"
+        SecretKey="f29df781abdd4f49beca5a2194676ca4"
+        Enable="true" />
+    
+    <KaiXin
+        Id="11"
+        SortId="11"
+        AppKey="358443394194887cee81ff5890870c7c"
+        AppSecret="da32179d859c016169f66d90b6db2a23"
+        RedirectUri="http://www.sharesdk.cn"
+        Enable="true" />
+    
+    <Email
+        Id="12" 
+        SortId="12"
+        Enable="true" />
+    
+    <ShortMessage
+        Id="13" 
+        SortId="13"
+        Enable="true" />
+    
+    <Douban
+        Id="16"
+        SortId="16"
+        ApiKey="031a96a3aa8b28af094fc3eaffa17a0d"
+        Secret="2e675e730571b75d"
+        RedirectUri="http://mob.com"
+        Enable="true" />
+    
+    <YouDao
+        Id="17"
+        SortId="17"
+        HostType="product"
+        ConsumerKey="dcde25dca105bcc36884ed4534dab940"
+        ConsumerSecret="d98217b4020e7f1874263795f44838fe"
+        RedirectUri="http://www.sharesdk.cn/"
+        Enable="true" />
+        
+    <!-- 
+    	在中国大陆，印象笔记有两个服务器，一个是沙箱（sandbox），一个是生产服务器（china）。
+    	一般你注册应用，它会先让你使用sandbox，当你完成测试以后，可以到
+    	http://dev.yinxiang.com/support/上激活你的ConsumerKey，激活成功后，修改HostType
+    	为china就好了。至于如果您申请的是国际版的印象笔记（Evernote），则其生产服务器类型为
+    	“product”。
+    	
+    	如果目标设备上已经安装了印象笔记客户端，ShareSDK允许应用调用本地API来完成分享，但
+    	是需要将应用信息中的“ShareByAppClient”设置为true，此字段默认值为false。
+    -->
+    <Evernote
+        Id="19"
+        SortId="19"
+        HostType="sandbox"
+    	ConsumerKey="sharesdk-7807"
+		ConsumerSecret="d05bf86993836004"
+		ShareByAppClient="true"
+		Enable="true" />
+    
+    <LinkedIn
+    	Id="20"
+        SortId="20"
+        ApiKey="ejo5ibkye3vo"
+        SecretKey="cC7B2jpxITqPLZ5M" 
+        RedirectUrl="http://sharesdk.cn"
+        Enable="true" />
+    
+     <GooglePlus
+    	Id="21"
+        SortId="21"
+        ShareByAppClient = "false"
+        Enable="true" />
+     
+     <FourSquare
+    	Id="22"
+        SortId="22"
+        ClientID="G0ZI20FM30SJAJTX2RIBGD05QV1NE2KVIM2SPXML2XUJNXEU"
+        ClientSecret="3XHQNSMMHIFBYOLWEPONNV4DOTCDBQH0AEMVGCBG0MZ32XNU"
+        RedirectUrl="http://www.sharesdk.cn"
+        Enable="true" />
+        
+	<Pinterest
+    	Id="23"
+        SortId="23"
+        ClientId="1432928"
+        Enable="true" />
+     
+     <Flickr
+     	Id="24"
+        SortId="24"
+        ApiKey="33d833ee6b6fca49943363282dd313dd"
+        ApiSecret="3a2c5b42a8fbb8bb"
+        RedirectUri="http://www.sharesdk.cn"
+        Enable="true" />
+        
+    <Tumblr
+        Id="25"
+        SortId="25"
+        OAuthConsumerKey="2QUXqO9fcgGdtGG1FcvML6ZunIQzAEL8xY6hIaxdJnDti2DYwM"
+		SecretKey="3Rt0sPFj7u2g39mEVB3IBpOzKnM3JnTtxX2bao2JKk4VV1gtNo"
+		CallbackUrl="http://sharesdk.cn"
+        Enable="true" />
+ 
+	<Dropbox
+        Id="26"
+        SortId="26"
+        AppKey="i5vw2mex1zcgjcj" 
+		AppSecret="3i9xifsgb4omr0s"
+		RedirectUri="https://www.sharesdk.cn"
+        Enable="true" />
+        
+    <VKontakte 
+    	Id="27"
+        SortId="27"
+        ApplicationId="3921561"
+        Enable="true" />
+        
+    <Instagram 
+    	Id="28"
+        SortId="28"
+        ClientId="ff68e3216b4f4f989121aa1c2962d058"
+		ClientSecret="1b2e82f110264869b3505c3fe34e31a1"
+		RedirectUri="http://sharesdk.cn"
+        Enable="true" />
+    
+    <!-- 
+    	Yixin易信和YixinMoments易信朋友圈的appid是一样的；
+    
+                       注意：开发者不能用我们这两个平台的appid,否则分享不了
+    
+       	 易信测试的时候需要先签名打包出apk,
+		sample测试易信，要先签名打包，keystore在sample项目中，密码123456
+		
+		BypassApproval是绕过审核的标记，设置为true后AppId将被忽略，故不经过
+		审核的应用也可以执行分享，但是仅限于分享文字或图片，不能分享其他类型，
+		默认值为false。
+	-->
+	<Yixin 
+    	Id="29"
+        SortId="29"
+        AppId="yx0d9a9f9088ea44d78680f3274da1765f"
+        BypassApproval="true"
+        Enable="true" />
+	
+	<YixinMoments
+    	Id="30"
+        SortId="30"
+        AppId="yx0d9a9f9088ea44d78680f3274da1765f"
+        BypassApproval="true"
+        Enable="true" />
+
+	<Mingdao
+    	Id="31"
+        SortId="31"
+        AppKey="EEEE9578D1D431D3215D8C21BF5357E3"
+        AppSecret="5EDE59F37B3EFA8F65EEFB9976A4E933"
+        RedirectUri="http://sharesdk.cn"
+        Enable="true" />
+	
+	<Line
+	    Id="32"
+        SortId="32"
+        Enable="true" />
+	
+	<KakaoTalk
+	    Id="33"
+        SortId="33"
+        AppKey="48d3f524e4a636b08d81b3ceb50f1003"
+        Enable="true" />
+	
+	<KakaoStory
+	    Id="34"
+        SortId="34"
+        AppKey="48d3f524e4a636b08d81b3ceb50f1003"
+        Enable="true" />
+
+    <WhatsApp
+        Id="35"
+        SortId="35"
+        Enable="true" />
+    
+    <Bluetooth
+        Id="36"
+        SortId="36"
+        Enable="true" />
+
+    <Pocket
+        Id="37"
+        SortId="37"
+        ConsumerKey="32741-389c565043c49947ba7edf05"
+        Enable="true" />
+    
+    <Instapaper
+        Id="38"
+        SortId="38"
+        ConsumerKey="4rDJORmcOcSAZL1YpqGHRI605xUvrLbOhkJ07yO0wWrYrc61FA"
+        ConsumerSecret="GNr1GespOQbrm8nvd7rlUsyRQsIo3boIbMguAl9gfpdL0aKZWe"
+        Enable="true" />
+    
+    <FacebookMessenger
+        Id="39"
+        SortId="39"
+        AppId="107704292745179"
+        Enable="true" />
+    
+     <Alipay
+        Id="52"
+        SortId="52"  
+        AppId="2015072400185895"
+        Enable="true"/>
+
+</DevInfor>

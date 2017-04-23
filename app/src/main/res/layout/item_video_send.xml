@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content">
 
                 <!-- 图片 -->
-                <com.lqr.wechat.view.BubbleImageView
+                <com.lqr.wechat.widget.BubbleImageView
                     android:id="@+id/bivPic"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
@@ -97,23 +97,8 @@
                     app:bubble_showShadow="false"
                     app:bubble_showText="false"
                     />
-                <!--<com.lqr.wechat.view.BubbleImageView-->
-                <!--android:id="@+id/bivPic"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:adjustViewBounds="true"-->
-                <!--android:maxHeight="150dp"-->
-                <!--android:src="@mipmap/img_video_default"-->
-                <!--app:bubble_angle="10dp"-->
-                <!--app:bubble_arrowHeight="10dp"-->
-                <!--app:bubble_arrowLocation="right"-->
-                <!--app:bubble_arrowOffset="-5dp"-->
-                <!--app:bubble_arrowTop="20dp"-->
-                <!--app:bubble_arrowWidth="8dp"-->
-                <!--app:bubble_showShadow="false"-->
-                <!--app:bubble_showText="false"/>-->
 
-                <com.lqr.wechat.view.CircularProgressBar
+                <com.lqr.wechat.widget.CircularProgressBar
                     android:id="@+id/cpbLoading"
                     android:layout_width="30dp"
                     android:layout_height="30dp"

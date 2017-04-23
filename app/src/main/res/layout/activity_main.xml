@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.zhy.autolayout.AutoLinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray5"
-    android:orientation="vertical"
-    tools:context="com.lqr.wechat.activity.MainActivity">
+    android:orientation="vertical">
 
     <include layout="@layout/include_toolbar"/>
 
@@ -18,17 +17,17 @@
 
     <!--底部-->
     <View
-        style="@style/Line1"
+        style="@style/Line"
         />
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:id="@+id/llButtom"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="120px"
         android:layout_alignParentBottom="true"
         android:background="@color/white">
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:id="@+id/llMessage"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -37,17 +36,18 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="5"
                 android:gravity="bottom">
 
-                <RelativeLayout
+                <com.zhy.autolayout.AutoRelativeLayout
                     android:id="@+id/rlMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true">
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10px">
 
                     <TextView
                         android:id="@+id/tvMessageNormal"
@@ -70,24 +70,25 @@
                         android:gravity="center"
                         android:textColor="@color/green0"
                         android:textSize="12sp"/>
-                </RelativeLayout>
+                </com.zhy.autolayout.AutoRelativeLayout>
 
                 <TextView
                     android:id="@+id/tvMessageCount"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="38px"
+                    android:layout_height="40px"
                     android:layout_alignRight="@id/rlMessage"
-                    android:layout_marginRight="-5dp"
-                    android:layout_marginTop="-5dp"
+                    android:layout_marginRight="-25px"
+                    android:layout_marginTop="-5px"
                     android:background="@mipmap/bg_unread"
-                    android:gravity="center"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="3px"
                     android:text="1"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="24px"
                     android:visibility="gone"/>
-            </RelativeLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
-            <RelativeLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="3">
@@ -98,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/message"
                     android:textColor="@color/gray0"
-                    android:textSize="12sp"/>
+                    android:textSize="24px"/>
 
                 <TextView
                     android:id="@+id/tvMessageTextPress"
@@ -106,11 +107,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/message"
                     android:textColor="@color/green0"
-                    android:textSize="12sp"/>
-            </RelativeLayout>
-        </LinearLayout>
+                    android:textSize="24px"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:id="@+id/llContacts"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -119,17 +120,18 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="5"
                 android:gravity="bottom">
 
-                <RelativeLayout
+                <com.zhy.autolayout.AutoRelativeLayout
                     android:id="@+id/rlContacts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true">
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10px">
 
                     <TextView
                         android:id="@+id/tvContactsNormal"
@@ -139,7 +141,7 @@
                         android:button="@null"
                         android:gravity="center"
                         android:textColor="@color/gray0"
-                        android:textSize="12sp"/>
+                        android:textSize="24px"/>
 
                     <TextView
                         android:id="@+id/tvContactsPress"
@@ -149,25 +151,42 @@
                         android:button="@null"
                         android:gravity="center"
                         android:textColor="@color/green0"
-                        android:textSize="12sp"/>
-                </RelativeLayout>
+                        android:textSize="24px"/>
+
+
+                </com.zhy.autolayout.AutoRelativeLayout>
 
                 <TextView
                     android:id="@+id/tvContactCount"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="38px"
+                    android:layout_height="40px"
                     android:layout_alignRight="@id/rlContacts"
-                    android:layout_marginRight="-5dp"
-                    android:layout_marginTop="-5dp"
+                    android:layout_marginRight="-25px"
+                    android:layout_marginTop="-5px"
                     android:background="@mipmap/bg_unread"
-                    android:gravity="center"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="3px"
                     android:text="1"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="24px"
                     android:visibility="gone"/>
-            </RelativeLayout>
 
-            <RelativeLayout
+                <TextView
+                    android:id="@+id/tvContactRedDot"
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:layout_alignRight="@id/rlContacts"
+                    android:layout_marginRight="-10px"
+                    android:layout_marginTop="-0px"
+                    android:background="@mipmap/bg_unread"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="24px"
+                    android:visibility="gone"/>
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="3">
@@ -178,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/contacts"
                     android:textColor="@color/gray0"
-                    android:textSize="12sp"/>
+                    android:textSize="24px"/>
 
                 <TextView
                     android:id="@+id/tvContactsTextPress"
@@ -186,11 +205,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/contacts"
                     android:textColor="@color/green0"
-                    android:textSize="12sp"/>
-            </RelativeLayout>
-        </LinearLayout>
+                    android:textSize="24px"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:id="@+id/llDiscovery"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -199,17 +218,18 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="5"
                 android:gravity="bottom">
 
-                <RelativeLayout
+                <com.zhy.autolayout.AutoRelativeLayout
                     android:id="@+id/rlDiscovery"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true">
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10px">
 
                     <TextView
                         android:id="@+id/tvDiscoveryNormal"
@@ -219,7 +239,7 @@
                         android:button="@null"
                         android:gravity="center"
                         android:textColor="@color/gray0"
-                        android:textSize="12sp"/>
+                        android:textSize="24px"/>
 
                     <TextView
                         android:id="@+id/tvDiscoveryPress"
@@ -229,24 +249,27 @@
                         android:button="@null"
                         android:gravity="center"
                         android:textColor="@color/green0"
-                        android:textSize="12sp"/>
-                </RelativeLayout>
+                        android:textSize="24px"/>
+                </com.zhy.autolayout.AutoRelativeLayout>
 
                 <TextView
                     android:id="@+id/tvDiscoveryCount"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="38px"
+                    android:layout_height="40px"
                     android:layout_alignRight="@id/rlDiscovery"
-                    android:layout_marginRight="-5dp"
-                    android:layout_marginTop="-5dp"
+                    android:layout_marginRight="-25px"
+                    android:layout_marginTop="-5px"
                     android:background="@mipmap/bg_unread"
-                    android:gravity="center"
+                    android:gravity="center|bottom"
+                    android:paddingBottom="3px"
+                    android:text="1"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="24px"
                     android:visibility="gone"/>
-            </RelativeLayout>
 
-            <RelativeLayout
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="3">
@@ -257,7 +280,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/discovery"
                     android:textColor="@color/gray0"
-                    android:textSize="12sp"/>
+                    android:textSize="24px"/>
 
                 <TextView
                     android:id="@+id/tvDiscoveryTextPress"
@@ -265,11 +288,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/discovery"
                     android:textColor="@color/green0"
-                    android:textSize="12sp"/>
-            </RelativeLayout>
-        </LinearLayout>
+                    android:textSize="24px"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:id="@+id/llMe"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -278,13 +301,14 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginBottom="10px"
                 android:layout_weight="5"
                 android:gravity="bottom">
 
-                <RelativeLayout
+                <com.zhy.autolayout.AutoRelativeLayout
                     android:id="@+id/rlMe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -298,7 +322,7 @@
                         android:button="@null"
                         android:gravity="center"
                         android:textColor="@color/gray0"
-                        android:textSize="12sp"/>
+                        android:textSize="24px"/>
 
                     <TextView
                         android:id="@+id/tvMePress"
@@ -308,24 +332,24 @@
                         android:button="@null"
                         android:gravity="center"
                         android:textColor="@color/green0"
-                        android:textSize="12sp"/>
-                </RelativeLayout>
+                        android:textSize="24px"/>
+                </com.zhy.autolayout.AutoRelativeLayout>
 
                 <TextView
                     android:id="@+id/tvMeCount"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="20px"
+                    android:layout_height="20px"
                     android:layout_alignRight="@id/rlMe"
-                    android:layout_marginRight="-5dp"
-                    android:layout_marginTop="-5dp"
+                    android:layout_marginRight="-10px"
+                    android:layout_marginTop="-0px"
                     android:background="@mipmap/bg_unread"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="24px"
                     android:visibility="gone"/>
-            </RelativeLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
-            <RelativeLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="3">
@@ -336,7 +360,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/me"
                     android:textColor="@color/gray0"
-                    android:textSize="12sp"/>
+                    android:textSize="24px"/>
 
                 <TextView
                     android:id="@+id/tvMeTextPress"
@@ -344,9 +368,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/me"
                     android:textColor="@color/green0"
-                    android:textSize="12sp"/>
-            </RelativeLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-</LinearLayout>
+                    android:textSize="24px"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

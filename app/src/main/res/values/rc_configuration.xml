@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--设置语音消息的码率 (单位 bps)-->
+    <integer name="rc_audio_encoding_bit_rate">7950</integer>
+
+    <!--原图压缩比例-->
+    <integer name="rc_image_quality">85</integer>
+    <!--原图压缩宽、高-->
+    <integer name="rc_image_size">960</integer>
+    <!-- 设置发送输入状态 -->
+    <bool name="rc_typing_status">false</bool>
+    <!-- 下载文件默认存储路径 -->
+    <!--<string name="rc_media_message_default_save_path">/RongCloud/Media/</string>-->
+    <string name="rc_media_message_default_save_path">/sdcard/</string>
+    <!-- 是否开启 Extension 记忆功能 -->
+    <bool name="rc_extension_history">false</bool>
+</resources>

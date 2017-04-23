@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lqr.wechat.widget.AutoCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/colorPrimaryDark"
+    app:cardElevation="5dp">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="350px"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical"
+        android:padding="0.5px">
+
+        <TextView
+            android:id="@+id/tvCreateGroup"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_margin="0.5px"
+            android:background="@color/colorPrimary"
+            android:drawableLeft="@mipmap/ic_create_group_cheat"
+            android:drawablePadding="40px"
+            android:gravity="center_vertical"
+            android:paddingLeft="20px"
+            android:text="@string/create_group"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tvAddFriend"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_margin="0.5px"
+            android:background="@color/colorPrimary"
+            android:drawableLeft="@mipmap/ic_add_friend"
+            android:drawablePadding="40px"
+            android:gravity="center_vertical"
+            android:paddingLeft="20px"
+            android:text="@string/add_friend"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tvScan"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_margin="0.5px"
+            android:background="@color/colorPrimary"
+            android:drawableLeft="@mipmap/ic_scan_white"
+            android:drawablePadding="40px"
+            android:gravity="center_vertical"
+            android:paddingLeft="20px"
+            android:text="@string/scan_one_scan"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tvPaymentReceived"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_margin="0.5px"
+            android:background="@color/colorPrimary"
+            android:drawableLeft="@mipmap/ic_payment_received"
+            android:drawablePadding="40px"
+            android:gravity="center_vertical"
+            android:paddingLeft="20px"
+            android:text="@string/payment_received"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvHelpFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_margin="0.5px"
+            android:background="@color/colorPrimary"
+            android:drawableLeft="@mipmap/ic_help_feedback"
+            android:drawablePadding="40px"
+            android:gravity="center_vertical"
+            android:paddingLeft="20px"
+            android:text="@string/help_feedback"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.lqr.wechat.widget.AutoCardView>

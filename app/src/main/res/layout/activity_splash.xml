@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<com.zhy.autolayout.AutoFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/splash"
-    tools:context="com.lqr.wechat.activity.MainActivity">
+    >
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/shape_corner_rect_solid_white"
-        android:text="登录"
-        android:textSize="16dp"/>
+    <include
+        layout="@layout/include_toolbar"
+        android:visibility="gone"
+        />
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/shape_corner_rect_solid_green1"
-        android:text="注册"
-        android:textColor="@color/white"
-        android:textSize="16dp"/>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/rlButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="260px"
+            android:layout_height="90px"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="40px"
+            android:layout_marginLeft="40px"
+            android:background="@drawable/shape_splash_login"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="32px"/>
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="260px"
+            android:layout_height="90px"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="40px"
+            android:layout_marginRight="40px"
+            android:background="@drawable/shape_splash_register"
+            android:text="@string/register"
+            android:textSize="32px"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoFrameLayout>

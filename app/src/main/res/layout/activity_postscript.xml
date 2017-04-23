@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <include layout="@layout/include_toolbar"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:text="你需要发送验证申请，等对方通过"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="40px"
+        android:text="@string/postscript_tip"
         android:textColor="@color/gray2"
         android:textSize="12sp"/>
 
-    <RelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="40px">
 
         <EditText
             android:id="@+id/etMsg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
             android:background="@null"
             android:drawableBottom="@drawable/shape_bottom_green"
-            android:drawablePadding="10dp"
+            android:drawablePadding="20px"
             android:gravity="bottom"
             android:hint=""
             android:textColorHint="@color/gray3"
@@ -41,39 +42,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="40px"
             android:background="@null"
             android:src="@mipmap/ic_delete"/>
 
-    </RelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="96px"
+        android:layout_marginTop="60px"
         android:gravity="center_vertical">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="30px"
             android:layout_weight="1"
-            android:text="不让他(她)看我的朋友圈"
+            android:text="@string/disallow_it_see_my_circle"
             android:textColor="@color/black0"
             android:textSize="16sp"/>
 
         <com.kyleduo.switchbutton.SwitchButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="30px"
             app:kswBackDrawable="@drawable/ios_back_drawable"
             app:kswBackMeasureRatio="1.8"
             app:kswThumbDrawable="@drawable/ios_thumb_selector"
-            app:kswThumbMarginBottom="-4dp"
-            app:kswThumbMarginLeft="-2dp"
-            app:kswThumbMarginRight="-2dp"
+            app:kswThumbMarginBottom="-8px"
+            app:kswThumbMarginLeft="-4px"
+            app:kswThumbMarginRight="-4px"
             app:kswThumbMarginTop="-0dp"
-            app:kswThumbWidth="10dp"/>
-    </LinearLayout>
+            app:kswThumbWidth="20px"/>
+    </com.zhy.autolayout.AutoLinearLayout>
 
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

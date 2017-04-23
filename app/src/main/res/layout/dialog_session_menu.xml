@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_corner_rect_solid_white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_option_item"
+            android:drawablePadding="15dp"
+            android:gravity="left|center_vertical"
+            android:padding="20dp"
+            android:paddingLeft="20dp"
+            android:text="@string/copy"
+            android:textColor="@color/gray0"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+
+        <View
+            style="@style/Line"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_option_item"
+            android:drawablePadding="15dp"
+            android:gravity="left|center_vertical"
+            android:padding="20dp"
+            android:paddingLeft="20dp"
+            android:text="@string/send_to_friend"
+            android:textColor="@color/gray0"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+
+        <View
+            style="@style/Line"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvReCall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_option_item"
+            android:drawablePadding="15dp"
+            android:gravity="left|center_vertical"
+            android:padding="20dp"
+            android:paddingLeft="20dp"
+            android:text="@string/recall"
+            android:textColor="@color/gray0"
+            android:textSize="16sp"/>
+
+        <View
+            style="@style/Line"/>
+
+        <TextView
+            android:id="@+id/tvDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_option_item"
+            android:drawablePadding="15dp"
+            android:gravity="left|center_vertical"
+            android:padding="20dp"
+            android:paddingLeft="20dp"
+            android:text="@string/delete"
+            android:textColor="@color/gray0"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+</FrameLayout>

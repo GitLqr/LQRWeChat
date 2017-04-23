@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/llNewFriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_common_item"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/item_margin_top_and_bottom"
+        android:paddingLeft="@dimen/item_margin_left_and_right"
+        android:paddingRight="@dimen/item_margin_left_and_right"
+        android:paddingTop="@dimen/item_margin_top_and_bottom">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivNewFriend"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="10px"
+                android:src="@mipmap/ic_new_friend"/>
+
+            <TextView
+                android:id="@+id/tvNewFriendUnread"
+                android:layout_width="15px"
+                android:layout_height="15px"
+                android:layout_alignRight="@id/ivNewFriend"
+                android:layout_alignTop="@id/ivNewFriend"
+                android:layout_marginRight="-8px"
+                android:layout_marginTop="-5px"
+                android:background="@mipmap/bg_unread"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="24px"
+                android:visibility="gone"/>
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_margin_left_and_right"
+            android:text="@string/new_friend"
+            android:textColor="@color/black0"
+            android:textSize="35px"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        style="@style/Line"
+        android:layout_marginLeft="@dimen/item_margin_left_and_right"
+        android:layout_marginRight="@dimen/item_margin_left_and_right"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/llGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_common_item"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/item_margin_top_and_bottom"
+        android:paddingLeft="@dimen/item_margin_left_and_right"
+        android:paddingRight="@dimen/item_margin_left_and_right"
+        android:paddingTop="@dimen/item_margin_top_and_bottom">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="10px"
+                android:src="@mipmap/ic_group_cheat"/>
+
+            <TextView
+                android:id="@+id/tvNewGroupUnread"
+                android:layout_width="15px"
+                android:layout_height="15px"
+                android:layout_alignRight="@id/ivNewFriend"
+                android:layout_alignTop="@id/ivNewFriend"
+                android:layout_marginRight="-8px"
+                android:layout_marginTop="-5px"
+                android:background="@mipmap/bg_unread"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="24px"
+                android:visibility="gone"/>
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_margin_left_and_right"
+            android:text="@string/group_cheat"
+            android:textColor="@color/black0"
+            android:textSize="35px"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        style="@style/Line"
+        android:layout_marginLeft="@dimen/item_margin_left_and_right"
+        android:layout_marginRight="@dimen/item_margin_left_and_right"
+        />
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_common_item"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/item_margin_top_and_bottom"
+        android:paddingLeft="@dimen/item_margin_left_and_right"
+        android:paddingRight="@dimen/item_margin_left_and_right"
+        android:paddingTop="@dimen/item_margin_top_and_bottom">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="10px"
+                android:src="@mipmap/ic_tag"/>
+
+            <TextView
+                android:layout_width="15px"
+                android:layout_height="15px"
+                android:layout_alignRight="@id/ivNewFriend"
+                android:layout_alignTop="@id/ivNewFriend"
+                android:layout_marginRight="-8px"
+                android:layout_marginTop="-5px"
+                android:background="@mipmap/bg_unread"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="24px"
+                android:visibility="gone"/>
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_margin_left_and_right"
+            android:text="@string/tag"
+            android:textColor="@color/black0"
+            android:textSize="35px"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        style="@style/Line"
+        android:layout_marginLeft="@dimen/item_margin_left_and_right"
+        android:layout_marginRight="@dimen/item_margin_left_and_right"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_common_item"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/item_margin_top_and_bottom"
+        android:paddingLeft="@dimen/item_margin_left_and_right"
+        android:paddingRight="@dimen/item_margin_left_and_right"
+        android:paddingTop="@dimen/item_margin_top_and_bottom">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="10px"
+                android:src="@mipmap/ic_offical"/>
+
+            <TextView
+                android:layout_width="15px"
+                android:layout_height="15px"
+                android:layout_alignRight="@id/ivNewFriend"
+                android:layout_alignTop="@id/ivNewFriend"
+                android:layout_marginRight="-8px"
+                android:layout_marginTop="-5px"
+                android:background="@mipmap/bg_unread"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="24px"
+                android:visibility="gone"/>
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_margin_left_and_right"
+            android:text="@string/group_public_number"
+            android:textColor="@color/black0"
+            android:textSize="35px"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        style="@style/Line"
+        android:layout_marginLeft="@dimen/item_margin_left_and_right"
+        android:layout_marginRight="@dimen/item_margin_left_and_right"
+        />
+</com.zhy.autolayout.AutoLinearLayout>

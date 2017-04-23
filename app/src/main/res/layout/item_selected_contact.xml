@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivHeader"
+        android:layout_width="60px"
+        android:layout_height="60px"
+        android:layout_margin="10px"
+        android:src="@mipmap/default_header"/>
+</com.zhy.autolayout.AutoFrameLayout>
