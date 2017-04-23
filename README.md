@@ -16,12 +16,13 @@
 >
 >项目源码地址：
 >
+>[GitHub：https://github.com/GitLqr/LQRWeChat](https://github.com/GitLqr/LQRWeChat)
 >
-[GitHub：LQRWeChat](https://github.com/GitLqr/LQRWeChat)
->
->[码云：LQRWeChatRongCloud](https://git.oschina.net/CSDNLQR/lqrwechatrongcloud)
+>[码云：https://git.oschina.net/CSDNLQR/lqrwechatrongcloud](https://git.oschina.net/CSDNLQR/lqrwechatrongcloud)
 >
 >项目DemoApp下载：[Demo](app-debug.apk)
+
+**注：旧版本已迁至[NimVersion分支](https://github.com/GitLqr/LQRWeChat/tree/NimVersion)**
 	
 ## 1、简单介绍一下：
 这个项目是本人独立开发的第二个高仿微信项目，仿最新版微信6.5.7（除图片选择器外）。本项目基于融云SDK，使用目前较火的 Rxjava+Retrofit+MVP+Glide 技术开发。相比上个版本，加入发送位置消息，红包消息等功能。欢迎start和fork~~
