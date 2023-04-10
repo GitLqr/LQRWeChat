@@ -153,4 +153,4 @@
 ![wechat](screenshots/wechat_pay.png)
 ![alipay](screenshots/alipay.png)
 
-
+![](https://cdn.jsdelivr.net/gh/FullStackAction/PicBed@resource/image/FSA_QR_bottom.png)
