@@ -61,7 +61,7 @@ public class QuickIndexBar extends View {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setColor(getResources().getColor(R.color.side_bar));
         mPaint.setTextSize(mTextSize);
-        //setBackgroundColor(Color.WHITE);
+        setBackgroundColor(Color.TRANSPARENT);
         //mPaint.setTypeface(Typeface.DEFAULT_BOLD);
     }
 
@@ -77,7 +77,7 @@ public class QuickIndexBar extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        setBackgroundColor(Color.TRANSPARENT);
+        
 
         for (int i = 0; i < LETTERS.length; i++) {
             String text = LETTERS[i];
@@ -125,7 +125,7 @@ public class QuickIndexBar extends View {
                         }
                     }
                 }
-                setBackgroundColor(getResources().getColor(R.color.side_bar_pressed));
+                
                 break;
             case MotionEvent.ACTION_UP:
                 mTouchIndex = -1;
