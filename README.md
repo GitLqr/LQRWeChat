@@ -154,3 +154,10 @@
 ![alipay](screenshots/alipay.png)
 
 ![](https://cdn.jsdelivr.net/gh/FullStackAction/PicBed@resource/image/FSA_QR_bottom.png)
+
+<details>
+<summary></summary>
+
+[![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com "Powered by DartNode - Free VPS for Open Source")
+
+</details>
