@@ -20,7 +20,7 @@
 >
 >[码云：https://git.oschina.net/CSDNLQR/lqrwechatrongcloud](https://git.oschina.net/CSDNLQR/lqrwechatrongcloud)
 >
->项目DemoApp下载：[Demo](app-debug.apk)
+>项目DemoApp下载：[Demo](https://github.com/GitLqr/LQRWeChat/releases/latest/download/app-debug.apk)（[所有版本](https://github.com/GitLqr/LQRWeChat/releases)）
 
 **注：旧版本已迁至[NimVersion分支](https://github.com/GitLqr/LQRWeChat/tree/NimVersion)**
 	
