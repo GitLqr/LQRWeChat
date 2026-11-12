@@ -1,5 +1,6 @@
 # built application files
-# *.apk
+*.apk
+*.aab
 *.ap_
 
 # files for the dex VM
@@ -28,4 +29,24 @@ proguard/
 *.ipr
 *.iws
 .idea/
+
+# Gradle files
+.gradle/
+
+# Android Studio captures folder
+captures/
+
+# NDK / CMake
+.externalNativeBuild/
+.cxx/
+
+# Keystore files
+*.jks
+*.keystore
+
+# macOS
+.DS_Store
+
+# Local scratch folder
+/temp/
 
