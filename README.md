@@ -12,13 +12,9 @@
 
 >本项目由 CSDN_LQR 个人独立开发。
 >
->项目博客地址：[高仿微信6.5.7（融云版）](http://www.jianshu.com/p/f119810520e4)
->
 >项目源码地址：
 >
 >[GitHub：https://github.com/GitLqr/LQRWeChat](https://github.com/GitLqr/LQRWeChat)
->
->[码云：https://git.oschina.net/CSDNLQR/lqrwechatrongcloud](https://git.oschina.net/CSDNLQR/lqrwechatrongcloud)
 >
 >项目DemoApp下载：[Demo](https://github.com/GitLqr/LQRWeChat/releases/latest/download/app-debug.apk)（[所有版本](https://github.com/GitLqr/LQRWeChat/releases)）
 
@@ -114,7 +110,7 @@
 
 ## 1、该项目使用到的技术有：
 
-1. Rxjava 2.0
+1. RxJava 1.x
 1. Retrofit 2.0
 1. MVP 
 1. Glide
@@ -137,14 +133,26 @@
 1. [万能适配器](https://github.com/GitLqr/LQRAdapterLibrary)
 1. [包装过的RecyclerView](https://github.com/GitLqr/LQRRecyclerViewLibrary)
 1. [高仿微信表情库](https://github.com/GitLqr/LQREmojiLibrary)
-1. [高仿微信主意库](https://github.com/GitLqr/LQRAudioRecord)
+1. [高仿微信语音库](https://github.com/GitLqr/LQRAudioRecord)
 1. [高仿微信图片选择器](https://github.com/GitLqr/LQRImagePicker)
 1. [高仿微信九宫格控件](https://github.com/GitLqr/LQRNineGridImageView)
 1. [常用选项条目库](https://github.com/GitLqr/LQROptionItemView)
 
 ## 3、说明与鸣谢：
 
-不提供测试号，请使用自己手机注册后登录，因为本人手机号有限，测试上很有局限，可能存在一些我不知道的bug，请多包涵，可在项目中提出issue。本人做这个项目只为提升个人安卓开发能力，故依赖融云官方给出的server端做为本项目的后台服务，该server源码使用Node.js开发，目前本人只会用java开发后端，所以如果要搞点别的功能的话，目前是不可能啦，有兴趣的同学可以看看这个[嗨豹 IM 应用服务器](https://github.com/sealtalk/sealtalk-server)，当然融云也有它的坑，特别是红包module，我干脆不用它的了，希望该项目可以帮到那些正在踩坑的人（至少我已经踩了一次了，嘿嘿），此外，很感谢很多网友对我的支持，还有专门跑到CSDN跟我私信给我鼓励的，真的很感动，谢谢。
+不提供测试号，请使用自己手机注册后登录，因为本人手机号有限，测试上很有局限，可能存在一些我不知道的bug，请多包涵，可在项目中提出issue。本人做这个项目只为提升个人安卓开发能力，故依赖融云官方给出的server端做为本项目的后台服务，该server源码使用Node.js开发，目前本人只会用java开发后端，所以如果要搞点别的功能的话，目前是不可能啦，有兴趣的同学可以看看这个[嗨豹 IM 应用服务器](https://github.com/rongcloud/sealtalk-server)，当然融云也有它的坑，特别是红包module，我干脆不用它的了，希望该项目可以帮到那些正在踩坑的人（至少我已经踩了一次了，嘿嘿），此外，很感谢很多网友对我的支持，还有专门跑到CSDN跟我私信给我鼓励的，真的很感动，谢谢。
+
+## 4、构建说明：
+
+当前工具链是 AGP 2.3 + Gradle 3.3，需要用 JDK 8 构建。部分依赖（lqr 系列库、AutoLayout、LitePal 1.5 等）已随 jcenter 下线，目前无法直接构建，正在迁移。
+
+运行前需要替换成自己的配置：
+
+1. 融云 AppKey：`AndroidManifest.xml` 中的 `RONG_CLOUD_APP_KEY`
+1. 腾讯地图 Key：`AndroidManifest.xml` 中的 `TencentMapSDK`
+1. ShareSDK 各平台 Key：`app/src/main/assets/ShareSDK.xml`
+1. 服务端地址：`MyApi.java` 中的 `BASE_URL`。原来的 `api.sealtalk.im` 已停用，需要自行部署 [sealtalk-server](https://github.com/rongcloud/sealtalk-server)
+1. 红包签名服务：`MyApp.java` 中的 `initRedPacket()`
 
 # 五、打赏支持
 
