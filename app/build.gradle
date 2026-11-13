@@ -45,14 +45,13 @@ dependencies {
     //    compile 'com.android.support:recyclerview-v7:25.1.1'
     compile 'com.android.support:cardview-v7:25.1.1'
     testCompile 'junit:junit:4.12'
-    compile 'com.lqr.adapter:library:1.0.2'
-    compile 'com.lqr.recyclerview:library:1.0.2'
-    compile 'com.lqr.imagepicker:library:1.0.0'
-    compile 'com.lqr.ninegridimageview:library:1.0.0'
-    compile 'com.lqr.optionitemview:library:1.0.7'
-    compile 'com.lqr.emoji:library:1.0.2'
-    compile 'com.lqr.audio:library:1.0.0'
-    compile 'com.lqr.imagepicker:library:1.0.0'
+    compile project(':lqr-adapter')
+    compile project(':lqr-recyclerview')
+    compile project(':lqr-imagepicker')
+    compile project(':lqr-ninegridimageview')
+    compile project(':lqr-optionitemview')
+    compile project(':lqr-emoji')
+    compile project(':lqr-audio')
     compile 'cjt.library.wheel:camera:0.1.9'
     compile 'com.zhy:autolayout:1.4.5'
     //    compile 'com.zhy:okhttputils:2.6.2'

@@ -1,0 +1,21 @@
+[submodule "libraries/LQRAdapterLibrary"]
+	path = libraries/LQRAdapterLibrary
+	url = https://github.com/GitLqr/LQRAdapterLibrary.git
+[submodule "libraries/LQRRecyclerViewLibrary"]
+	path = libraries/LQRRecyclerViewLibrary
+	url = https://github.com/GitLqr/LQRRecyclerViewLibrary.git
+[submodule "libraries/LQRImagePicker"]
+	path = libraries/LQRImagePicker
+	url = https://github.com/GitLqr/LQRImagePicker.git
+[submodule "libraries/LQREmojiLibrary"]
+	path = libraries/LQREmojiLibrary
+	url = https://github.com/GitLqr/LQREmojiLibrary.git
+[submodule "libraries/LQRAudioRecord"]
+	path = libraries/LQRAudioRecord
+	url = https://github.com/GitLqr/LQRAudioRecord.git
+[submodule "libraries/LQRNineGridImageView"]
+	path = libraries/LQRNineGridImageView
+	url = https://github.com/GitLqr/LQRNineGridImageView.git
+[submodule "libraries/LQROptionItemView"]
+	path = libraries/LQROptionItemView
+	url = https://github.com/GitLqr/LQROptionItemView.git

@@ -1,1 +1,16 @@
 include ':app'
+
+// lqr 系列库已随 jcenter 下线，以 git submodule 引入源码
+def lqrLibraries = [
+        'lqr-adapter'          : 'LQRAdapterLibrary',
+        'lqr-recyclerview'     : 'LQRRecyclerViewLibrary',
+        'lqr-imagepicker'      : 'LQRImagePicker',
+        'lqr-ninegridimageview': 'LQRNineGridImageView',
+        'lqr-optionitemview'   : 'LQROptionItemView',
+        'lqr-emoji'            : 'LQREmojiLibrary',
+        'lqr-audio'            : 'LQRAudioRecord',
+]
+lqrLibraries.each { name, repo ->
+    include ":$name"
+    project(":$name").projectDir = new File(rootDir, "libraries/$repo/library")
+}

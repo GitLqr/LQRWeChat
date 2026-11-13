@@ -144,7 +144,15 @@
 
 ## 4、构建说明：
 
-当前工具链是 AGP 2.3 + Gradle 3.3，需要用 JDK 8 构建。部分依赖（lqr 系列库、AutoLayout、LitePal 1.5 等）已随 jcenter 下线，目前无法直接构建，正在迁移。
+当前工具链是 AGP 2.3 + Gradle 3.3，需要用 JDK 8 构建。部分依赖（AutoLayout、LitePal 1.5 等）已随 jcenter 下线，目前无法直接构建，正在迁移。
+
+lqr 系列库以 git submodule 放在 `libraries/` 下，克隆时需要带上子模块：
+
+```
+git clone --recursive https://github.com/GitLqr/LQRWeChat.git
+# 已经克隆过的执行
+git submodule update --init
+```
 
 运行前需要替换成自己的配置：
 
