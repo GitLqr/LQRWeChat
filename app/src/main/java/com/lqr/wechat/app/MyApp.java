@@ -79,7 +79,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 　　　　　┗┻┛　┗┻┛
  * ━━━━━━感觉萌萌哒━━━━━━
  *
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 BaseApp的拓展，用于设置其他第三方的初始化
  */
 public class MyApp extends BaseApp implements RongIMClient.OnReceiveMessageListener {

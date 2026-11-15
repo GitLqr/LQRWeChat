@@ -10,7 +10,7 @@ import java.util.List;
 
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 通用的ViewPager适配器(FragmentPagerAdapter)
  */
 public class CommonFragmentPagerAdapter extends FragmentPagerAdapter {

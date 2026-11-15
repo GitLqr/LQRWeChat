@@ -16,7 +16,7 @@ import com.lqr.wechat.ui.view.IRecentMessageFgView;
 import butterknife.Bind;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 最近会话列表界面
  */
 public class RecentMessageFragment extends BaseFragment<IRecentMessageFgView, RecentMessageFgPresenter> implements IRecentMessageFgView {

@@ -59,7 +59,7 @@ import io.rong.message.TextMessage;
 import io.rong.message.VoiceMessage;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 会话界面（单聊、群聊）
  */
 public class SessionActivity extends BaseFragmentActivity<ISessionAtView, SessionAtPresenter> implements ISessionAtView, IEmotionSelectedListener, BGARefreshLayout.BGARefreshLayoutDelegate {
@@ -438,7 +438,7 @@ public class SessionActivity extends BaseFragmentActivity<ISessionAtView, Sessio
                         //是否发送原图
                         boolean isOrig = data.getBooleanExtra(ImagePreviewActivity.ISORIGIN, false);
                         ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
-                        Log.e("CSDN_LQR", isOrig ? "发原图" : "不发原图");//若不发原图的话，需要在自己在项目中做好压缩图片算法
+                        Log.e("GitLqr", isOrig ? "发原图" : "不发原图");//若不发原图的话，需要在自己在项目中做好压缩图片算法
                         for (ImageItem imageItem : images) {
                             File imageFileThumb;
                             File imageFileSource;

@@ -27,7 +27,7 @@ import static com.lqr.wechat.ui.activity.SessionActivity.SESSION_TYPE_GROUP;
 import static com.lqr.wechat.ui.activity.SessionActivity.SESSION_TYPE_PRIVATE;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 会话信息界面
  */
 public class SessionInfoActivity extends BaseActivity<ISessionInfoAtView, SessionInfoAtPresenter> implements ISessionInfoAtView {

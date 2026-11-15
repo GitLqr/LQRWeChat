@@ -58,7 +58,7 @@
             app:left_text_color="@color/black0"
             app:left_text_margin_left="30px"
             app:left_text_size="16sp"
-            app:right_text="CSDN_LQR"
+            app:right_text="GitLqr"
             app:right_text_color="@color/gray2"
             app:right_text_margin_right="40px"
             app:right_text_size="14sp"/>

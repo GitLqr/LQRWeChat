@@ -10,7 +10,7 @@ import java.util.List;
 import retrofit2.adapter.rxjava.HttpException;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 json管理器(fastjson)
  */
 public class JsonMananger {

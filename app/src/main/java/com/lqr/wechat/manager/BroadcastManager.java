@@ -12,7 +12,7 @@ import java.util.Map;
 import retrofit2.adapter.rxjava.HttpException;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 广播管理
  */
 public class BroadcastManager {

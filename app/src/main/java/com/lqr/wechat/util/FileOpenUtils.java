@@ -7,7 +7,7 @@ import android.net.Uri;
 import java.io.File;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 文件打开工具类
  */
 public class FileOpenUtils {

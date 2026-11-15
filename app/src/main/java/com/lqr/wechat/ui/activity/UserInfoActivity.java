@@ -39,7 +39,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 用户信息界面
  */
 public class UserInfoActivity extends BaseActivity {

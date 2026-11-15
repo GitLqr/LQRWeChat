@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 根据拼音进行排序整理的工具类
  */
 public class SortUtils {

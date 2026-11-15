@@ -7,7 +7,7 @@ import org.joda.time.DateTimeConstants;
 import org.joda.time.Days;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 时间工具（需要joda-time）
  */
 public class TimeUtils {

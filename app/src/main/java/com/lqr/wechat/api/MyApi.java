@@ -49,7 +49,7 @@ import retrofit2.http.Url;
 import rx.Observable;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 server端api
  */
 

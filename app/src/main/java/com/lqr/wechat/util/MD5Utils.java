@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 MD5加密工具
  */
 public class MD5Utils {

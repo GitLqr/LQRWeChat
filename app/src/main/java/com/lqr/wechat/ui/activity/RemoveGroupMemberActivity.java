@@ -27,7 +27,7 @@ import butterknife.Bind;
 import io.rong.imlib.model.UserInfo;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 移出群成员界面(该界面简单就不使用mvp了)
  */
 

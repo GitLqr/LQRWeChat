@@ -40,7 +40,7 @@
                 android:layout_marginLeft="20px"
                 android:layout_marginRight="20px"
                 android:layout_marginTop="20px"
-                android:text="CSDN_LQR"
+                android:text="GitLqr"
                 android:textColor="@color/gray0"
                 android:textSize="14sp"/>
 

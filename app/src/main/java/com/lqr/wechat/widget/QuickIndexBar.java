@@ -14,7 +14,7 @@ import android.view.View;
 import com.lqr.wechat.R;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 快速导航条
  */
 public class QuickIndexBar extends View {

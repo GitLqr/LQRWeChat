@@ -16,7 +16,7 @@ import static io.rong.imlib.statistics.Statistics.TAG;
 
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 和ui相关的工具类
  */
 public class UIUtils {

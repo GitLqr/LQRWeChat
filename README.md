@@ -12,7 +12,7 @@ WeChat 6.5.7 Clone (RongCloud Edition)
 
 # 1. Overview
 
->This project is developed independently by CSDN_LQR.
+>This project is developed independently by GitLqr.
 >
 >Source code:
 >
@@ -130,7 +130,7 @@ Some people said that many issues raised on my previous project went unanswered 
 1. [WeChat-style camera view for Android by CJT2325](https://github.com/CJT2325/CameraView)
 1. ...
 
-### Libraries I (CSDN_LQR) made
+### Libraries I (GitLqr) made
 
 1. [Universal adapter](https://github.com/GitLqr/LQRAdapterLibrary)
 1. [Wrapped RecyclerView](https://github.com/GitLqr/LQRRecyclerViewLibrary)

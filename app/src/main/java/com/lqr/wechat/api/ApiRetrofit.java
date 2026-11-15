@@ -74,7 +74,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 使用Retrofit对网络请求进行配置
  */
 public class ApiRetrofit extends BaseApiRetrofit {

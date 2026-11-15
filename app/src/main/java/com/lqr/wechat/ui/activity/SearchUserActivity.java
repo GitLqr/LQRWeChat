@@ -16,7 +16,7 @@ import com.lqr.wechat.ui.view.ISearchUserAtView;
 import butterknife.Bind;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 搜索用户界面
  */
 public class SearchUserActivity extends BaseActivity<ISearchUserAtView, SearchUserAtPresenter> implements ISearchUserAtView {

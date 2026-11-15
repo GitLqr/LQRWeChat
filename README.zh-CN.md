@@ -12,7 +12,7 @@
 
 # 一、简述
 
->本项目由 CSDN_LQR 个人独立开发。
+>本项目由 GitLqr 个人独立开发。
 >
 >项目源码地址：
 >
@@ -130,7 +130,7 @@
 1. [CJT2325的仿微信拍照Android控件](https://github.com/CJT2325/CameraView)
 1. ...
 
-### 自己(CSDN_LQR)做的库：
+### 自己(GitLqr)做的库：
 
 1. [万能适配器](https://github.com/GitLqr/LQRAdapterLibrary)
 1. [包装过的RecyclerView](https://github.com/GitLqr/LQRRecyclerViewLibrary)

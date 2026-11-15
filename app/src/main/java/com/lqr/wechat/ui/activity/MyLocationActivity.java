@@ -43,7 +43,7 @@ import com.zhy.autolayout.AutoLinearLayout;
 import butterknife.Bind;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述
  */
 public class MyLocationActivity extends BaseActivity<IMyLocationAtView, MyLocationAtPresenter> implements IMyLocationAtView, TencentLocationListener, SensorEventListener {

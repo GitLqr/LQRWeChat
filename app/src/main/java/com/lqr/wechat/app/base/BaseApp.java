@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 Application基类
  */
 public class BaseApp extends MultiDexApplication {

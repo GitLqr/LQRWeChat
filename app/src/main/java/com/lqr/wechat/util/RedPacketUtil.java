@@ -22,7 +22,7 @@ import java.util.List;
 import io.rong.imlib.model.UserInfo;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 云账户红包工具
  */
 public class RedPacketUtil {
@@ -158,7 +158,7 @@ public class RedPacketUtil {
 //            //单聊红包、小额随机红包和转账都只传入 ：接收者Id、昵称和头像
 //            UserInfo userInfo = DBManager.getInstance().getUserInfo(UserCache.getId());
 //            redPacketInfo.toUserId = UserCache.getId();
-//            redPacketInfo.toNickName = userInfo != null ? userInfo.getName() : "CSDN_LQR";
+//            redPacketInfo.toNickName = userInfo != null ? userInfo.getName() : "GitLqr";
 //            redPacketInfo.toAvatarUrl = userInfo != null ? userInfo.getPortraitUri().toString() : "http://avatar.csdn.net/6/6/F/1_csdn_lqr.jpg";
 //        }
 //        return redPacketInfo;
@@ -174,7 +174,7 @@ public class RedPacketUtil {
         RedPacketInfo redPacketInfo = new RedPacketInfo();
         UserInfo userInfo = DBManager.getInstance().getUserInfo(UserCache.getId());
         //红包发送者昵称 不可为空
-        redPacketInfo.fromNickName = userInfo != null ? userInfo.getName() : "CSDN_LQR";
+        redPacketInfo.fromNickName = userInfo != null ? userInfo.getName() : "GitLqr";
         //红包发送者头像url 不可为空
         redPacketInfo.fromAvatarUrl = userInfo != null ? userInfo.getPortraitUri().toString() : "http://avatar.csdn.net/6/6/F/1_csdn_lqr.jpg";
         return redPacketInfo;

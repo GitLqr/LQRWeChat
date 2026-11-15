@@ -1,7 +1,7 @@
 package com.lqr.wechat.model.redpacket;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 云账户签名模型
  */
 

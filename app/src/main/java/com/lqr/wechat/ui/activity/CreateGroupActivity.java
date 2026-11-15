@@ -22,7 +22,7 @@ import java.util.List;
 import butterknife.Bind;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 发起群聊
  */
 public class CreateGroupActivity extends BaseActivity<ICreateGroupAtView, CreateGroupAtPresenter> implements ICreateGroupAtView {

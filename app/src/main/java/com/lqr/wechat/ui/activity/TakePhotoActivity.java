@@ -26,7 +26,7 @@ import kr.co.namee.permissiongen.PermissionSuccess;
 
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 拍照界面
  */
 public class TakePhotoActivity extends BaseActivity {
@@ -133,7 +133,7 @@ public class TakePhotoActivity extends BaseActivity {
 
     public String saveBitmap(Bitmap bm, String dir) {
         String path = "";
-        File f = new File(dir, "CSDN_LQR_" + SystemClock.currentThreadTimeMillis() + ".png");
+        File f = new File(dir, "GitLqr_" + SystemClock.currentThreadTimeMillis() + ".png");
         if (f.exists()) {
             f.delete();
         }

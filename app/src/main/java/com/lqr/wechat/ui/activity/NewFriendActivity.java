@@ -14,7 +14,7 @@ import com.lqr.wechat.util.UIUtils;
 import butterknife.Bind;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 新的朋友界面
  */
 

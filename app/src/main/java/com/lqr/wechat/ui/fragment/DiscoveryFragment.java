@@ -12,7 +12,7 @@ import com.lqr.wechat.ui.view.IDiscoveryFgView;
 import butterknife.Bind;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 发现界面
  */
 public class DiscoveryFragment extends BaseFragment<IDiscoveryFgView, DiscoveryFgPresenter> implements IDiscoveryFgView {

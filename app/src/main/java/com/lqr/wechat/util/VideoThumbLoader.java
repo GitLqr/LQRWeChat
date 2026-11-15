@@ -10,7 +10,7 @@ import android.support.v4.util.LruCache;
 import android.widget.ImageView;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 视频缩略图加载工具
  */
 public class VideoThumbLoader {

@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 import com.lqr.wechat.R;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 仿微信 带进度条的WebView
  */
 public class ProgressWebView extends WebView {

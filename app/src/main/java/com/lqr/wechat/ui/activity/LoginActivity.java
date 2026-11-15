@@ -18,7 +18,7 @@ import com.lqr.wechat.util.UIUtils;
 import butterknife.Bind;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 登录界面
  */
 public class LoginActivity extends BaseActivity<ILoginAtView, LoginAtPresenter> implements ILoginAtView {

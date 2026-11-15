@@ -5,12 +5,12 @@ import com.lqr.wechat.util.FileUtils;
 import com.lqr.wechat.util.LogUtils;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 全局常量类
  */
 public class AppConst {
 
-    public static final String TAG = "CSDN_LQR";
+    public static final String TAG = "GitLqr";
     public static final int DEBUGLEVEL = LogUtils.LEVEL_ALL;//日志输出级别
 
     public static final String REGION = "86";

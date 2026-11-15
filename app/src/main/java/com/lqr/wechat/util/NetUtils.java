@@ -8,7 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 跟网络相关的工具类
  */
 public class NetUtils {

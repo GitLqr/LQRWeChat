@@ -9,7 +9,7 @@ import java.util.List;
 
 
 /**
- * @创建者 CSDN_LQR
+ * @创建者 GitLqr
  * @描述 日志级别是LEVEL_ALL显示所有信息, 包括System.out.println信息
  * 日志级别是LEVEL_OFF关闭所有信息,包括System.out.println信息
  */
