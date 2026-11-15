@@ -1,114 +1,116 @@
-高仿微信6.5.7（融云版）
+English | [简体中文](README.zh-CN.md)
+
+WeChat 6.5.7 Clone (RongCloud Edition)
 ============
 
-## 目录
-* [一、简述](#一简述)
-* [二、功能](#二功能)
-* [三、效果图](#三效果图)
-* [四、其他相关](#四其他相关)
-* [五、打赏支持](#五打赏支持)
+## Contents
+* [1. Overview](#1-overview)
+* [2. Features](#2-features)
+* [3. Screenshots](#3-screenshots)
+* [4. More](#4-more)
+* [5. Support the Author](#5-support-the-author)
 
-# 一、简述
+# 1. Overview
 
->本项目由 CSDN_LQR 个人独立开发。
+>This project is developed independently by CSDN_LQR.
 >
->项目源码地址：
+>Source code:
 >
->[GitHub：https://github.com/GitLqr/LQRWeChat](https://github.com/GitLqr/LQRWeChat)
+>[GitHub: https://github.com/GitLqr/LQRWeChat](https://github.com/GitLqr/LQRWeChat)
 >
->项目DemoApp下载：[Demo](https://github.com/GitLqr/LQRWeChat/releases/latest/download/app-debug.apk)（[所有版本](https://github.com/GitLqr/LQRWeChat/releases)）
+>Demo app download: [Demo](https://github.com/GitLqr/LQRWeChat/releases/latest/download/app-debug.apk) ([all versions](https://github.com/GitLqr/LQRWeChat/releases))
 
-**注：旧版本已迁至[NimVersion分支](https://github.com/GitLqr/LQRWeChat/tree/NimVersion)**
-	
-## 1、简单介绍一下：
-这个项目是本人独立开发的第二个高仿微信项目，仿最新版微信6.5.7（除图片选择器外）。本项目基于融云SDK，使用目前较火的 Rxjava+Retrofit+MVP+Glide 技术开发。相比上个版本，加入发送位置消息，红包消息等功能。欢迎star和fork~~
+**Note: the previous version has moved to the [NimVersion branch](https://github.com/GitLqr/LQRWeChat/tree/NimVersion)**
 
-## 2、制作该开源项目的原因有：
+## 1. A Brief Introduction
+This is the second WeChat clone I have developed on my own. It imitates WeChat 6.5.7, the latest version at the time (except for the image picker). It is built on the RongCloud SDK with the popular RxJava + Retrofit + MVP + Glide stack. Compared with the previous version, it adds location messages, red packet messages and more. Stars and forks are welcome~~
 
-1. 熟练使用 Rxjava+Retrofit+MVP+lambda 等新安卓技术。
-2. 熟悉融云等SDK的使用。
-3. 向高手进阶过渡。
+## 2. Why I Made This Project
 
-## 3、统一回复下网友的问题：
-有网友说看我上一个项目有别人提出的很多问题，而且我都没有回复并解决，实际是有的，只不过那时已经在着手准备开发这个新的高仿微信，而且因为上一个版本使用的是网易云SDK，开发上比较简单，同时该SDK的封装实在是太好了，所以没地方可以施展Retrofit，达不到我预计的提升要求，于是便选用了融云SDK干脆做了一个新的，上版中存在的一些问题已经在这个版本中基本解决，同时制作并更新了几个自己的库（如：表情库和语音库等）。
+1. To become proficient with newer Android technologies such as RxJava, Retrofit, MVP and lambda.
+2. To get familiar with SDKs such as RongCloud.
+3. To move on toward a more advanced level.
 
-# 二、功能
+## 3. A Reply to Common Questions
+Some people said that many issues raised on my previous project went unanswered and unresolved. In fact I did look at them, but at that time I was already preparing to build this new WeChat clone. The previous version used the NetEase IM SDK, which made development fairly simple, and that SDK was so well encapsulated that there was no room to make real use of Retrofit, so it did not give me the growth I was hoping for. I therefore switched to the RongCloud SDK and simply built a new one. Most of the problems in the previous version have been fixed in this one, and along the way I also built and updated several of my own libraries (such as the emoji library and the audio library).
 
-## 1、好友
+# 2. Features
 
-1. 查询好友
-1. 发起添加好友请求
-1. 查看好友个人信息
-1. 设置备注
-1. 删除好友
-1. 扫码加好友
-1. 查看新加朋友
+## 1. Friends
 
-## 2、群组
+1. Search for friends
+1. Send friend requests
+1. View a friend's profile
+1. Set a remark name
+1. Delete friends
+1. Add friends by scanning a QR code
+1. View new friends
 
-1. 拉人进群
-1. 踢人去群
-1. 修改群昵称
-1. 查看群二维码
-1. 扫码加入群组
-1. 解散群（群主）
-1. 退出群（群成员）
+## 2. Groups
 
-## 3、个人
+1. Invite people into a group
+1. Remove people from a group
+1. Change your group nickname
+1. View the group QR code
+1. Join a group by scanning a QR code
+1. Dismiss a group (owner)
+1. Leave a group (member)
 
-1. 查看头像
-1. 上传更新头像
-1. 修改个人昵称
-1. 查看个人二维码
+## 3. Profile
 
-## 4、会话
+1. View your avatar
+1. Upload a new avatar
+1. Change your nickname
+1. View your QR code
 
-1. 会话置顶
-1. 取消置顶
-1. 删除会话
-1. 撤回消息
-1. 发送文本消息
-1. 发送图片消息
-1. 发送视频消息
-1. 发送语音消息
-1. 发送贴图消息
-1. 发送位置消息
-1. 发送红包消息
+## 4. Conversations
 
-## 5、系统
+1. Pin a conversation
+1. Unpin a conversation
+1. Delete a conversation
+1. Recall messages
+1. Send text messages
+1. Send image messages
+1. Send video messages
+1. Send voice messages
+1. Send sticker messages
+1. Send location messages
+1. Send red packet messages
 
-1. 登录
-1. 注册
-1. 退出当前账号
-1. 退出APP
+## 5. System
 
-## 6、尚未完成
+1. Log in
+1. Register
+1. Log out of the current account
+1. Exit the app
 
-1. 消息通知
-1. @功能
-1. 对方输入状态提示
+## 6. Not Yet Implemented
 
-# 三、效果图
+1. Message notifications
+1. @mentions
+1. Typing indicator
 
-![主界面](screenshots/1.gif)
-![会话控制](screenshots/2.gif)
-![录制、发送语音](screenshots/3.gif)
-![发送表情文字](screenshots/4.gif)
-![发送红包](screenshots/5.gif)
-![抢红包](screenshots/6.gif)
-![发送位置](screenshots/7.gif)
-![录制、发送小视频](screenshots/8.gif)
-![选择、发送图片](screenshots/9.gif)
-![查看、撤回消息](screenshots/10.gif)
-![拉人入群](screenshots/11.gif)
-![踢人出群](screenshots/12.gif)
-![修改群昵称](screenshots/13.gif)
-![发起群聊](screenshots/14.gif)
+# 3. Screenshots
+
+![Main screen](screenshots/1.gif)
+![Conversation controls](screenshots/2.gif)
+![Record and send voice](screenshots/3.gif)
+![Send emoji and text](screenshots/4.gif)
+![Send a red packet](screenshots/5.gif)
+![Grab a red packet](screenshots/6.gif)
+![Send location](screenshots/7.gif)
+![Record and send a short video](screenshots/8.gif)
+![Pick and send images](screenshots/9.gif)
+![View and recall messages](screenshots/10.gif)
+![Invite people into a group](screenshots/11.gif)
+![Remove people from a group](screenshots/12.gif)
+![Change group nickname](screenshots/13.gif)
+![Start a group chat](screenshots/14.gif)
 
 
-# 四、其他相关
+# 4. More
 
-## 1、该项目使用到的技术有：
+## 1. Technologies Used
 
 1. RxJava 1.x
 1. Retrofit 2.0
@@ -117,54 +119,54 @@
 1. lambda
 1. ...
 
-## 2、用到的主要库有：
+## 2. Main Libraries Used
 
-### 主要的大神库：
+### Libraries by other great developers
 
-1. [鸿神的AutoLayout](https://github.com/hongyangAndroid/AndroidAutoLayout)
-1. [郭神的LitePal](https://github.com/LitePalFramework/LitePal)
-1. [bingoogolapple的万能刷新控件](https://github.com/bingoogolapple/BGARefreshLayout-Android)
-1. [bingoogolapple的二维码控件扫描库](https://github.com/bingoogolapple/BGAQRCode-Android)
-1. [CJT2325的仿微信拍照Android控件](https://github.com/CJT2325/CameraView)
+1. [AutoLayout by hongyangAndroid](https://github.com/hongyangAndroid/AndroidAutoLayout)
+1. [LitePal by Guo Lin](https://github.com/LitePalFramework/LitePal)
+1. [Universal pull-to-refresh view by bingoogolapple](https://github.com/bingoogolapple/BGARefreshLayout-Android)
+1. [QR code scanning library by bingoogolapple](https://github.com/bingoogolapple/BGAQRCode-Android)
+1. [WeChat-style camera view for Android by CJT2325](https://github.com/CJT2325/CameraView)
 1. ...
 
-### 自己(CSDN_LQR)做的库：
+### Libraries I (CSDN_LQR) made
 
-1. [万能适配器](https://github.com/GitLqr/LQRAdapterLibrary)
-1. [包装过的RecyclerView](https://github.com/GitLqr/LQRRecyclerViewLibrary)
-1. [高仿微信表情库](https://github.com/GitLqr/LQREmojiLibrary)
-1. [高仿微信语音库](https://github.com/GitLqr/LQRAudioRecord)
-1. [高仿微信图片选择器](https://github.com/GitLqr/LQRImagePicker)
-1. [高仿微信九宫格控件](https://github.com/GitLqr/LQRNineGridImageView)
-1. [常用选项条目库](https://github.com/GitLqr/LQROptionItemView)
+1. [Universal adapter](https://github.com/GitLqr/LQRAdapterLibrary)
+1. [Wrapped RecyclerView](https://github.com/GitLqr/LQRRecyclerViewLibrary)
+1. [WeChat-style emoji library](https://github.com/GitLqr/LQREmojiLibrary)
+1. [WeChat-style audio library](https://github.com/GitLqr/LQRAudioRecord)
+1. [WeChat-style image picker](https://github.com/GitLqr/LQRImagePicker)
+1. [WeChat-style nine-grid image view](https://github.com/GitLqr/LQRNineGridImageView)
+1. [Common option item view](https://github.com/GitLqr/LQROptionItemView)
 
-## 3、说明与鸣谢：
+## 3. Notes and Acknowledgements
 
-不提供测试号，请使用自己手机注册后登录，因为本人手机号有限，测试上很有局限，可能存在一些我不知道的bug，请多包涵，可在项目中提出issue。本人做这个项目只为提升个人安卓开发能力，故依赖融云官方给出的server端做为本项目的后台服务，该server源码使用Node.js开发，目前本人只会用java开发后端，所以如果要搞点别的功能的话，目前是不可能啦，有兴趣的同学可以看看这个[嗨豹 IM 应用服务器](https://github.com/rongcloud/sealtalk-server)，当然融云也有它的坑，特别是红包module，我干脆不用它的了，希望该项目可以帮到那些正在踩坑的人（至少我已经踩了一次了，嘿嘿），此外，很感谢很多网友对我的支持，还有专门跑到CSDN跟我私信给我鼓励的，真的很感动，谢谢。
+No test account is provided. Please register with your own phone number and log in. I only have a limited number of phone numbers, so my testing was quite limited and there may be bugs I am not aware of. Please bear with me, and feel free to open an issue. I made this project purely to improve my own Android skills, so it relies on the server provided by RongCloud as its backend. That server is written in Node.js, and at the moment I can only write backends in Java, so adding other server-side features is not possible for now. If you are interested, take a look at the [SealTalk IM app server](https://github.com/rongcloud/sealtalk-server). Of course RongCloud has its own pitfalls too, especially the red packet module, which I simply stopped using. I hope this project helps those who are running into the same pitfalls (at least I have been through them once, hehe). Finally, many thanks to everyone who has supported me, including those who sent me private messages of encouragement on CSDN. I am truly touched. Thank you.
 
-## 4、构建说明：
+## 4. Build Instructions
 
-当前工具链是 AGP 2.3 + Gradle 3.3，需要用 JDK 8 构建。部分依赖（AutoLayout、LitePal 1.5 等）已随 jcenter 下线，目前无法直接构建，正在迁移。
+The current toolchain is AGP 2.3 + Gradle 3.3, which requires JDK 8 to build. Some dependencies (AutoLayout, LitePal 1.5, etc.) went offline together with jcenter, so the project cannot be built directly at the moment; migration is in progress.
 
-lqr 系列库以 git submodule 放在 `libraries/` 下，克隆时需要带上子模块：
+The lqr libraries live under `libraries/` as git submodules, so clone with submodules:
 
 ```
 git clone --recursive https://github.com/GitLqr/LQRWeChat.git
-# 已经克隆过的执行
+# If you have already cloned it
 git submodule update --init
 ```
 
-运行前需要替换成自己的配置：
+Before running, replace the following with your own configuration:
 
-1. 融云 AppKey：`AndroidManifest.xml` 中的 `RONG_CLOUD_APP_KEY`
-1. 腾讯地图 Key：`AndroidManifest.xml` 中的 `TencentMapSDK`
-1. ShareSDK 各平台 Key：`app/src/main/assets/ShareSDK.xml`
-1. 服务端地址：`MyApi.java` 中的 `BASE_URL`。原来的 `api.sealtalk.im` 已停用，需要自行部署 [sealtalk-server](https://github.com/rongcloud/sealtalk-server)
-1. 红包签名服务：`MyApp.java` 中的 `initRedPacket()`
+1. RongCloud AppKey: `RONG_CLOUD_APP_KEY` in `AndroidManifest.xml`
+1. Tencent Maps key: `TencentMapSDK` in `AndroidManifest.xml`
+1. ShareSDK platform keys: `app/src/main/assets/ShareSDK.xml`
+1. Server address: `BASE_URL` in `MyApi.java`. The original `api.sealtalk.im` is no longer available, so you need to deploy [sealtalk-server](https://github.com/rongcloud/sealtalk-server) yourself
+1. Red packet signing service: `initRedPacket()` in `MyApp.java`
 
-# 五、打赏支持
+# 5. Support the Author
 
-最后，如果觉得本项目对您有用，请随意打赏，鼓励我继续创作，谢谢啦。
+Finally, if you find this project useful, feel free to send a tip to encourage me to keep creating. Thanks!
 
 ![wechat](screenshots/wechat_pay.png)
 ![alipay](screenshots/alipay.png)
