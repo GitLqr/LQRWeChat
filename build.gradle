@@ -15,6 +15,12 @@ buildscript {
     }
 }
 
+ext {
+    supportLibVersion = '25.3.1'
+    retrofitVersion = '2.2.0'
+    okhttpVersion = '3.6.0'
+}
+
 allprojects {
     repositories {
         maven { url 'https://maven.google.com' }
