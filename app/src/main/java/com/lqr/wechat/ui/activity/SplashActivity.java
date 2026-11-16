@@ -35,20 +35,16 @@ public class SplashActivity extends BaseActivity {
         PermissionGen.with(this)
                 .addRequestCode(100)
                 .permissions(
-                        //电话通讯录
-                        Manifest.permission.GET_ACCOUNTS,
+                        //Phone
                         Manifest.permission.READ_PHONE_STATE,
                         //位置
                         Manifest.permission.ACCESS_FINE_LOCATION,
                         Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.ACCESS_FINE_LOCATION,
                         //相机、麦克风
                         Manifest.permission.RECORD_AUDIO,
-                        Manifest.permission.WAKE_LOCK,
                         Manifest.permission.CAMERA,
                         //存储空间
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_SETTINGS
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
                 )
                 .request();
         if (!TextUtils.isEmpty(UserCache.getToken())) {
