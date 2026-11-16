@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -433,34 +434,44 @@ public class SessionActivity extends BaseFragmentActivity<ISessionAtView, Sessio
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQUEST_IMAGE_PICKER:
-                if (resultCode == ImagePicker.RESULT_CODE_ITEMS) {//返回多张照片
-                    if (data != null) {
-                        //是否发送原图
-                        boolean isOrig = data.getBooleanExtra(ImagePreviewActivity.ISORIGIN, false);
-                        ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
-                        Log.e("GitLqr", isOrig ? "发原图" : "不发原图");//若不发原图的话，需要在自己在项目中做好压缩图片算法
-                        for (ImageItem imageItem : images) {
-                            File imageFileThumb;
-                            File imageFileSource;
-                            if (isOrig) {
-                                imageFileSource = new File(imageItem.path);
-                                imageFileThumb = ImageUtils.genThumbImgFile(imageItem.path);
-                            } else {
-                                //压缩图片
-                                imageFileSource = ImageUtils.genThumbImgFile(imageItem.path);
-                                imageFileThumb = ImageUtils.genThumbImgFile(imageFileSource.getAbsolutePath());
-                            }
-                            if (imageFileSource != null && imageFileSource != null)
-                                mPresenter.sendImgMsg(imageFileThumb, imageFileSource);
+                if (resultCode == ImagePicker.RESULT_CODE_ITEMS && data != null) {//返回多张照片
+                    //是否发送原图
+                    boolean isOrig = data.getBooleanExtra(ImagePreviewActivity.ISORIGIN, false);
+                    ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
+                    if (images == null) {
+                        break;
+                    }
+                    Log.e("GitLqr", isOrig ? "发原图" : "不发原图");//若不发原图的话，需要在自己在项目中做好压缩图片算法
+                    for (ImageItem imageItem : images) {
+                        File imageFileThumb;
+                        File imageFileSource;
+                        if (isOrig) {
+                            imageFileSource = new File(imageItem.path);
+                            imageFileThumb = ImageUtils.genThumbImgFile(imageItem.path);
+                        } else {
+                            //压缩图片
+                            imageFileSource = ImageUtils.genThumbImgFile(imageItem.path);
+                            imageFileThumb = imageFileSource == null ? null : ImageUtils.genThumbImgFile(imageFileSource.getAbsolutePath());
+                        }
+                        //genThumbImgFile returns null on failure; skip this image to avoid crashing in Uri.fromFile(null)
+                        if (imageFileThumb != null && imageFileSource != null) {
+                            mPresenter.sendImgMsg(imageFileThumb, imageFileSource);
                         }
                     }
                 }
+                break;
             case REQUEST_TAKE_PHOTO:
-                if (resultCode == RESULT_OK) {
+                if (resultCode == RESULT_OK && data != null) {
                     String path = data.getStringExtra("path");
+                    if (TextUtils.isEmpty(path)) {
+                        break;
+                    }
                     if (data.getBooleanExtra("take_photo", true)) {
                         //照片
-                        mPresenter.sendImgMsg(ImageUtils.genThumbImgFile(path), new File(path));
+                        File imageFileThumb = ImageUtils.genThumbImgFile(path);
+                        if (imageFileThumb != null) {
+                            mPresenter.sendImgMsg(imageFileThumb, new File(path));
+                        }
                     } else {
                         //小视频
                         mPresenter.sendFileMsg(new File(path));
@@ -468,9 +479,11 @@ public class SessionActivity extends BaseFragmentActivity<ISessionAtView, Sessio
                 }
                 break;
             case REQUEST_MY_LOCATION:
-                if (resultCode == RESULT_OK) {
+                if (resultCode == RESULT_OK && data != null) {
                     LocationData locationData = (LocationData) data.getSerializableExtra("location");
-                    mPresenter.sendLocationMessage(locationData);
+                    if (locationData != null) {
+                        mPresenter.sendLocationMessage(locationData);
+                    }
                 }
                 break;
         }
