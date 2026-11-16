@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,7 @@ import com.zhy.autolayout.AutoLinearLayout;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import kr.co.namee.permissiongen.PermissionGen;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCompatActivity {
@@ -118,6 +120,15 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
         super.onDestroy();
         if (mPresenter != null) {
             mPresenter.detachView();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //grantResults is empty when the request is interrupted, and PermissionGen would treat that as all granted, so do not forward it
+        if (grantResults.length > 0) {
+            PermissionGen.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
         }
     }
 
