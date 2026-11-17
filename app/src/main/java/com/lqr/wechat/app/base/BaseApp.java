@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.multidex.MultiDexApplication;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class BaseApp extends MultiDexApplication {
 
-    public static List<Activity> activities = new LinkedList<>();
+    private static final List<Activity> activities = new LinkedList<>();
 
     //以下属性应用于整个应用程序，合理利用资源，减少资源浪费
     private static Context mContext;//上下文
@@ -37,12 +38,21 @@ public class BaseApp extends MultiDexApplication {
 
     }
 
+    public static void addActivity(Activity activity) {
+        activities.add(activity);
+    }
+
+    public static void removeActivity(Activity activity) {
+        activities.remove(activity);
+    }
+
     /**
      * 完全退出
      * 一般用于“退出程序”功能
      */
     public static void exit() {
-        for (Activity activity : activities) {
+        //Iterate over a copy: each activity's later onDestroy calls removeActivity and modifies the original list
+        for (Activity activity : new ArrayList<>(activities)) {
             activity.finish();
         }
     }

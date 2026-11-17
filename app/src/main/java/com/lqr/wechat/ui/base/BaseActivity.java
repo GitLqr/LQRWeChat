@@ -55,7 +55,7 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyApp.activities.add(this);
+        MyApp.addActivity(this);
         init();
 
         //判断是否使用MVP模式
@@ -118,6 +118,7 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        MyApp.removeActivity(this);
         if (mPresenter != null) {
             mPresenter.detachView();
         }
