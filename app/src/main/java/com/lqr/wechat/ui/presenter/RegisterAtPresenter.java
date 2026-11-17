@@ -168,7 +168,6 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
                     if (responseCode == 200) {
                         UserCache.save(loginResponse.getResult().getId(), phone, loginResponse.getResult().getToken());
                         mContext.jumpToActivityAndClearTask(MainActivity.class);
-                        mContext.finish();
                     } else {
                         UIUtils.showToast(UIUtils.getString(R.string.login_error));
                         mContext.jumpToActivity(LoginActivity.class);

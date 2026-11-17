@@ -42,7 +42,6 @@ public class SettingActivity extends BaseActivity {
                     RongIMClient.getInstance().logout();
                     UserCache.clear();
                     mExitDialog.dismiss();
-                    MyApp.exit();
                     jumpToActivityAndClearTask(LoginActivity.class);
                 });
                 mExitView.findViewById(R.id.tvExitApp).setOnClickListener(v1 -> {

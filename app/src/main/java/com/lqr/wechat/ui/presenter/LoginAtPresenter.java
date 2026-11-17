@@ -46,7 +46,6 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
                     if (code == 200) {
                         UserCache.save(loginResponse.getResult().getId(), phone, loginResponse.getResult().getToken());
                         mContext.jumpToActivityAndClearTask(MainActivity.class);
-                        mContext.finish();
                     } else {
                         loginError(new ServerException(UIUtils.getString(R.string.login_error) + code));
                     }

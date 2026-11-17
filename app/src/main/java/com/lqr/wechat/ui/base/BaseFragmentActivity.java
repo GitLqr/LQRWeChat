@@ -225,7 +225,8 @@ public abstract class BaseFragmentActivity<V, T extends BaseFragmentPresenter<V>
 
     public void jumpToActivityAndClearTask(Class activity) {
         Intent intent = new Intent(this, activity);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        //CLEAR_TASK only clears the task when combined with NEW_TASK
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }

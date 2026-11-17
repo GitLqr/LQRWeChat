@@ -1,7 +1,6 @@
 package com.lqr.wechat.ui.activity;
 
 import android.Manifest;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
@@ -48,10 +47,7 @@ public class SplashActivity extends BaseActivity {
                 )
                 .request();
         if (!TextUtils.isEmpty(UserCache.getToken())) {
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            jumpToActivity(intent);
-            finish();
+            jumpToActivityAndClearTask(MainActivity.class);
         }
     }
 
