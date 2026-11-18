@@ -13,7 +13,6 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
 import android.view.Display;
 import android.view.WindowManager;
 
@@ -393,7 +392,7 @@ public class ImageUtils {
             thumbImgDir = new File(thumbImgDirPath);
         if (!thumbImgDir.exists())
             thumbImgDir.mkdirs();
-        String thumbImgName = SystemClock.currentThreadTimeMillis() + FileUtils.getFileNameFromPath(srcImgPath);
+        String thumbImgName = System.currentTimeMillis() + FileUtils.getFileNameFromPath(srcImgPath);
         File imageFileThumb = null;
         try {
             // 读取图片。

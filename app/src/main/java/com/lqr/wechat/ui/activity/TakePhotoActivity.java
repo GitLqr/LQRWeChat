@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Environment;
-import android.os.SystemClock;
 import android.support.v4.content.ContextCompat;
 
 import com.cjt2325.cameralibrary.JCameraView;
@@ -133,7 +132,7 @@ public class TakePhotoActivity extends BaseActivity {
 
     public String saveBitmap(Bitmap bm, String dir) {
         String path = "";
-        File f = new File(dir, "GitLqr_" + SystemClock.currentThreadTimeMillis() + ".png");
+        File f = new File(dir, "GitLqr_" + System.currentTimeMillis() + ".png");
         if (f.exists()) {
             f.delete();
         }

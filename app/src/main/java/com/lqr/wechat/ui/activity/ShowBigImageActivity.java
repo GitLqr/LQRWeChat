@@ -1,7 +1,6 @@
 package com.lqr.wechat.ui.activity;
 
 import android.net.Uri;
-import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -142,7 +141,7 @@ public class ShowBigImageActivity extends BaseActivity {
     private boolean writeToDisk(InputStream in) {
         FileOutputStream out = null;
         try {
-            out = new FileOutputStream(new File(AppConst.HEADER_SAVE_DIR, SystemClock.currentThreadTimeMillis() + "_header.jpg"));
+            out = new FileOutputStream(new File(AppConst.HEADER_SAVE_DIR, System.currentTimeMillis() + "_header.jpg"));
             byte[] buffer = new byte[8 * 1024];
             int len;
             while ((len = in.read(buffer)) != -1) {
