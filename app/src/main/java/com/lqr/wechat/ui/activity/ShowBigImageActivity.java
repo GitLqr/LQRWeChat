@@ -19,6 +19,8 @@ import com.lqr.wechat.api.ApiRetrofit;
 import com.lqr.wechat.app.AppConst;
 import com.lqr.wechat.ui.base.BaseActivity;
 import com.lqr.wechat.ui.base.BasePresenter;
+import com.lqr.wechat.util.IOUtils;
+import com.lqr.wechat.util.LogUtils;
 import com.lqr.wechat.util.PopupWindowUtils;
 import com.lqr.wechat.util.UIUtils;
 
@@ -29,7 +31,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import butterknife.Bind;
-import okhttp3.ResponseBody;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -97,85 +100,61 @@ public class ShowBigImageActivity extends BaseActivity {
             tv.setText(UIUtils.getString(R.string.save_to_phone));
             mView.addView(tv);
 
-            tv.setOnClickListener(v -> {
-                        if (mUrl.startsWith("file")) {
-                            File file = new File(Uri.parse(mUrl).getPath());
-                            UIUtils.showToast(copyToDisk(file) ? UIUtils.getString(R.string.save_success) : UIUtils.getString(R.string.save_fail));
-                            mPopupWindow.dismiss();
-                            mPopupWindow = null;
-                        } else {
-                            ApiRetrofit.getInstance()
-                                    .mApi
-                                    .downloadPic(mUrl)
-                                    .subscribeOn(Schedulers.newThread())
-                                    .subscribe(responseBody -> {
-                                        UIUtils.showToast(saveToDisk(responseBody) ? UIUtils.getString(R.string.save_success) : UIUtils.getString(R.string.save_fail));
-                                        mPopupWindow.dismiss();
-                                        mPopupWindow = null;
-                                    });
-                        }
-
-                    }
-            );
+            tv.setOnClickListener(v -> savePic());
         }
         mPopupWindow = PopupWindowUtils.getPopupWindowAtLocation(mView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, getWindow().getDecorView().getRootView(), Gravity.BOTTOM, 0, 0);
         mPopupWindow.setOnDismissListener(() -> PopupWindowUtils.makeWindowLight(ShowBigImageActivity.this));
         PopupWindowUtils.makeWindowDark(ShowBigImageActivity.this);
     }
 
-    private boolean copyToDisk(File file) {
-        try {
-            InputStream in = null;
-            FileOutputStream out = null;
-            try {
-                in = new FileInputStream(file);
-                out = new FileOutputStream(new File(AppConst.HEADER_SAVE_DIR, SystemClock.currentThreadTimeMillis() + "_header.jpg"));
-                int c;
-
-                while ((c = in.read()) != -1) {
-                    out.write(c);
-                }
-            } catch (IOException e) {
-                return false;
-            } finally {
-                if (in != null) {
-                    in.close();
-                }
-                if (out != null) {
-                    out.close();
-                }
-            }
-            return true;
-        } catch (IOException e) {
-            return false;
+    private void savePic() {
+        //Dismiss right away so the menu cannot trigger a second save while this one runs
+        if (mPopupWindow != null) {
+            mPopupWindow.dismiss();
+            mPopupWindow = null;
         }
+        Observable<Boolean> save;
+        if (mUrl.startsWith("file")) {
+            File file = new File(Uri.parse(mUrl).getPath());
+            save = Observable.fromCallable(() -> writeToDisk(new FileInputStream(file)));
+        } else {
+            save = ApiRetrofit.getInstance()
+                    .mApi
+                    .downloadPic(mUrl)
+                    .map(responseBody -> writeToDisk(responseBody.byteStream()));
+        }
+        //Do the IO on the io thread and show the Toast on the main thread
+        save.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onSaveFinished, throwable -> {
+                    LogUtils.e(throwable);
+                    onSaveFinished(false);
+                });
     }
 
-    private boolean saveToDisk(ResponseBody body) {
-        try {
-            InputStream in = null;
-            FileOutputStream out = null;
-            try {
-                in = body.byteStream();
-                out = new FileOutputStream(new File(AppConst.HEADER_SAVE_DIR, SystemClock.currentThreadTimeMillis() + "_header.jpg"));
-                int c;
+    private void onSaveFinished(boolean success) {
+        UIUtils.showToast(UIUtils.getString(success ? R.string.save_success : R.string.save_fail));
+    }
 
-                while ((c = in.read()) != -1) {
-                    out.write(c);
-                }
-            } catch (IOException e) {
-                return false;
-            } finally {
-                if (in != null) {
-                    in.close();
-                }
-                if (out != null) {
-                    out.close();
-                }
+    /**
+     * Copy the stream into the header save dir; the stream is always closed
+     */
+    private boolean writeToDisk(InputStream in) {
+        FileOutputStream out = null;
+        try {
+            out = new FileOutputStream(new File(AppConst.HEADER_SAVE_DIR, SystemClock.currentThreadTimeMillis() + "_header.jpg"));
+            byte[] buffer = new byte[8 * 1024];
+            int len;
+            while ((len = in.read(buffer)) != -1) {
+                out.write(buffer, 0, len);
             }
             return true;
         } catch (IOException e) {
+            LogUtils.e(e);
             return false;
+        } finally {
+            IOUtils.close(in);
+            IOUtils.close(out);
         }
     }
 }
