@@ -25,7 +25,6 @@ import com.lqr.wechat.db.model.Groups;
 import com.lqr.wechat.model.exception.ServerException;
 import com.lqr.wechat.model.response.GetGroupInfoResponse;
 import com.lqr.wechat.model.response.JoinGroupResponse;
-import com.lqr.wechat.thread.ThreadPoolFactory;
 import com.lqr.wechat.ui.base.BaseActivity;
 import com.lqr.wechat.ui.presenter.ScanAtPresenter;
 import com.lqr.wechat.ui.view.IScanAtView;
@@ -123,25 +122,28 @@ public class ScanActivity extends BaseActivity<IScanAtView, ScanAtPresenter> imp
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == ImagePicker.RESULT_CODE_ITEMS) {//返回多张照片
-            if (data != null) {
-                final ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
-                if (images != null && images.size() > 0) {
-                    //取第一张照片
-                    ThreadPoolFactory.getNormalPool().execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            String result = QRCodeDecoder.syncDecodeQRCode(images.get(0).path);
-                            if (TextUtils.isEmpty(result)) {
-                                UIUtils.showToast(UIUtils.getString(R.string.scan_fail));
-                            } else {
-                                handleResult(result);
-                            }
-                        }
-                    });
-                }
-            }
+        if (requestCode != IMAGE_PICKER || resultCode != ImagePicker.RESULT_CODE_ITEMS || data == null) {
+            return;
         }
+        ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
+        if (images == null || images.isEmpty()) {
+            return;
+        }
+        //Decode the first image on the io thread and handle the result on the main thread (handleResult shows Toasts and starts activities)
+        String path = images.get(0).path;
+        Observable.fromCallable(() -> QRCodeDecoder.syncDecodeQRCode(path))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(result -> {
+                    if (TextUtils.isEmpty(result)) {
+                        UIUtils.showToast(UIUtils.getString(R.string.scan_fail));
+                    } else {
+                        handleResult(result);
+                    }
+                }, throwable -> {
+                    LogUtils.sf(throwable.getLocalizedMessage());
+                    UIUtils.showToast(UIUtils.getString(R.string.scan_fail));
+                });
     }
 
     @Override
