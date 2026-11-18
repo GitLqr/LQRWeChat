@@ -139,11 +139,13 @@ public class NewFriendAtPresenter extends BasePresenter<INewFriendAtView> {
                         if (agreeFriendsResponse != null && agreeFriendsResponse.getCode() == 200) {
                             helper.setViewVisibility(R.id.tvAdded, View.VISIBLE)
                                     .setViewVisibility(R.id.btnAck, View.GONE);
-                            return ApiRetrofit.getInstance().getUserInfoById(friendId);
+                            //flatMap runs on the main thread because it updates the buttons, so the inner request needs its own subscribeOn(io)
+                            return ApiRetrofit.getInstance().getUserInfoById(friendId).subscribeOn(Schedulers.io());
                         }
                         return Observable.error(new ServerException(UIUtils.getString(R.string.agree_friend_fail)));
                     }
                 })
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getUserInfoByIdResponse -> {
                     if (getUserInfoByIdResponse != null && getUserInfoByIdResponse.getCode() == 200) {
                         GetUserInfoByIdResponse.ResultEntity result = getUserInfoByIdResponse.getResult();

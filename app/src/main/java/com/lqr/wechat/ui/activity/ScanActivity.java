@@ -248,14 +248,15 @@ public class ScanActivity extends BaseActivity<IScanAtView, ScanAtPresenter> imp
             } else {
                 ApiRetrofit.getInstance().JoinGroup(groupId)
                         .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
                         .filter(joinGroupResponse -> joinGroupResponse != null && joinGroupResponse.getCode() == 200)
                         .flatMap(new Func1<JoinGroupResponse, Observable<GetGroupInfoResponse>>() {
                             @Override
                             public Observable<GetGroupInfoResponse> call(JoinGroupResponse joinGroupResponse) {
-                                return ApiRetrofit.getInstance().getGroupInfo(groupId);//似乎这里会报错，导致下面subscribe中的逻辑没有执行，不知道为啥。。
+                                return ApiRetrofit.getInstance().getGroupInfo(groupId);
                             }
                         })
+                        //observeOn must come after flatMap, otherwise the inner request runs on the main thread
+                        .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(getGroupInfoResponse -> {
                             if (getGroupInfoResponse != null && getGroupInfoResponse.getCode() == 200) {
                                 GetGroupInfoResponse.ResultEntity resultEntity = getGroupInfoResponse.getResult();
