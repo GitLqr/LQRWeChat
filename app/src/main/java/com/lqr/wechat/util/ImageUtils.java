@@ -34,6 +34,7 @@ public class ImageUtils {
 
     private static final String thumbImgDirPath = UIUtils.getContext().getCacheDir().getAbsolutePath();
     private static File thumbImgDir;
+    private static final int THUMB_SIZE = 160;
 
     /**
      * 根据一个网络连接(String)获取bitmap图像
@@ -387,43 +388,61 @@ public class ImageUtils {
     }
 
 
+    /**
+     * Generate a JPEG thumbnail that fits in THUMB_SIZE x THUMB_SIZE, without touching the source file
+     *
+     * @return the thumbnail file, or null if the source cannot be decoded or the thumbnail cannot be written
+     */
     public static File genThumbImgFile(String srcImgPath) {
         if (thumbImgDir == null)
             thumbImgDir = new File(thumbImgDirPath);
         if (!thumbImgDir.exists())
             thumbImgDir.mkdirs();
-        String thumbImgName = System.currentTimeMillis() + FileUtils.getFileNameFromPath(srcImgPath);
-        File imageFileThumb = null;
+
+        //Read the size first and decode a sub-sampled bitmap, so a large photo does not OOM
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(srcImgPath, options);
+        if (options.outWidth <= 0 || options.outHeight <= 0) {
+            return null;
+        }
+        //Sample by the long side, since the thumbnail fits the long side into THUMB_SIZE;
+        //calculateInSampleSize needs both sides to stay large and barely samples a very long image
+        int longSide = Math.max(options.outWidth, options.outHeight);
+        int inSampleSize = 1;
+        while (longSide / (inSampleSize * 2) >= THUMB_SIZE) {
+            inSampleSize *= 2;
+        }
+        options.inSampleSize = inSampleSize;
+        options.inJustDecodeBounds = false;
+        Bitmap bmpSource = BitmapFactory.decodeFile(srcImgPath, options);
+        if (bmpSource == null) {
+            return null;
+        }
+
+        File imageFileThumb = new File(thumbImgDir, System.currentTimeMillis() + FileUtils.getFileNameFromPath(srcImgPath));
+        Bitmap bmpThumb = null;
+        FileOutputStream fosThumb = null;
+        boolean saved = false;
         try {
-            // 读取图片。
-            InputStream is = new FileInputStream(srcImgPath);
-            Bitmap bmpSource = BitmapFactory.decodeStream(is);
-
-            File imageFileSource = new File(srcImgPath);
-            imageFileSource.createNewFile();
-
-            FileOutputStream fosSource = new FileOutputStream(imageFileSource);
-
-            // 保存原图。
-            bmpSource.compress(Bitmap.CompressFormat.JPEG, 100, fosSource);
-
-            // 创建缩略图变换矩阵。
             Matrix m = new Matrix();
-            m.setRectToRect(new RectF(0, 0, bmpSource.getWidth(), bmpSource.getHeight()), new RectF(0, 0, 160, 160), Matrix.ScaleToFit.CENTER);
-
-            // 生成缩略图。
-            Bitmap bmpThumb = Bitmap.createBitmap(bmpSource, 0, 0, bmpSource.getWidth(), bmpSource.getHeight(), m, true);
-
-            imageFileThumb = new File(ImageUtils.thumbImgDirPath, thumbImgName);
-            imageFileThumb.createNewFile();
-
-            FileOutputStream fosThumb = new FileOutputStream(imageFileThumb);
-
-            // 保存缩略图。
-            bmpThumb.compress(Bitmap.CompressFormat.JPEG, 60, fosThumb);
-
+            m.setRectToRect(new RectF(0, 0, bmpSource.getWidth(), bmpSource.getHeight()), new RectF(0, 0, THUMB_SIZE, THUMB_SIZE), Matrix.ScaleToFit.CENTER);
+            bmpThumb = Bitmap.createBitmap(bmpSource, 0, 0, bmpSource.getWidth(), bmpSource.getHeight(), m, true);
+            fosThumb = new FileOutputStream(imageFileThumb);
+            saved = bmpThumb.compress(Bitmap.CompressFormat.JPEG, 60, fosThumb);
         } catch (IOException e) {
-            e.printStackTrace();
+            LogUtils.e(e);
+        } finally {
+            IOUtils.close(fosThumb);
+            //createBitmap may return the source itself when no scaling is needed
+            if (bmpThumb != null && bmpThumb != bmpSource) {
+                bmpThumb.recycle();
+            }
+            bmpSource.recycle();
+        }
+        if (!saved) {
+            imageFileThumb.delete();
+            return null;
         }
         return imageFileThumb;
     }
