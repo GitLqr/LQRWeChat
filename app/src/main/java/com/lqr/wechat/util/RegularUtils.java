@@ -1,6 +1,5 @@
 package com.lqr.wechat.util;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -10,17 +9,15 @@ import java.util.regex.Pattern;
 
 public class RegularUtils {
 
+    //Any 11-digit number starting with 13-19; carriers keep adding new prefixes, so do not list them one by one
+    private static final Pattern MOBILE_PHONE_PATTERN = Pattern.compile("^1[3-9]\\d{9}$");
+    private static final Pattern EMAIL_PATTERN = Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$");
+
     public static boolean isMobile(String phoneNumber) {
-        String MOBLIE_PHONE_PATTERN = "^((13[0-9])|(15[0-9])|(18[0-9])|(14[7])|(17[0|6|7|8]))\\d{8}$";
-        Pattern p = Pattern.compile(MOBLIE_PHONE_PATTERN);
-        Matcher m = p.matcher(phoneNumber);
-        return m.matches();
+        return phoneNumber != null && MOBILE_PHONE_PATTERN.matcher(phoneNumber).matches();
     }
 
     public static boolean isEmail(String email) {
-        String str = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
-        Pattern p = Pattern.compile(str);
-        Matcher m = p.matcher(email);
-        return m.matches();
+        return email != null && EMAIL_PATTERN.matcher(email).matches();
     }
 }
