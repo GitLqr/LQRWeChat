@@ -12,10 +12,11 @@ import com.lqr.wechat.R;
 import com.lqr.wechat.app.AppConst;
 import com.lqr.wechat.ui.base.BaseActivity;
 import com.lqr.wechat.ui.base.BasePresenter;
+import com.lqr.wechat.util.IOUtils;
+import com.lqr.wechat.util.LogUtils;
 import com.lqr.wechat.util.UIUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -130,23 +131,31 @@ public class TakePhotoActivity extends BaseActivity {
         return R.layout.activity_take_photo;
     }
 
+    /**
+     * @return the saved file path, or null if saving failed so the caller does not send an empty path
+     */
     public String saveBitmap(Bitmap bm, String dir) {
-        String path = "";
         File f = new File(dir, "GitLqr_" + System.currentTimeMillis() + ".png");
         if (f.exists()) {
             f.delete();
         }
+        FileOutputStream out = null;
+        boolean saved = false;
         try {
-            FileOutputStream out = new FileOutputStream(f);
-            bm.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out = new FileOutputStream(f);
+            saved = bm.compress(Bitmap.CompressFormat.PNG, 100, out);
             out.flush();
-            out.close();
-            path = f.getAbsolutePath();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            LogUtils.e(e);
+            //compress may have succeeded before flush failed
+            saved = false;
+        } finally {
+            IOUtils.close(out);
         }
-        return path;
+        if (!saved) {
+            f.delete();
+            return null;
+        }
+        return f.getAbsolutePath();
     }
 }
