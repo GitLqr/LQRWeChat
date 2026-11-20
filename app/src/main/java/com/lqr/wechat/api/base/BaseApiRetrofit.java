@@ -27,6 +27,9 @@ import okhttp3.ResponseBody;
 
 public class BaseApiRetrofit {
 
+    //How long a cached response may still be used while offline
+    private static final int OFFLINE_MAX_STALE_DAYS = 28;
+
     private final OkHttpClient mClient;
 
     public OkHttpClient getClient() {
@@ -52,7 +55,9 @@ public class BaseApiRetrofit {
         //OkHttpClient
         mClient = new OkHttpClient.Builder()
                 .addInterceptor(REWRITE_HEADER_CONTROL_INTERCEPTOR)
-                .addInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR)
+                .addInterceptor(OFFLINE_CACHE_INTERCEPTOR)
+                //Must be a network interceptor: only then is the rewritten response what gets stored in the cache
+                .addNetworkInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR)
                 .addInterceptor(new LoggingInterceptor())
 //                .addInterceptor(loggingInterceptor)//设置 Debug Log 模式
                 .cache(cache)
@@ -74,37 +79,42 @@ public class BaseApiRetrofit {
         return chain.proceed(request);
     };
 
-    //cache配置
-    Interceptor REWRITE_CACHE_CONTROL_INTERCEPTOR = chain -> {
-
-        //通过 CacheControl 控制缓存数据
-        CacheControl.Builder cacheBuilder = new CacheControl.Builder();
-        cacheBuilder.maxAge(0, TimeUnit.SECONDS);//这个是控制缓存的最大生命时间
-        cacheBuilder.maxStale(365, TimeUnit.DAYS);//这个是控制缓存的过时时间
-        CacheControl cacheControl = cacheBuilder.build();
-
-        //设置拦截器
+    //Offline: accept a stale cached response instead of failing right away
+    Interceptor OFFLINE_CACHE_INTERCEPTOR = chain -> {
         Request request = chain.request();
         if (!NetUtils.isNetworkAvailable(MyApp.getContext())) {
+            CacheControl cacheControl = new CacheControl.Builder()
+                    .maxStale(OFFLINE_MAX_STALE_DAYS, TimeUnit.DAYS)
+                    .build();
             request = request.newBuilder()
                     .cacheControl(cacheControl)
                     .build();
         }
+        return chain.proceed(request);
+    };
 
-        Response originalResponse = chain.proceed(request);
-        if (NetUtils.isNetworkAvailable(MyApp.getContext())) {
-            int maxAge = 0;//read from cache
-            return originalResponse.newBuilder()
-                    .removeHeader("Pragma")
-                    .header("Cache-Control", "public ,max-age=" + maxAge)
-                    .build();
-        } else {
-            int maxStale = 60 * 60 * 24 * 28;//tolerate 4-weeks stale
-            return originalResponse.newBuilder()
-                    .removeHeader("Prama")
-                    .header("Cache-Control", "poublic, only-if-cached, max-stale=" + maxStale)
+    //Make successful GETs cacheable (max-age=0 still sends online requests to the network) and mark the rest
+    //no-store: OkHttp caches some of them by default, and offline max-stale would replay a cached Set-Cookie
+    //into the cookie jar. ETag/Last-Modified are dropped so a 304 cannot merge a Set-Cookie into the cache.
+    Interceptor REWRITE_CACHE_CONTROL_INTERCEPTOR = chain -> {
+        Response response = chain.proceed(chain.request());
+        if (!"GET".equals(chain.request().method())) {
+            //OkHttp only caches GET
+            return response;
+        }
+        if (!response.isSuccessful()
+                || response.header("Set-Cookie") != null
+                || response.cacheControl().noStore()) {
+            return response.newBuilder()
+                    .header("Cache-Control", "no-store")
                     .build();
         }
+        return response.newBuilder()
+                .removeHeader("Pragma")
+                .removeHeader("ETag")
+                .removeHeader("Last-Modified")
+                .header("Cache-Control", "public, max-age=0")
+                .build();
     };
 
     class LoggingInterceptor implements Interceptor {
