@@ -267,14 +267,7 @@ public class ApiRetrofit extends BaseApiRetrofit {
     }
 
     public Observable<GetUserInfosResponse> getUserInfos(List<String> ids) {
-        StringBuilder sb = new StringBuilder();
-        for (String s : ids) {
-            sb.append("id=");
-            sb.append(s);
-            sb.append("&");
-        }
-        String stringRequest = sb.substring(0, sb.length() - 1);
-        return mApi.getUserInfos(stringRequest);
+        return mApi.getUserInfos(ids);
     }
 
     //其他

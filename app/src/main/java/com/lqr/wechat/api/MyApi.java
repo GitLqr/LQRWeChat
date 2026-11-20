@@ -39,12 +39,15 @@ import com.lqr.wechat.model.response.UserRelationshipResponse;
 import com.lqr.wechat.model.response.VerifyCodeResponse;
 import com.lqr.wechat.model.response.VersionResponse;
 
+import java.util.List;
+
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.Url;
 import rx.Observable;
 
@@ -195,8 +198,8 @@ public interface MyApi {
     Observable<DefaultConversationResponse> getDefaultConversation();
 
     //根据一组ids 获取 一组用户信息
-    @GET("user/batch?{params}")
-    Observable<GetUserInfosResponse> getUserInfos(@Path("params") String params);
+    @GET("user/batch")
+    Observable<GetUserInfosResponse> getUserInfos(@Query("id") List<String> ids);
 
     //得到七牛的token
     @GET("user/get_image_token")
