@@ -30,6 +30,10 @@ public class BaseApiRetrofit {
 
     //How long a cached response may still be used while offline
     private static final int OFFLINE_MAX_STALE_DAYS = 28;
+    //Explicit instead of OkHttp's implicit 10s defaults, with more time to transfer bodies such as images on slow networks
+    private static final int CONNECT_TIMEOUT_SECONDS = 15;
+    private static final int READ_TIMEOUT_SECONDS = 30;
+    private static final int WRITE_TIMEOUT_SECONDS = 30;
 
     private final OkHttpClient mClient;
 
@@ -55,6 +59,9 @@ public class BaseApiRetrofit {
 
         //OkHttpClient
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
+                .connectTimeout(CONNECT_TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .readTimeout(READ_TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .writeTimeout(WRITE_TIMEOUT_SECONDS, TimeUnit.SECONDS)
                 .addInterceptor(REWRITE_HEADER_CONTROL_INTERCEPTOR)
                 .addInterceptor(OFFLINE_CACHE_INTERCEPTOR)
                 //Must be a network interceptor: only then is the rewritten response what gets stored in the cache
