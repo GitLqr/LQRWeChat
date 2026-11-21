@@ -2,7 +2,6 @@ package com.lqr.wechat.app;
 
 
 import com.lqr.wechat.util.FileUtils;
-import com.lqr.wechat.util.LogUtils;
 
 /**
  * @创建者 GitLqr
@@ -11,7 +10,6 @@ import com.lqr.wechat.util.LogUtils;
 public class AppConst {
 
     public static final String TAG = "GitLqr";
-    public static final int DEBUGLEVEL = LogUtils.LEVEL_ALL;//日志输出级别
 
     public static final String REGION = "86";
 

@@ -3,6 +3,7 @@ package com.lqr.wechat.util;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.lqr.wechat.BuildConfig;
 import com.lqr.wechat.app.AppConst;
 
 import java.util.List;
@@ -55,7 +56,9 @@ public class LogUtils {
     /**
      * 是否允许输出log
      */
-    private static int mDebuggable = AppConst.DEBUGLEVEL;
+    //Release builds log nothing: network logs include response bodies and cookies.
+    //Decided here rather than in AppConst, whose static init needs the app context
+    private static int mDebuggable = BuildConfig.DEBUG ? LEVEL_ALL : LEVEL_OFF;
 
     /**
      * 用于记时的变量

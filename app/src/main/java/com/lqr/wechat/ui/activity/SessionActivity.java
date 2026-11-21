@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +40,7 @@ import com.lqr.wechat.ui.base.BaseFragmentActivity;
 import com.lqr.wechat.ui.presenter.SessionAtPresenter;
 import com.lqr.wechat.ui.view.ISessionAtView;
 import com.lqr.wechat.util.ImageUtils;
+import com.lqr.wechat.util.LogUtils;
 import com.lqr.wechat.util.UIUtils;
 
 import java.io.File;
@@ -441,7 +441,7 @@ public class SessionActivity extends BaseFragmentActivity<ISessionAtView, Sessio
                     if (images == null) {
                         break;
                     }
-                    Log.e("GitLqr", isOrig ? "发原图" : "不发原图");//若不发原图的话，需要在自己在项目中做好压缩图片算法
+                    LogUtils.d(isOrig ? "发原图" : "不发原图");//若不发原图的话，需要在自己在项目中做好压缩图片算法
                     for (ImageItem imageItem : images) {
                         File imageFileThumb;
                         File imageFileSource;

@@ -13,6 +13,7 @@ import com.lqr.emoji.LQREmotionKit;
 import com.lqr.imagepicker.ImagePicker;
 import com.lqr.imagepicker.loader.ImageLoader;
 import com.lqr.imagepicker.view.CropImageView;
+import com.lqr.wechat.BuildConfig;
 import com.lqr.wechat.api.redpacket.SignService;
 import com.lqr.wechat.app.base.BaseApp;
 import com.lqr.wechat.db.DBManager;
@@ -393,8 +394,8 @@ public class MyApp extends BaseApp implements RongIMClient.OnReceiveMessageListe
                 return RedPacketUtil.getCurrentUserInfo();
             }
         });
-        //开启红包相关日志输出
-        RedPacket.getInstance().setDebugMode(true);
+        //Red packet SDK logs only in debug builds
+        RedPacket.getInstance().setDebugMode(BuildConfig.DEBUG);
     }
 
     /**

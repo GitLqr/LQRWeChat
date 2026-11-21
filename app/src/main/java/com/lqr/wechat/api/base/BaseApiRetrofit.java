@@ -1,5 +1,6 @@
 package com.lqr.wechat.api.base;
 
+import com.lqr.wechat.BuildConfig;
 import com.lqr.wechat.api.base.persistentcookiejar.ClearableCookieJar;
 import com.lqr.wechat.api.base.persistentcookiejar.PersistentCookieJar;
 import com.lqr.wechat.api.base.persistentcookiejar.cache.SetCookieCache;
@@ -53,16 +54,19 @@ public class BaseApiRetrofit {
                 new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApp.getContext()));
 
         //OkHttpClient
-        mClient = new OkHttpClient.Builder()
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .addInterceptor(REWRITE_HEADER_CONTROL_INTERCEPTOR)
                 .addInterceptor(OFFLINE_CACHE_INTERCEPTOR)
                 //Must be a network interceptor: only then is the rewritten response what gets stored in the cache
                 .addNetworkInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR)
-                .addInterceptor(new LoggingInterceptor())
 //                .addInterceptor(loggingInterceptor)//设置 Debug Log 模式
                 .cache(cache)
-                .cookieJar(cookieJar)
-                .build();
+                .cookieJar(cookieJar);
+        //It logs headers (cookies included) and response bodies, and peeks up to 1 MiB of every body, so debug builds only
+        if (BuildConfig.DEBUG) {
+            builder.addInterceptor(new LoggingInterceptor());
+        }
+        mClient = builder.build();
     }
 
     //header配置
