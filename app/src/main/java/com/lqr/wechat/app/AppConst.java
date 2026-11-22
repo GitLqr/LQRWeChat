@@ -16,6 +16,8 @@ public class AppConst {
     /*================== 广播Action begin ==================*/
     //全局数据获取
     public static final String FETCH_COMPLETE = "fetch_complete";
+    //String extra of FETCH_COMPLETE when the sync failed
+    public static final String FETCH_FAILED = "fetch_failed";
     //好友
     public static final String UPDATE_FRIEND = "update_friend";
     public static final String UPDATE_RED_DOT = "update_red_dot";

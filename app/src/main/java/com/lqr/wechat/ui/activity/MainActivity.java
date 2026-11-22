@@ -306,6 +306,9 @@ public class MainActivity extends BaseActivity<IMainAtView, MainAtPresenter> imp
             @Override
             public void onReceive(Context context, Intent intent) {
                 hideWaitingDialog();
+                if (AppConst.FETCH_FAILED.equals(intent.getStringExtra("String"))) {
+                    UIUtils.showToast(UIUtils.getString(R.string.load_error));
+                }
             }
         });
     }

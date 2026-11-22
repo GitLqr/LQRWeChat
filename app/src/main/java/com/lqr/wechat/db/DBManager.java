@@ -66,6 +66,8 @@ public class DBManager {
      */
     public void getAllUserInfo() {
         if (!NetUtils.isNetworkAvailable(UIUtils.getContext())) {
+            //MainActivity waits for FETCH_COMPLETE behind a non-cancelable dialog
+            onFetchComplete(false);
             return;
         }
         mHasFetchedFriends = false;
@@ -76,7 +78,10 @@ public class DBManager {
         Observable.zip(fetchFriends().subscribeOn(Schedulers.io()),
                 fetchGroups().subscribeOn(Schedulers.io()),
                 (friendsOk, groupsOk) -> friendsOk && groupsOk)
-                .subscribe(success -> onFetchComplete(), this::loadError);
+                .subscribe(this::onFetchComplete, throwable -> {
+                    loadError(throwable);
+                    onFetchComplete(false);
+                });
     }
 
     /**
@@ -162,8 +167,8 @@ public class DBManager {
         return false;
     }
 
-    private void onFetchComplete() {
-        BroadcastManager.getInstance(UIUtils.getContext()).sendBroadcast(AppConst.FETCH_COMPLETE);
+    private void onFetchComplete(boolean success) {
+        BroadcastManager.getInstance(UIUtils.getContext()).sendBroadcast(AppConst.FETCH_COMPLETE, success ? "" : AppConst.FETCH_FAILED);
         notifyFetchedDataChanged();
     }
 
