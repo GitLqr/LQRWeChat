@@ -13,21 +13,27 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
  */
 public class PinyinUtils {
 
+    //Only read after init, so one shared instance is enough
+    private static final HanyuPinyinOutputFormat FORMAT = new HanyuPinyinOutputFormat();
+
+    static {
+        FORMAT.setCaseType(HanyuPinyinCaseType.UPPERCASE);
+        FORMAT.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
+    }
+
     /**
      * 根据传入的字符串(包含汉字),得到拼音
      * 沧晓 -> CANGXIAO
-     * 沧  晓*& -> CANGXIAO
-     * 沧晓f5 -> CANGXIAO
+     * 沧  晓*& -> CANGXIAO*&
+     * 沧晓f5 -> CANGXIAOf5
      *
      * @param str 字符串
-     * @return
+     * @return the pinyin, or "" for null
      */
     public static String getPinyin(String str) {
-
-        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
-        format.setCaseType(HanyuPinyinCaseType.UPPERCASE);
-        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
-
+        if (str == null) {
+            return "";
+        }
         StringBuilder sb = new StringBuilder();
 
         char[] charArray = str.toCharArray();
@@ -37,19 +43,23 @@ public class PinyinUtils {
             if (Character.isWhitespace(c)) {
                 continue;
             }
-            if (c >= -127 && c < 128 || !(c >= 0x4E00 && c <= 0x9FA5)) {
+            if (c < 0x4E00 || c > 0x9FA5) {
                 // 肯定不是汉字
                 sb.append(c);
+                continue;
+            }
+            String[] pinyins = null;
+            try {
+                // 通过char得到拼音集合. 单 -> dan, shan
+                pinyins = PinyinHelper.toHanyuPinyinStringArray(c, FORMAT);
+            } catch (BadHanyuPinyinOutputFormatCombination e) {
+                e.printStackTrace();
+            }
+            //Some chars in the range have no pinyin and get null; keep them as is
+            if (pinyins == null || pinyins.length == 0) {
+                sb.append(c);
             } else {
-                String s = "";
-                try {
-                    // 通过char得到拼音集合. 单 -> dan, shan 
-                    s = PinyinHelper.toHanyuPinyinStringArray(c, format)[0];
-                    sb.append(s);
-                } catch (BadHanyuPinyinOutputFormatCombination e) {
-                    e.printStackTrace();
-                    sb.append(s);
-                }
+                sb.append(pinyins[0]);
             }
         }
 
