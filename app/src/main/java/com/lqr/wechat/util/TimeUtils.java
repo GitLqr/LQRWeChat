@@ -19,20 +19,26 @@ public class TimeUtils {
      * @return
      */
     public static String getMsgFormatTime(long msgTimeMillis) {
-        DateTime nowTime = new DateTime();
-//        LogUtils.sf("nowTime = " + nowTime);
+        return getMsgFormatTime(msgTimeMillis, System.currentTimeMillis());
+    }
+
+    /**
+     * @param nowMillis passed in so the result can be unit tested
+     */
+    public static String getMsgFormatTime(long msgTimeMillis, long nowMillis) {
         DateTime msgTime = new DateTime(msgTimeMillis);
-//        LogUtils.sf("msgTime = " + msgTime);
-        int days = Math.abs(Days.daysBetween(msgTime, nowTime).getDays());
-//        LogUtils.sf("days = " + days);
-        if (days < 1) {
+        DateTime nowTime = new DateTime(nowMillis);
+        //Compare calendar dates: Days.daysBetween on DateTime counts whole 24-hour periods,
+        //so 23:00 yesterday would still be "today" at 01:00
+        int days = Days.daysBetween(msgTime.toLocalDate(), nowTime.toLocalDate()).getDays();
+        if (days == 0) {
             //早上、下午、晚上 1:40
             return getTime(msgTime);
         } else if (days == 1) {
             //昨天
             return "昨天 " + getTime(msgTime);
-        } else if (days <= 7) {
-            //星期
+        } else if (days > 1 && days < 7) {
+            //Weekday, but not for 7 days ago, which would repeat today's weekday
             switch (msgTime.getDayOfWeek()) {
                 case DateTimeConstants.SUNDAY:
                     return "周日 " + getTime(msgTime);
@@ -52,7 +58,9 @@ public class TimeUtils {
             return "";
         } else {
             //12月22日
-            return msgTime.toString("MM月dd日 " + getTime(msgTime));
+            //A future date (the sender's clock is ahead) also lands here instead of showing "yesterday"
+            String datePattern = msgTime.getYear() == nowTime.getYear() ? "MM月dd日" : "yyyy年MM月dd日";
+            return msgTime.toString(datePattern) + " " + getTime(msgTime);
         }
     }
 
