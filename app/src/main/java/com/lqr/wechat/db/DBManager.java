@@ -39,9 +39,10 @@ import rx.schedulers.Schedulers;
 public class DBManager {
 
     private static DBManager mInstance;
-    private boolean mHasFetchedFriends = false;
-    private boolean mHasFetchedGroups = false;
-    private boolean mHasFetchedGroupMembers = false;
+    //Written on io threads and read from wherever getGroups/getGroupMember are called
+    private volatile boolean mHasFetchedFriends = false;
+    private volatile boolean mHasFetchedGroups = false;
+    private volatile boolean mHasFetchedGroupMembers = false;
     private LinkedHashMap<String, UserInfo> mUserInfoCache;
     private List<Groups> mGroupsList;
 
@@ -67,120 +68,116 @@ public class DBManager {
         if (!NetUtils.isNetworkAvailable(UIUtils.getContext())) {
             return;
         }
-        fetchFriends();
-        fetchGroups();
+        mHasFetchedFriends = false;
+        mHasFetchedGroups = false;
+        mHasFetchedGroupMembers = false;
+        //zip waits for both parts, and the group part only ends after every group's members are saved,
+        //so FETCH_COMPLETE goes out exactly once
+        Observable.zip(fetchFriends().subscribeOn(Schedulers.io()),
+                fetchGroups().subscribeOn(Schedulers.io()),
+                (friendsOk, groupsOk) -> friendsOk && groupsOk)
+                .subscribe(success -> onFetchComplete(), this::loadError);
     }
 
     /**
      * 同步朋友信息
+     *
+     * @return emits whether the sync succeeded; errors are turned into false
      */
-    private void fetchFriends() {
-        mHasFetchedFriends = false;
-        ApiRetrofit.getInstance().getAllUserRelationship()
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
-                .subscribe(userRelationshipResponse -> {
-                    if (userRelationshipResponse != null && userRelationshipResponse.getCode() == 200) {
-                        List<UserRelationshipResponse.ResultEntity> list = userRelationshipResponse.getResult();
-                        if (list != null && list.size() > 0) {
-                            deleteFriends();
-                            saveFriends(list);
-                        }
-                        mHasFetchedFriends = true;
-                        checkFetchComplete();
-                    } else {
-                        mHasFetchedFriends = true;
-                        checkFetchComplete();
+    private Observable<Boolean> fetchFriends() {
+        return ApiRetrofit.getInstance().getAllUserRelationship()
+                .map(userRelationshipResponse -> {
+                    if (userRelationshipResponse == null || userRelationshipResponse.getCode() != 200) {
+                        return false;
                     }
-                }, this::fetchFriendError);
+                    List<UserRelationshipResponse.ResultEntity> list = userRelationshipResponse.getResult();
+                    if (list != null && list.size() > 0) {
+                        deleteFriends();
+                        saveFriends(list);
+                    }
+                    return true;
+                })
+                .onErrorReturn(this::fetchError)
+                .doOnNext(success -> mHasFetchedFriends = true);
     }
 
     /**
-     * 同步群组信息
+     * Sync the groups, then the members of every group
+     *
+     * @return emits whether the sync succeeded; errors are turned into false
      */
-    private void fetchGroups() {
-        mHasFetchedGroups = false;
-        ApiRetrofit.getInstance().getGroups()
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
-                .subscribe(getGroupResponse -> {
-                    if (getGroupResponse != null && getGroupResponse.getCode() == 200) {
-                        List<GetGroupResponse.ResultEntity> list = getGroupResponse.getResult();
-                        if (list != null && list.size() > 0) {
-                            deleteGroups();
-                            saveGroups(list);
-                            //同步群组成员信息
-                            fetchGroupMembers();
-                        } else {
-                            mHasFetchedGroupMembers = true;
-                        }
-                        mHasFetchedGroups = true;
-                        checkFetchComplete();
-                    } else {
-                        mHasFetchedGroups = true;
-                        mHasFetchedGroupMembers = true;
-                        checkFetchComplete();
+    private Observable<Boolean> fetchGroups() {
+        return ApiRetrofit.getInstance().getGroups()
+                .flatMap(getGroupResponse -> {
+                    if (getGroupResponse == null || getGroupResponse.getCode() != 200) {
+                        return Observable.just(false);
                     }
-                }, this::fetchGroupsError);
+                    List<GetGroupResponse.ResultEntity> list = getGroupResponse.getResult();
+                    if (list == null || list.size() == 0) {
+                        return Observable.just(true);
+                    }
+                    deleteGroups();
+                    saveGroups(list);
+                    //Set before the members are done, so a group notice during the member sync
+                    //only refreshes that group instead of starting another full group sync
+                    mHasFetchedGroups = true;
+                    //同步群组成员信息
+                    return fetchGroupMembers();
+                })
+                .onErrorReturn(this::fetchError)
+                .doOnNext(success -> {
+                    mHasFetchedGroups = true;
+                    mHasFetchedGroupMembers = true;
+                });
     }
 
     /**
      * 同步群组成员信息
+     *
+     * @return emits once after all groups are done, true only if every group succeeded
      */
-    private void fetchGroupMembers() {
-        mHasFetchedGroupMembers = false;
-        Observable.from(getGroups())
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
-                .subscribe(groups ->
-                        ApiRetrofit.getInstance().getGroupMember(groups.getGroupId())
-                                .subscribe(getGroupMemberResponse -> {
-                                    if (getGroupMemberResponse != null && getGroupMemberResponse.getCode() == 200) {
-                                        List<GetGroupMemberResponse.ResultEntity> list = getGroupMemberResponse.getResult();
-                                        if (list != null && list.size() > 0) {
-                                            deleteGroupMembersByGroupId(groups.getGroupId());
-                                            saveGroupMembers(list, groups.getGroupId());
-                                        }
-                                        mHasFetchedGroupMembers = true;
-                                        checkFetchComplete();
-                                    } else {
-                                        mHasFetchedGroupMembers = true;
-                                        checkFetchComplete();
-                                    }
-                                }, this::fetchGroupMembersError));
+    private Observable<Boolean> fetchGroupMembers() {
+        //defer: read the groups from the db when subscribed (on io), not when the chain is built
+        return Observable.defer(() -> Observable.from(getGroups()))
+                .concatMap(groups -> ApiRetrofit.getInstance().getGroupMember(groups.getGroupId())
+                        .map(getGroupMemberResponse -> {
+                            if (getGroupMemberResponse == null || getGroupMemberResponse.getCode() != 200) {
+                                return false;
+                            }
+                            List<GetGroupMemberResponse.ResultEntity> list = getGroupMemberResponse.getResult();
+                            if (list != null && list.size() > 0) {
+                                deleteGroupMembersByGroupId(groups.getGroupId());
+                                saveGroupMembers(list, groups.getGroupId());
+                            }
+                            return true;
+                        })
+                        .onErrorReturn(this::fetchError))
+                .toList()
+                .map(results -> !results.contains(false))
+                .doOnNext(success -> mHasFetchedGroupMembers = true);
     }
 
-    private void fetchFriendError(Throwable throwable) {
+    private boolean fetchError(Throwable throwable) {
         LogUtils.sf(throwable.getLocalizedMessage());
-        mHasFetchedFriends = true;
-        checkFetchComplete();
+        return false;
     }
 
-    private void fetchGroupsError(Throwable throwable) {
-        LogUtils.sf(throwable.getLocalizedMessage());
-        mHasFetchedGroups = true;
-        mHasFetchedGroupMembers = true;
-        checkFetchComplete();
+    private void onFetchComplete() {
+        BroadcastManager.getInstance(UIUtils.getContext()).sendBroadcast(AppConst.FETCH_COMPLETE);
+        notifyFetchedDataChanged();
     }
 
-    private void fetchGroupMembersError(Throwable throwable) {
-        LogUtils.sf(throwable.getLocalizedMessage());
-        mHasFetchedGroupMembers = true;
-        checkFetchComplete();
-    }
-
-    private void checkFetchComplete() {
-        if (mHasFetchedFriends && mHasFetchedGroups && mHasFetchedGroupMembers) {
-            BroadcastManager.getInstance(UIUtils.getContext()).sendBroadcast(AppConst.FETCH_COMPLETE);
-            BroadcastManager.getInstance(UIUtils.getContext()).sendBroadcast(AppConst.UPDATE_FRIEND);
-            BroadcastManager.getInstance(UIUtils.getContext()).sendBroadcast(AppConst.UPDATE_GROUP);
-            BroadcastManager.getInstance(UIUtils.getContext()).sendBroadcast(AppConst.UPDATE_CONVERSATIONS);
-        }
+    private void notifyFetchedDataChanged() {
+        BroadcastManager.getInstance(UIUtils.getContext()).sendBroadcast(AppConst.UPDATE_FRIEND);
+        BroadcastManager.getInstance(UIUtils.getContext()).sendBroadcast(AppConst.UPDATE_GROUP);
+        BroadcastManager.getInstance(UIUtils.getContext()).sendBroadcast(AppConst.UPDATE_CONVERSATIONS);
     }
 
     public void getGroups(String groupId) {
         if (!mHasFetchedGroups) {
-            fetchGroups();
+            fetchGroups()
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(success -> notifyFetchedDataChanged(), this::loadError);
         } else {
             ApiRetrofit.getInstance().getGroupInfo(groupId)
                     .subscribeOn(Schedulers.io())
@@ -202,7 +199,9 @@ public class DBManager {
         if (!mHasFetchedGroupMembers) {
             deleteGroupMembers();
             mGroupsList = getGroups();
-            fetchGroupMembers();
+            fetchGroupMembers()
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(success -> notifyFetchedDataChanged(), this::loadError);
         } else {
             ApiRetrofit.getInstance().getGroupMember(groupId)
                     .subscribeOn(Schedulers.io())
