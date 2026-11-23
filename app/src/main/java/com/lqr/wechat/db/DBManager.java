@@ -257,14 +257,14 @@ public class DBManager {
             if (friend.isExitsDisplayName()) {
                 name = friend.getDisplayName();
             }
-            userInfo = new UserInfo(friend.getUserId(), name, Uri.parse(friend.getPortraitUri()));
+            userInfo = new UserInfo(friend.getUserId(), name, parsePortraitUri(friend.getPortraitUri()));
             return userInfo;
         }
 
         List<GroupMember> groupMembers = getGroupMembersWithUserId(userid);
         if (groupMembers != null && groupMembers.size() > 0) {
             GroupMember groupMember = groupMembers.get(0);
-            userInfo = new UserInfo(groupMember.getUserId(), groupMember.getName(), Uri.parse(groupMember.getPortraitUri()));
+            userInfo = new UserInfo(groupMember.getUserId(), groupMember.getName(), parsePortraitUri(groupMember.getPortraitUri()));
             return userInfo;
         }
 
@@ -607,19 +607,32 @@ public class DBManager {
 //
 
     /**
+     * Uri.parse(null) throws; an empty Uri keeps callers' getPortraitUri().toString() working
+     * and lets getPortraitUri(UserInfo) generate the default avatar
+     */
+    private static Uri parsePortraitUri(String portraitUri) {
+        return Uri.parse(portraitUri == null ? "" : portraitUri);
+    }
+
+    private static String portraitUriToString(UserInfo userInfo) {
+        return userInfo.getPortraitUri() == null ? "" : userInfo.getPortraitUri().toString();
+    }
+
+    /**
      * 获取用户头像,头像为空时会生成默认的头像,此默认头像可能已经存在数据库中,不重新生成
      * 先从缓存读,再从数据库读
      */
     private String getPortrait(Friend friend) {
         if (friend != null) {
-            if (TextUtils.isEmpty(friend.getPortraitUri().toString())) {
+            if (TextUtils.isEmpty(friend.getPortraitUri())) {
                 if (TextUtils.isEmpty(friend.getUserId())) {
                     return null;
                 } else {
                     UserInfo userInfo = mUserInfoCache.get(friend.getUserId());
                     if (userInfo != null) {
-                        if (!TextUtils.isEmpty(userInfo.getPortraitUri().toString())) {
-                            return userInfo.getPortraitUri().toString();
+                        String cachedPortrait = portraitUriToString(userInfo);
+                        if (!TextUtils.isEmpty(cachedPortrait)) {
+                            return cachedPortrait;
                         } else {
                             mUserInfoCache.remove(friend.getUserId());
                         }
@@ -641,7 +654,7 @@ public class DBManager {
                     return portrait;
                 }
             } else {
-                return friend.getPortraitUri().toString();
+                return friend.getPortraitUri();
             }
         }
         return null;
@@ -649,29 +662,30 @@ public class DBManager {
 
     private String getPortrait(GroupMember groupMember) {
         if (groupMember != null) {
-            if (TextUtils.isEmpty(groupMember.getPortraitUri().toString())) {
+            if (TextUtils.isEmpty(groupMember.getPortraitUri())) {
                 if (TextUtils.isEmpty(groupMember.getUserId())) {
                     return null;
                 } else {
                     UserInfo userInfo = mUserInfoCache.get(groupMember.getUserId());
                     if (userInfo != null) {
-                        if (!TextUtils.isEmpty(userInfo.getPortraitUri().toString())) {
-                            return userInfo.getPortraitUri().toString();
+                        String cachedPortrait = portraitUriToString(userInfo);
+                        if (!TextUtils.isEmpty(cachedPortrait)) {
+                            return cachedPortrait;
                         } else {
                             mUserInfoCache.remove(groupMember.getUserId());
                         }
                     }
                     Friend friend = getFriendById(groupMember.getUserId());
                     if (friend != null) {
-                        if (!TextUtils.isEmpty(friend.getPortraitUri().toString())) {
-                            return friend.getPortraitUri().toString();
+                        if (!TextUtils.isEmpty(friend.getPortraitUri())) {
+                            return friend.getPortraitUri();
                         }
                     }
                     List<GroupMember> groupMemberList = getGroupMembersWithUserId(groupMember.getUserId());
                     if (groupMemberList != null && groupMemberList.size() > 0) {
                         GroupMember member = groupMemberList.get(0);
-                        if (!TextUtils.isEmpty(member.getPortraitUri().toString())) {
-                            return member.getPortraitUri().toString();
+                        if (!TextUtils.isEmpty(member.getPortraitUri())) {
+                            return member.getPortraitUri();
                         }
                     }
                     String portrait = RongGenerate.generateDefaultAvatar(groupMember.getName(), groupMember.getUserId());
@@ -680,7 +694,7 @@ public class DBManager {
                     return portrait;
                 }
             } else {
-                return groupMember.getPortraitUri().toString();
+                return groupMember.getPortraitUri();
             }
         }
         return null;
