@@ -36,9 +36,29 @@ public class BaseApiRetrofit {
     private static final int WRITE_TIMEOUT_SECONDS = 30;
 
     private final OkHttpClient mClient;
+    private final ClearableCookieJar mCookieJar;
 
     public OkHttpClient getClient() {
         return mClient;
+    }
+
+    /**
+     * Call on logout, so the next account does not reuse this session
+     */
+    public void clearCookies() {
+        mCookieJar.clear();
+    }
+
+    /**
+     * Call on logout: cached GET responses (friends, groups...) belong to this account
+     * and would otherwise be served to the next one while offline
+     */
+    public void clearResponseCache() {
+        try {
+            mClient.cache().evictAll();
+        } catch (IOException e) {
+            LogUtils.e(e);
+        }
     }
 
     public BaseApiRetrofit() {
@@ -54,8 +74,7 @@ public class BaseApiRetrofit {
         Cache cache = new Cache(httpCacheDir, cacheSize);
 
         //cookie
-        ClearableCookieJar cookieJar =
-                new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApp.getContext()));
+        mCookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApp.getContext()));
 
         //OkHttpClient
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
@@ -68,7 +87,7 @@ public class BaseApiRetrofit {
                 .addNetworkInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR)
 //                .addInterceptor(loggingInterceptor)//设置 Debug Log 模式
                 .cache(cache)
-                .cookieJar(cookieJar);
+                .cookieJar(mCookieJar);
         //It logs headers (cookies included) and response bodies, and peeks up to 1 MiB of every body, so debug builds only
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(new LoggingInterceptor());

@@ -30,6 +30,7 @@ import java.util.List;
 
 import io.rong.imlib.model.UserInfo;
 import rx.Observable;
+import rx.Subscription;
 import rx.schedulers.Schedulers;
 
 /**
@@ -44,7 +45,7 @@ public class DBManager {
     private volatile boolean mHasFetchedGroups = false;
     private volatile boolean mHasFetchedGroupMembers = false;
     private LinkedHashMap<String, UserInfo> mUserInfoCache;
-    private List<Groups> mGroupsList;
+    private Subscription mFetchSubscription;
 
     public DBManager() {
         mUserInfoCache = new LinkedHashMap<>();
@@ -75,7 +76,7 @@ public class DBManager {
         mHasFetchedGroupMembers = false;
         //zip waits for both parts, and the group part only ends after every group's members are saved,
         //so FETCH_COMPLETE goes out exactly once
-        Observable.zip(fetchFriends().subscribeOn(Schedulers.io()),
+        mFetchSubscription = Observable.zip(fetchFriends().subscribeOn(Schedulers.io()),
                 fetchGroups().subscribeOn(Schedulers.io()),
                 (friendsOk, groupsOk) -> friendsOk && groupsOk)
                 .subscribe(this::onFetchComplete, throwable -> {
@@ -203,7 +204,6 @@ public class DBManager {
     public void getGroupMember(String groupId) {
         if (!mHasFetchedGroupMembers) {
             deleteGroupMembers();
-            mGroupsList = getGroups();
             fetchGroupMembers()
                     .subscribeOn(Schedulers.io())
                     .subscribe(success -> notifyFetchedDataChanged(), this::loadError);
@@ -274,7 +274,13 @@ public class DBManager {
     /**
      * 清除所有用户数据
      */
-    public void deleteAllUserInfo() {
+    public synchronized void deleteAllUserInfo() {
+        //Stop a running sync first so it does not write this account's data back after the delete;
+        //unsubscribing also cancels the in-flight Retrofit call (a save already running may still finish)
+        if (mFetchSubscription != null) {
+            mFetchSubscription.unsubscribe();
+            mFetchSubscription = null;
+        }
 //        deleteFriends();
 //        deleteGroups();
 //        deleteGroupMembers();
@@ -282,6 +288,11 @@ public class DBManager {
         DataSupport.deleteAll(GroupMember.class);
         DataSupport.deleteAll(Groups.class);
         //TODO:删除黑名单数据
+        //The in-memory state outlives the account, so the next account would still see this one's data
+        mUserInfoCache.clear();
+        mHasFetchedFriends = false;
+        mHasFetchedGroups = false;
+        mHasFetchedGroupMembers = false;
     }
 
     public boolean isMyFriend(String userid) {
@@ -405,18 +416,18 @@ public class DBManager {
     }
 
     public synchronized void saveGroups(List<GetGroupResponse.ResultEntity> list) {
+        List<Groups> groupsList = new ArrayList<>();
         if (list != null && list.size() > 0) {
-            mGroupsList = new ArrayList<>();
             for (GetGroupResponse.ResultEntity groups : list) {
                 String portrait = groups.getGroup().getPortraitUri();
                 if (TextUtils.isEmpty(portrait)) {
                     portrait = RongGenerate.generateDefaultAvatar(groups.getGroup().getName(), groups.getGroup().getId());
                 }
-                mGroupsList.add(new Groups(groups.getGroup().getId(), groups.getGroup().getName(), portrait, String.valueOf(groups.getRole())));
+                groupsList.add(new Groups(groups.getGroup().getId(), groups.getGroup().getName(), portrait, String.valueOf(groups.getRole())));
             }
         }
-        if (mGroupsList.size() > 0)
-            DataSupport.saveAll(mGroupsList);
+        if (groupsList.size() > 0)
+            DataSupport.saveAll(groupsList);
     }
 
     public synchronized void deleteGroups() {

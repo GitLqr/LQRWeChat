@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.lqr.optionitemview.OptionItemView;
 import com.lqr.wechat.R;
+import com.lqr.wechat.api.ApiRetrofit;
 import com.lqr.wechat.app.AppConst;
 import com.lqr.wechat.app.MyApp;
 import com.lqr.wechat.model.cache.UserCache;
@@ -41,6 +42,8 @@ public class SettingActivity extends BaseActivity {
                 mExitView.findViewById(R.id.tvExitAccount).setOnClickListener(v1 -> {
                     RongIMClient.getInstance().logout();
                     UserCache.clear();
+                    ApiRetrofit.getInstance().clearCookies();
+                    ApiRetrofit.getInstance().clearResponseCache();
                     mExitDialog.dismiss();
                     jumpToActivityAndClearTask(LoginActivity.class);
                 });
