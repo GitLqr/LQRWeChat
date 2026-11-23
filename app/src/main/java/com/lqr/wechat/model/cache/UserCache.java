@@ -11,28 +11,37 @@ import com.lqr.wechat.util.UIUtils;
  */
 public class UserCache {
 
+    private static SPUtils sp() {
+        return SPUtils.getInstance(UIUtils.getContext());
+    }
+
     public static String getId() {
-        return SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.User.ID, "");
+        return sp().getString(AppConst.User.ID, "");
     }
 
     public static String getPhone() {
-        return SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.User.PHONE, "");
+        return sp().getString(AppConst.User.PHONE, "");
     }
 
     public static String getToken() {
-        return SPUtils.getInstance(UIUtils.getContext()).getString(AppConst.User.TOKEN, "");
+        return sp().getString(AppConst.User.TOKEN, "");
     }
 
-    public static void save(String id, String account, String token) {
-        SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.User.ID, id);
-        SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.User.PHONE, account);
-        SPUtils.getInstance(UIUtils.getContext()).putString(AppConst.User.TOKEN, token);
+    //One write for the 3 fields, so a crash in between cannot leave a half-saved login
+    public static void save(String id, String phone, String token) {
+        sp().edit()
+                .putString(AppConst.User.ID, id)
+                .putString(AppConst.User.PHONE, phone)
+                .putString(AppConst.User.TOKEN, token)
+                .apply();
     }
 
     public static void clear() {
-        SPUtils.getInstance(UIUtils.getContext()).remove(AppConst.User.ID);
-        SPUtils.getInstance(UIUtils.getContext()).remove(AppConst.User.PHONE);
-        SPUtils.getInstance(UIUtils.getContext()).remove(AppConst.User.TOKEN);
+        sp().edit()
+                .remove(AppConst.User.ID)
+                .remove(AppConst.User.PHONE)
+                .remove(AppConst.User.TOKEN)
+                .apply();
         DBManager.getInstance().deleteAllUserInfo();
     }
 

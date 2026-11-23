@@ -72,4 +72,11 @@ public class SPUtils {
         sp.edit().remove(key).apply();
     }
 
+    /**
+     * For writing several keys at once; the caller must apply() it
+     */
+    public SharedPreferences.Editor edit() {
+        return sp.edit();
+    }
+
 }
