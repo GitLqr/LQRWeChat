@@ -8,18 +8,18 @@ import java.util.Map;
 /**
  * @创建者 GitLqr
  * @描述 sharedPreferences工具类(单例模式)
+ * Every write uses a fresh editor (a shared one would also flush other callers' pending edits),
+ * and apply() writes to disk in the background instead of blocking the caller
  */
 public class SPUtils {
     private static final String SP_NAME = "common";
     private static SPUtils mSpUtils;
-    private Context context;
-    private SharedPreferences sp;
-    private SharedPreferences.Editor editor;
+    private final SharedPreferences sp;
 
     private SPUtils(Context context) {
-        this.context = context;
-        sp = this.context.getSharedPreferences(SP_NAME, Context.MODE_APPEND);
-        editor = sp.edit();
+        //The singleton keeps only the application context, so a passed-in Activity is not leaked.
+        //MODE_APPEND is a file open mode, not a SharedPreferences mode; the file name stays the same
+        sp = context.getApplicationContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
     }
 
     public static SPUtils getInstance(Context context) {
@@ -38,8 +38,7 @@ public class SPUtils {
     }
 
     public void putBoolean(String key, Boolean value) {
-        editor.putBoolean(key, value);
-        editor.commit();
+        sp.edit().putBoolean(key, value).apply();
     }
 
     public boolean getBoolean(String key, Boolean defValue) {
@@ -50,8 +49,7 @@ public class SPUtils {
         if (key == null) {
             return;
         }
-        editor.putString(key, value);
-        editor.commit();
+        sp.edit().putString(key, value).apply();
     }
 
     public String getString(String key, String defValue) {
@@ -59,8 +57,7 @@ public class SPUtils {
     }
 
     public void putInt(String key, int value) {
-        editor.putInt(key, value);
-        editor.commit();
+        sp.edit().putInt(key, value).apply();
     }
 
     public int getInt(String key, int defValue) {
@@ -72,7 +69,7 @@ public class SPUtils {
     }
 
     public void remove(String key) {
-        sp.edit().remove(key).commit();
+        sp.edit().remove(key).apply();
     }
 
 }
