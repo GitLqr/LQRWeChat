@@ -80,7 +80,7 @@ import rx.Observable;
 public class ApiRetrofit extends BaseApiRetrofit {
 
     public MyApi mApi;
-    public static ApiRetrofit mInstance;
+    private static volatile ApiRetrofit mInstance;
 
     private ApiRetrofit() {
         super();

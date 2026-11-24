@@ -17,7 +17,7 @@ import retrofit2.adapter.rxjava.HttpException;
  */
 public class BroadcastManager {
     private Context mContext;
-    private static BroadcastManager mInstance;
+    private static volatile BroadcastManager mInstance;
     private Map<String, BroadcastReceiver> mReceiverMap;
 
     private BroadcastManager(Context context) {

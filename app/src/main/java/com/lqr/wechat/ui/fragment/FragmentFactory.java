@@ -6,7 +6,7 @@ package com.lqr.wechat.ui.fragment;
  */
 public class FragmentFactory {
 
-    static FragmentFactory mInstance;
+    private static volatile FragmentFactory mInstance;
 
     private FragmentFactory() {
     }

@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class SPUtils {
     private static final String SP_NAME = "common";
-    private static SPUtils mSpUtils;
+    private static volatile SPUtils mSpUtils;
     private final SharedPreferences sp;
 
     private SPUtils(Context context) {

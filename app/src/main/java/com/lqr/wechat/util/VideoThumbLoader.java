@@ -17,7 +17,7 @@ public class VideoThumbLoader {
     private ImageView imgView;
     private String path;
 
-    static VideoThumbLoader instance;
+    private static volatile VideoThumbLoader instance;
 
     public static VideoThumbLoader getInstance() {
         if (instance == null) {

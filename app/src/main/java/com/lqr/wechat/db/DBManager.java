@@ -39,7 +39,7 @@ import rx.schedulers.Schedulers;
  */
 public class DBManager {
 
-    private static DBManager mInstance;
+    private static volatile DBManager mInstance;
     //Written on io threads and read from wherever getGroups/getGroupMember are called
     private volatile boolean mHasFetchedFriends = false;
     private volatile boolean mHasFetchedGroups = false;
@@ -47,7 +47,7 @@ public class DBManager {
     private LinkedHashMap<String, UserInfo> mUserInfoCache;
     private Subscription mFetchSubscription;
 
-    public DBManager() {
+    private DBManager() {
         mUserInfoCache = new LinkedHashMap<>();
     }
 
