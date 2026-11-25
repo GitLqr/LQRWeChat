@@ -19,11 +19,13 @@ import io.rong.imlib.model.UserInfo;
 
 @MessageTag(
         value = "lqr:DcMsg",
-        flag = 3
+        //A control message: it should not be stored, show up in the conversation list or add to the unread count
+        flag = MessageTag.NONE
 )
 public class DeleteContactMessage extends MessageContent {
     //A Charset instead of "UTF-8" avoids the checked UnsupportedEncodingException (StandardCharsets needs API 19)
     private static final Charset CHARSET = Charset.forName("UTF-8");
+    private static final String KEY_USER = "user";
     private String contact_id;
     public static final Creator<DeleteContactMessage> CREATOR = new Creator() {
         public DeleteContactMessage createFromParcel(Parcel var1) {
@@ -44,7 +46,7 @@ public class DeleteContactMessage extends MessageContent {
             }
 
             if (this.getJSONUserInfo() != null) {
-                var1.put("bribery", this.getJSONUserInfo());
+                var1.put(KEY_USER, this.getJSONUserInfo());
             }
         } catch (JSONException var4) {
             var4.printStackTrace();
@@ -85,6 +87,10 @@ public class DeleteContactMessage extends MessageContent {
 
             if (var3.has("contact_id")) {
                 this.setContact_id(var3.optString("contact_id"));
+            }
+
+            if (var3.has(KEY_USER)) {
+                this.setUserInfo(this.parseJsonToUserInfo(var3.getJSONObject(KEY_USER)));
             }
 
         } catch (JSONException var4) {
