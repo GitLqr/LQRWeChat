@@ -6,9 +6,11 @@ import android.text.TextUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.lqr.wechat.util.LogUtils;
 
 import io.rong.common.ParcelUtils;
 import io.rong.imlib.MessageTag;
@@ -20,6 +22,8 @@ import io.rong.imlib.model.UserInfo;
         flag = 3
 )
 public class RedPacketMessage extends MessageContent {
+    //A Charset instead of "UTF-8" avoids the checked UnsupportedEncodingException (StandardCharsets needs API 19)
+    private static final Charset CHARSET = Charset.forName("UTF-8");
     private String content;
     private String Bribery_ID;
     private String Bribery_Name;
@@ -61,12 +65,7 @@ public class RedPacketMessage extends MessageContent {
             var4.printStackTrace();
         }
 
-        try {
-            return var1.toString().getBytes("UTF-8");
-        } catch (UnsupportedEncodingException var3) {
-            var3.printStackTrace();
-            return null;
-        }
+        return var1.toString().getBytes(CHARSET);
     }
 
     private String getEmotion(String var1) {
@@ -96,13 +95,8 @@ public class RedPacketMessage extends MessageContent {
     }
 
     public RedPacketMessage(byte[] var1) {
-        String var2 = null;
-
-        try {
-            var2 = new String(var1, "UTF-8");
-        } catch (UnsupportedEncodingException var5) {
-            ;
-        }
+        //A null payload throws here on purpose: NativeClient catches it and drops the message instead of delivering an empty one
+        String var2 = new String(var1, CHARSET);
 
         try {
             JSONObject var3 = new JSONObject(var2);
@@ -126,7 +120,7 @@ public class RedPacketMessage extends MessageContent {
                 this.setUserInfo(this.parseJsonToUserInfo(var3.getJSONObject("bribery")));
             }
         } catch (JSONException var4) {
-            ;
+            LogUtils.e("RedPacketMessage: invalid payload", var4);
         }
 
     }

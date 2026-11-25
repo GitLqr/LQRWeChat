@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.alibaba.fastjson.JSONException;
@@ -140,6 +141,10 @@ public class MyApp extends BaseApp implements RongIMClient.OnReceiveMessageListe
         } else if (messageContent instanceof DeleteContactMessage) {
             DeleteContactMessage deleteContactMessage = (DeleteContactMessage) messageContent;
             String contact_id = deleteContactMessage.getContact_id();
+            //A malformed payload leaves contact_id empty, and deleteFriendById(null) would crash on the null bind arg
+            if (TextUtils.isEmpty(contact_id)) {
+                return false;
+            }
             RongIMClient.getInstance().getConversation(Conversation.ConversationType.PRIVATE, contact_id, new RongIMClient.ResultCallback<Conversation>() {
                 @Override
                 public void onSuccess(Conversation conversation) {
