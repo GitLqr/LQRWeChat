@@ -44,6 +44,13 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Fragme
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        //FragmentFactory keeps the Fragment alive beyond its view, so drop the view references
+        ButterKnife.unbind(this);
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         if (mPresenter != null) {

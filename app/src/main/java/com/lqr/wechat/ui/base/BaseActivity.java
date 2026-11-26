@@ -117,6 +117,9 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
 
     @Override
     protected void onDestroy() {
+        //A dialog still showing when the Activity goes away leaks its window
+        hideWaitingDialog();
+        hideMaterialDialog();
         super.onDestroy();
         MyApp.removeActivity(this);
         if (mPresenter != null) {
@@ -164,6 +167,10 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
      */
     public Dialog showWaitingDialog(String tip) {
         hideWaitingDialog();
+        //Async callbacks may arrive after finish(), and showing then would leak the window
+        if (isFinishing()) {
+            return null;
+        }
         View view = View.inflate(this, R.layout.dialog_waiting, null);
         if (!TextUtils.isEmpty(tip))
             ((TextView) view.findViewById(R.id.tvTip)).setText(tip);
@@ -188,6 +195,9 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
      */
     public MaterialDialog showMaterialDialog(String title, String message, String positiveText, String negativeText, View.OnClickListener positiveButtonClickListener, View.OnClickListener negativeButtonClickListener) {
         hideMaterialDialog();
+        if (isFinishing()) {
+            return null;
+        }
         mMaterialDialog = new MaterialDialog(this);
         if (!TextUtils.isEmpty(title)) {
             mMaterialDialog.setTitle(title);
