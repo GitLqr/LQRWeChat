@@ -25,7 +25,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import rx.Observable;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -34,7 +33,6 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
 
     int time = 0;
     private Timer mTimer;
-    private Subscription mSubscription;
 
     public RegisterAtPresenter(BaseActivity context) {
         super(context);
@@ -87,7 +85,7 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
     private void changeSendCodeBtn() {
         //开始1分钟倒计时
         //每一秒执行一次Task
-        mSubscription = Observable.create((Observable.OnSubscribe<Integer>) subscriber -> {
+        addSubscription(Observable.create((Observable.OnSubscribe<Integer>) subscriber -> {
             time = 60;
             TimerTask mTask = new TimerTask() {
                 @Override
@@ -111,7 +109,7 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
                     } else {
                         mTimer.cancel();
                     }
-                }, throwable -> LogUtils.sf(throwable.getLocalizedMessage()));
+                }, throwable -> LogUtils.sf(throwable.getLocalizedMessage())));
     }
 
     public void register() {
@@ -178,13 +176,6 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
     private void registerError(Throwable throwable) {
         LogUtils.sf(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
-    }
-
-    public void unsubscribe() {
-        if (mSubscription != null) {
-            mSubscription.unsubscribe();
-            mSubscription = null;
-        }
     }
 
 }

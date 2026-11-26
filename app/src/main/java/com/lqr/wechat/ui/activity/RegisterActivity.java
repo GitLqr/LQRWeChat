@@ -119,12 +119,6 @@ public class RegisterActivity extends BaseActivity<IRegisterAtView, RegisterAtPr
         });
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mPresenter.unsubscribe();
-    }
-
     private boolean canRegister() {
         int nickNameLength = mEtNick.getText().toString().trim().length();
         int pwdLength = mEtPwd.getText().toString().trim().length();
