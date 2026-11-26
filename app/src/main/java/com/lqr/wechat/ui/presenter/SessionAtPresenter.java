@@ -94,7 +94,7 @@ public class SessionAtPresenter extends BaseFragmentPresenter<ISessionAtView> {
     }
 
     public void resetDraft() {
-        Observable.just(RongIMClient.getInstance().getTextMessageDraft(mConversationType, mSessionId))
+        addSubscription(Observable.just(RongIMClient.getInstance().getTextMessageDraft(mConversationType, mSessionId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(s -> {
@@ -102,7 +102,7 @@ public class SessionAtPresenter extends BaseFragmentPresenter<ISessionAtView> {
                         getView().getEtContent().setText(s);
                         RongIMClient.getInstance().clearTextMessageDraft(mConversationType, mSessionId);
                     }
-                }, this::loadError);
+                }, this::loadError));
     }
 
     public void saveDraft() {
@@ -211,8 +211,7 @@ public class SessionAtPresenter extends BaseFragmentPresenter<ISessionAtView> {
                     public void onSuccess(RecallNotificationMessage recallNotificationMessage) {
                         UIUtils.postTaskSafely(() -> {
                             recallMessageAndInsertMessage(recallNotificationMessage, position);
-                            mSessionMenuDialog.dismiss();
-                            mSessionMenuDialog = null;
+                            dismissSessionMenuDialog();
                             UIUtils.showToast(UIUtils.getString(R.string.recall_success));
                         });
                     }
@@ -220,8 +219,7 @@ public class SessionAtPresenter extends BaseFragmentPresenter<ISessionAtView> {
                     @Override
                     public void onError(RongIMClient.ErrorCode errorCode) {
                         UIUtils.postTaskSafely(() -> {
-                            mSessionMenuDialog.dismiss();
-                            mSessionMenuDialog = null;
+                            dismissSessionMenuDialog();
                             UIUtils.showToast(UIUtils.getString(R.string.recall_fail) + ":" + errorCode.getValue());
                         });
                     }
@@ -230,8 +228,7 @@ public class SessionAtPresenter extends BaseFragmentPresenter<ISessionAtView> {
                     @Override
                     public void onSuccess(Boolean aBoolean) {
                         UIUtils.postTaskSafely(() -> {
-                            mSessionMenuDialog.dismiss();
-                            mSessionMenuDialog = null;
+                            dismissSessionMenuDialog();
                             mData.remove(position);
                             mAdapter.notifyDataSetChangedWrapper();
                             UIUtils.showToast(UIUtils.getString(R.string.delete_success));
@@ -241,8 +238,7 @@ public class SessionAtPresenter extends BaseFragmentPresenter<ISessionAtView> {
                     @Override
                     public void onError(RongIMClient.ErrorCode errorCode) {
                         UIUtils.postTaskSafely(() -> {
-                            mSessionMenuDialog.dismiss();
-                            mSessionMenuDialog = null;
+                            dismissSessionMenuDialog();
                             UIUtils.showToast(UIUtils.getString(R.string.delete_fail) + ":" + errorCode.getValue());
                         });
                     }
@@ -250,7 +246,7 @@ public class SessionAtPresenter extends BaseFragmentPresenter<ISessionAtView> {
                 mSessionMenuDialog.show();
                 return false;
             });
-            UIUtils.postTaskDelay(() -> getView().getRvMsg().smoothMoveToPosition(mData.size() - 1), 200);
+            UIUtils.postTaskDelay(this::rvMoveToBottom, 200);
         } else {
             mAdapter.notifyDataSetChangedWrapper();
             if (getView() != null && getView().getRvMsg() != null)
@@ -258,8 +254,17 @@ public class SessionAtPresenter extends BaseFragmentPresenter<ISessionAtView> {
         }
     }
 
+    //Rong callbacks and delayed tasks can land after the page is gone, when getView() is null
     private void rvMoveToBottom() {
+        if (!isViewAttached()) {
+            return;
+        }
         getView().getRvMsg().smoothMoveToPosition(mData.size() - 1);
+    }
+
+    private void dismissSessionMenuDialog() {
+        UIUtils.dismissDialogSafely(mSessionMenuDialog);
+        mSessionMenuDialog = null;
     }
 
     private void updateMessageStatus(Message message) {
@@ -541,6 +546,9 @@ public class SessionAtPresenter extends BaseFragmentPresenter<ISessionAtView> {
         RongIMClient.getInstance().getHistoryMessages(mConversationType, mSessionId, messageId, mMessageCount, new RongIMClient.ResultCallback<List<Message>>() {
             @Override
             public void onSuccess(List<Message> messages) {
+                if (!isViewAttached()) {
+                    return;
+                }
                 getView().getRefreshLayout().endRefreshing();
                 if (messages == null || messages.size() == 0)
                     getRemoteHistoryMessages();
@@ -550,6 +558,9 @@ public class SessionAtPresenter extends BaseFragmentPresenter<ISessionAtView> {
 
             @Override
             public void onError(RongIMClient.ErrorCode errorCode) {
+                if (!isViewAttached()) {
+                    return;
+                }
                 getView().getRefreshLayout().endRefreshing();
                 loadMessageError(errorCode);
             }
@@ -582,7 +593,7 @@ public class SessionAtPresenter extends BaseFragmentPresenter<ISessionAtView> {
 
     private void saveHistoryMsg(List<Message> messages) {
         //messages的时间顺序从新到旧排列，所以必须反过来加入到mData中
-        if (messages != null && messages.size() > 0) {
+        if (messages != null && messages.size() > 0 && isViewAttached()) {
             for (Message msg : messages) {
                 mData.add(0, msg);
             }

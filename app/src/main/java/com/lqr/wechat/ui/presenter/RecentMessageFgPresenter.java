@@ -248,8 +248,7 @@ public class RecentMessageFgPresenter extends BasePresenter<IRecentMessageFgView
                             @Override
                             public void onSuccess(Boolean aBoolean) {
                                 loadData();
-                                mConversationMenuDialog.dismiss();
-                                mConversationMenuDialog = null;
+                                dismissConversationMenuDialog();
                             }
 
                             @Override
@@ -262,8 +261,7 @@ public class RecentMessageFgPresenter extends BasePresenter<IRecentMessageFgView
                         @Override
                         public void onSuccess(Boolean aBoolean) {
                             loadData();
-                            mConversationMenuDialog.dismiss();
-                            mConversationMenuDialog = null;
+                            dismissConversationMenuDialog();
                         }
 
                         @Override
@@ -277,5 +275,10 @@ public class RecentMessageFgPresenter extends BasePresenter<IRecentMessageFgView
             });
             getView().getRvRecentMessage().setAdapter(mAdapter);
         }
+    }
+
+    private void dismissConversationMenuDialog() {
+        UIUtils.dismissDialogSafely(mConversationMenuDialog);
+        mConversationMenuDialog = null;
     }
 }

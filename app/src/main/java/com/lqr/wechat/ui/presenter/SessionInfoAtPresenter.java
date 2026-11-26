@@ -260,7 +260,7 @@ public class SessionInfoAtPresenter extends BasePresenter<ISessionInfoAtView> {
 
                 break;
             case SESSION_TYPE_GROUP:
-                Observable.just(DBManager.getInstance().getGroupsById(sessionId))
+                addSubscription(Observable.just(DBManager.getInstance().getGroupsById(sessionId))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(groups -> {
@@ -275,20 +275,20 @@ public class SessionInfoAtPresenter extends BasePresenter<ISessionInfoAtView> {
                             getView().getOivNickNameInGroup().setRightText(mDisplayName);
                             getView().getBtnQuit().setText(groups.getRole().equals("0") ? UIUtils.getString(R.string.dismiss_this_group) :
                                     UIUtils.getString(R.string.delete_and_exit));
-                        }, this::loadOtherError);
+                        }, this::loadOtherError));
                 break;
         }
     }
 
     private void setToTop() {
-        Observable.just(RongIMClient.getInstance().getConversation(mConversationType, mSessionId))
+        addSubscription(Observable.just(RongIMClient.getInstance().getConversation(mConversationType, mSessionId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(conversation -> {
                     if (conversation != null) {
                         getView().getSbToTop().setChecked(conversation.isTop());
                     }
-                });
+                }, this::loadOtherError));
     }
 
     private void loadOtherError(Throwable throwable) {
@@ -390,13 +390,16 @@ public class SessionInfoAtPresenter extends BasePresenter<ISessionInfoAtView> {
                                     groups.setDisplayName(displayName);
                                     groups.saveOrUpdate("groupid=?", groups.getGroupId());
                                     mDisplayName = displayName;
-                                    getView().getOivNickNameInGroup().setRightText(mDisplayName);
+                                    //Not cancelled on detach: the server already changed, so the local copy must still follow
+                                    if (isViewAttached()) {
+                                        getView().getOivNickNameInGroup().setRightText(mDisplayName);
+                                    }
                                 }
                                 UIUtils.showToast(UIUtils.getString(R.string.change_success));
                             } else {
                                 UIUtils.showToast(UIUtils.getString(R.string.change_fail));
                             }
-                            mSetDisplayNameDialog.dismiss();
+                            dismissSetDisplayNameDialog();
                         }, this::setDisplayNameError);
             }
         });
@@ -407,6 +410,11 @@ public class SessionInfoAtPresenter extends BasePresenter<ISessionInfoAtView> {
     private void setDisplayNameError(Throwable throwable) {
         LogUtils.sf(throwable.getLocalizedMessage());
         UIUtils.showToast(UIUtils.getString(R.string.change_fail));
-        mSetDisplayNameDialog.dismiss();
+        dismissSetDisplayNameDialog();
+    }
+
+    private void dismissSetDisplayNameDialog() {
+        UIUtils.dismissDialogSafely(mSetDisplayNameDialog);
+        mSetDisplayNameDialog = null;
     }
 }

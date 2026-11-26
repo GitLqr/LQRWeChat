@@ -1,5 +1,6 @@
 package com.lqr.wechat.util;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -144,6 +145,16 @@ public class UIUtils {
      */
     public static long getMainThreadId() {
         return MyApp.getMainThreadId();
+    }
+
+    /**
+     * Async callbacks can land after the Activity is destroyed. Its windows are removed by then,
+     * and dismiss() would throw "not attached to window manager", so check the window first.
+     */
+    public static void dismissDialogSafely(Dialog dialog) {
+        if (dialog != null && dialog.isShowing() && dialog.getWindow().getDecorView().getWindowToken() != null) {
+            dialog.dismiss();
+        }
     }
 
     /**
