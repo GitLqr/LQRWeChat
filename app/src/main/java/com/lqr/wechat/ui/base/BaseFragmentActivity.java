@@ -56,6 +56,10 @@ public abstract class BaseFragmentActivity<V, T extends BaseFragmentPresenter<V>
         super.onCreate(savedInstanceState);
         MyApp.addActivity(this);
         init();
+        //Subclasses finish() here or in initView() when the intent extras are missing; the rest would run on bad input
+        if (isFinishing()) {
+            return;
+        }
 
         //判断是否使用MVP模式
         mPresenter = createPresenter();
@@ -73,6 +77,9 @@ public abstract class BaseFragmentActivity<V, T extends BaseFragmentPresenter<V>
         StatusBarUtil.setColor(this, UIUtils.getColor(R.color.colorPrimaryDark), 10);
 
         initView();
+        if (isFinishing()) {
+            return;
+        }
         initData();
         initListener();
     }
