@@ -51,7 +51,7 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
         }
 
         mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
-        ApiRetrofit.getInstance().checkPhoneAvailable(AppConst.REGION, phone)
+        addSubscription(ApiRetrofit.getInstance().checkPhoneAvailable(AppConst.REGION, phone)
                 .subscribeOn(Schedulers.io())
                 .flatMap(new Func1<CheckPhoneResponse, Observable<SendCodeResponse>>() {
                     @Override
@@ -66,6 +66,9 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(sendCodeResponse -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
                     mContext.hideWaitingDialog();
                     int code = sendCodeResponse.getCode();
                     if (code == 200) {
@@ -73,10 +76,13 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
                     } else {
                         sendCodeError(new ServerException(UIUtils.getString(R.string.send_code_error)));
                     }
-                }, this::sendCodeError);
+                }, this::sendCodeError));
     }
 
     private void sendCodeError(Throwable throwable) {
+        if (!isViewAttached()) {
+            return;
+        }
         mContext.hideWaitingDialog();
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
@@ -98,6 +104,9 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(time -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
                     if (getView().getBtnSendCode() != null) {
                         if (time >= 0) {
                             getView().getBtnSendCode().setEnabled(false);
@@ -136,7 +145,7 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
             return;
         }
 
-        ApiRetrofit.getInstance().verifyCode(AppConst.REGION, phone, code)
+        addSubscription(ApiRetrofit.getInstance().verifyCode(AppConst.REGION, phone, code)
                 .flatMap(new Func1<VerifyCodeResponse, Observable<RegisterResponse>>() {
                     @Override
                     public Observable<RegisterResponse> call(VerifyCodeResponse verifyCodeResponse) {
@@ -162,6 +171,9 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(loginResponse -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
                     int responseCode = loginResponse.getCode();
                     if (responseCode == 200) {
                         UserCache.save(loginResponse.getResult().getId(), phone, loginResponse.getResult().getToken());
@@ -170,10 +182,13 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
                         UIUtils.showToast(UIUtils.getString(R.string.login_error));
                         mContext.jumpToActivity(LoginActivity.class);
                     }
-                }, this::registerError);
+                }, this::registerError));
     }
 
     private void registerError(Throwable throwable) {
+        if (!isViewAttached()) {
+            return;
+        }
         LogUtils.sf(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
     }

@@ -56,10 +56,13 @@ public class NewFriendAtPresenter extends BasePresenter<INewFriendAtView> {
     }
 
     private void loadData() {
-        ApiRetrofit.getInstance().getAllUserRelationship()
+        addSubscription(ApiRetrofit.getInstance().getAllUserRelationship()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(userRelationshipResponse -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
                     if (userRelationshipResponse.getCode() == 200) {
                         List<UserRelationshipResponse.ResultEntity> result = userRelationshipResponse.getResult();
 
@@ -85,7 +88,7 @@ public class NewFriendAtPresenter extends BasePresenter<INewFriendAtView> {
                     } else {
                         Observable.error(new ServerException(UIUtils.getString(R.string.load_error)));
                     }
-                }, this::loadError);
+                }, this::loadError));
     }
 
     private void setAdapter() {
@@ -137,8 +140,10 @@ public class NewFriendAtPresenter extends BasePresenter<INewFriendAtView> {
                     @Override
                     public Observable<GetUserInfoByIdResponse> call(AgreeFriendsResponse agreeFriendsResponse) {
                         if (agreeFriendsResponse != null && agreeFriendsResponse.getCode() == 200) {
-                            helper.setViewVisibility(R.id.tvAdded, View.VISIBLE)
-                                    .setViewVisibility(R.id.btnAck, View.GONE);
+                            if (isViewAttached()) {
+                                helper.setViewVisibility(R.id.tvAdded, View.VISIBLE)
+                                        .setViewVisibility(R.id.btnAck, View.GONE);
+                            }
                             //flatMap runs on the main thread because it updates the buttons, so the inner request needs its own subscribeOn(io)
                             return ApiRetrofit.getInstance().getUserInfoById(friendId).subscribeOn(Schedulers.io());
                         }
@@ -164,6 +169,9 @@ public class NewFriendAtPresenter extends BasePresenter<INewFriendAtView> {
     }
 
     private void loadError(Throwable throwable) {
+        if (!isViewAttached()) {
+            return;
+        }
         LogUtils.sf(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
     }

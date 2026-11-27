@@ -54,10 +54,13 @@ public class CreateGroupAtPresenter extends BasePresenter<ICreateGroupAtView> {
     }
 
     private void loadData() {
-        Observable.just(DBManager.getInstance().getFriends())
+        addSubscription(Observable.just(DBManager.getInstance().getFriends())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(friends -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
                     if (friends != null && friends.size() > 0) {
                         mData.clear();
                         mData.addAll(friends);
@@ -66,7 +69,7 @@ public class CreateGroupAtPresenter extends BasePresenter<ICreateGroupAtView> {
                         if (mAdapter != null)
                             mAdapter.notifyDataSetChanged();
                     }
-                }, this::loadError);
+                }, this::loadError));
     }
 
     private void setAdapter() {
@@ -209,23 +212,31 @@ public class CreateGroupAtPresenter extends BasePresenter<ICreateGroupAtView> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(createGroupResponse -> {
-                    mContext.hideWaitingDialog();
+                    if (isViewAttached()) {
+                        mContext.hideWaitingDialog();
+                    }
                     if (createGroupResponse.getCode() == 200) {
-                        UIUtils.showToast(UIUtils.getString(R.string.create_group_success));
                         CreateGroupResponse.ResultEntity resultEntity = createGroupResponse.getResult();
                         DBManager.getInstance().saveOrUpdateGroup(new Groups(resultEntity.getId(), mGroupName, null, String.valueOf(0)));
+                        if (!isViewAttached()) {
+                            return;
+                        }
+                        UIUtils.showToast(UIUtils.getString(R.string.create_group_success));
                         Intent intent = new Intent(mContext, SessionActivity.class);
                         intent.putExtra("sessionId", resultEntity.getId());
                         intent.putExtra("sessionType", SessionActivity.SESSION_TYPE_GROUP);
                         mContext.jumpToActivity(intent);
                         mContext.finish();
-                    } else {
+                    } else if (isViewAttached()) {
                         UIUtils.showToast(UIUtils.getString(R.string.create_group_fail));
                     }
                 }, this::loadError);
     }
 
     private void loadError(Throwable throwable) {
+        if (!isViewAttached()) {
+            return;
+        }
         LogUtils.sf(throwable.getLocalizedMessage());
         mContext.hideWaitingDialog();
     }

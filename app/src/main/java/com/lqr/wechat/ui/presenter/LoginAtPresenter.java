@@ -37,10 +37,13 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
         }
 
         mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
-        ApiRetrofit.getInstance().login(AppConst.REGION, phone, pwd)
+        addSubscription(ApiRetrofit.getInstance().login(AppConst.REGION, phone, pwd)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(loginResponse -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
                     int code = loginResponse.getCode();
                     mContext.hideWaitingDialog();
                     if (code == 200) {
@@ -49,10 +52,13 @@ public class LoginAtPresenter extends BasePresenter<ILoginAtView> {
                     } else {
                         loginError(new ServerException(UIUtils.getString(R.string.login_error) + code));
                     }
-                }, this::loginError);
+                }, this::loginError));
     }
 
     private void loginError(Throwable throwable) {
+        if (!isViewAttached()) {
+            return;
+        }
         LogUtils.e(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
         mContext.hideWaitingDialog();

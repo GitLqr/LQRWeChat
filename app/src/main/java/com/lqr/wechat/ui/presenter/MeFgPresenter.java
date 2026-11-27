@@ -34,10 +34,13 @@ public class MeFgPresenter extends BasePresenter<IMeFgView> {
         mUserInfo = DBManager.getInstance().getUserInfo(UserCache.getId());
         if (mUserInfo == null || isFirst) {
             isFirst = false;
-            ApiRetrofit.getInstance().getUserInfoById(UserCache.getId())
+            addSubscription(ApiRetrofit.getInstance().getUserInfoById(UserCache.getId())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(getUserInfoByIdResponse -> {
+                        if (!isViewAttached()) {
+                            return;
+                        }
                         if (getUserInfoByIdResponse != null && getUserInfoByIdResponse.getCode() == 200) {
                             GetUserInfoByIdResponse.ResultEntity result = getUserInfoByIdResponse.getResult();
 
@@ -49,7 +52,7 @@ public class MeFgPresenter extends BasePresenter<IMeFgView> {
                             DBManager.getInstance().saveOrUpdateFriend(new Friend(mUserInfo.getUserId(), mUserInfo.getName(), mUserInfo.getPortraitUri().toString()));
                             fillView();
                         }
-                    }, this::loadError);
+                    }, this::loadError));
         } else {
             fillView();
         }
@@ -73,6 +76,9 @@ public class MeFgPresenter extends BasePresenter<IMeFgView> {
     }
 
     private void loadError(Throwable throwable) {
+        if (!isViewAttached()) {
+            return;
+        }
         LogUtils.sf(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
     }

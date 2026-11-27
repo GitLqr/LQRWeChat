@@ -38,10 +38,13 @@ public class SearchUserAtPresenter extends BasePresenter<ISearchUserAtView> {
 
         mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
         if (RegularUtils.isMobile(content)) {
-            ApiRetrofit.getInstance().getUserInfoFromPhone(AppConst.REGION, content)
+            addSubscription(ApiRetrofit.getInstance().getUserInfoFromPhone(AppConst.REGION, content)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(getUserInfoByPhoneResponse -> {
+                        if (!isViewAttached()) {
+                            return;
+                        }
                         mContext.hideWaitingDialog();
                         if (getUserInfoByPhoneResponse.getCode() == 200) {
                             GetUserInfoByPhoneResponse.ResultEntity result = getUserInfoByPhoneResponse.getResult();
@@ -53,12 +56,15 @@ public class SearchUserAtPresenter extends BasePresenter<ISearchUserAtView> {
                             getView().getRlNoResultTip().setVisibility(View.VISIBLE);
                             getView().getLlSearch().setVisibility(View.GONE);
                         }
-                    }, this::loadError);
+                    }, this::loadError));
         } else {
-            ApiRetrofit.getInstance().getUserInfoById(content)
+            addSubscription(ApiRetrofit.getInstance().getUserInfoById(content)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(getUserInfoByIdResponse -> {
+                        if (!isViewAttached()) {
+                            return;
+                        }
                         mContext.hideWaitingDialog();
                         if (getUserInfoByIdResponse.getCode() == 200) {
                             GetUserInfoByIdResponse.ResultEntity result = getUserInfoByIdResponse.getResult();
@@ -70,11 +76,14 @@ public class SearchUserAtPresenter extends BasePresenter<ISearchUserAtView> {
                             getView().getRlNoResultTip().setVisibility(View.VISIBLE);
                             getView().getLlSearch().setVisibility(View.GONE);
                         }
-                    }, this::loadError);
+                    }, this::loadError));
         }
     }
 
     private void loadError(Throwable throwable) {
+        if (!isViewAttached()) {
+            return;
+        }
         mContext.hideWaitingDialog();
         LogUtils.sf(throwable.getLocalizedMessage());
     }

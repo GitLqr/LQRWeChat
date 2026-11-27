@@ -44,10 +44,13 @@ public class MyInfoAtPresenter extends BasePresenter<IMyInfoAtView> {
     public void setPortrait(ImageItem imageItem) {
         mContext.showWaitingDialog(UIUtils.getString(R.string.please_wait));
         //上传头像
-        ApiRetrofit.getInstance().getQiNiuToken()
+        addSubscription(ApiRetrofit.getInstance().getQiNiuToken()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(qiNiuTokenResponse -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
                     if (qiNiuTokenResponse != null && qiNiuTokenResponse.getCode() == 200) {
                         if (mUploadManager == null)
                             mUploadManager = new UploadManager();
@@ -71,13 +74,17 @@ public class MyInfoAtPresenter extends BasePresenter<IMyInfoAtView> {
                                                     friend.setPortraitUri(imageUrl);
                                                     DBManager.getInstance().saveOrUpdateFriend(friend);
                                                     DBManager.getInstance().updateGroupMemberPortraitUri(UserCache.getId(), imageUrl);
-                                                    Glide.with(mContext).load(friend.getPortraitUri()).centerCrop().into(getView().getIvHeader());
+                                                    if (isViewAttached()) {
+                                                        Glide.with(mContext).load(friend.getPortraitUri()).centerCrop().into(getView().getIvHeader());
+                                                        UIUtils.showToast(UIUtils.getString(R.string.set_success));
+                                                    }
                                                     BroadcastManager.getInstance(mContext).sendBroadcast(AppConst.CHANGE_INFO_FOR_ME);
                                                     BroadcastManager.getInstance(mContext).sendBroadcast(AppConst.UPDATE_CONVERSATIONS);
                                                     BroadcastManager.getInstance(mContext).sendBroadcast(AppConst.UPDATE_GROUP);
-                                                    UIUtils.showToast(UIUtils.getString(R.string.set_success));
                                                 }
-                                                mContext.hideWaitingDialog();
+                                                if (isViewAttached()) {
+                                                    mContext.hideWaitingDialog();
+                                                }
                                             } else {
                                                 uploadError(null);
                                             }
@@ -89,10 +96,13 @@ public class MyInfoAtPresenter extends BasePresenter<IMyInfoAtView> {
                     } else {
                         uploadError(null);
                     }
-                }, this::uploadError);
+                }, this::uploadError));
     }
 
     private void uploadError(Throwable throwable) {
+        if (!isViewAttached()) {
+            return;
+        }
         if (throwable != null)
             LogUtils.sf(throwable.getLocalizedMessage());
         mContext.hideWaitingDialog();

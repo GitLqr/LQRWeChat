@@ -20,20 +20,26 @@ public class PostScriptAtPresenter extends BasePresenter<IPostScriptAtView> {
 
     public void addFriend(String userId) {
         String msg = getView().getEtMsg().getText().toString().trim();
-        ApiRetrofit.getInstance().sendFriendInvitation(userId, msg)
+        addSubscription(ApiRetrofit.getInstance().sendFriendInvitation(userId, msg)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(friendInvitationResponse -> {
+                    if (!isViewAttached()) {
+                        return;
+                    }
                     if (friendInvitationResponse.getCode() == 200) {
                         UIUtils.showToast(UIUtils.getString(R.string.rquest_sent_success));
                         mContext.finish();
                     } else {
                         UIUtils.showToast(UIUtils.getString(R.string.rquest_sent_fail));
                     }
-                }, this::loadError);
+                }, this::loadError));
     }
 
     private void loadError(Throwable throwable) {
+        if (!isViewAttached()) {
+            return;
+        }
         LogUtils.sf(throwable.getLocalizedMessage());
         UIUtils.showToast(throwable.getLocalizedMessage());
     }
