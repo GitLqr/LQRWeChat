@@ -21,18 +21,18 @@ import com.lqr.wechat.util.LogUtils;
 import com.lqr.wechat.util.RegularUtils;
 import com.lqr.wechat.util.UIUtils;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
 
-    int time = 0;
-    private Timer mTimer;
+    private static final int CODE_COUNTDOWN_SECONDS = 60;
+    private Subscription mCountdownSubscription;
 
     public RegisterAtPresenter(BaseActivity context) {
         super(context);
@@ -89,36 +89,29 @@ public class RegisterAtPresenter extends BasePresenter<IRegisterAtView> {
     }
 
     private void changeSendCodeBtn() {
-        //开始1分钟倒计时
-        //每一秒执行一次Task
-        addSubscription(Observable.create((Observable.OnSubscribe<Integer>) subscriber -> {
-            time = 60;
-            TimerTask mTask = new TimerTask() {
-                @Override
-                public void run() {
-                    subscriber.onNext(--time);
-                }
-            };
-            mTimer = new Timer();
-            mTimer.schedule(mTask, 0, 1000);//每一秒执行一次Task
-        }).subscribeOn(Schedulers.io())
+        if (mCountdownSubscription != null) {
+            mCountdownSubscription.unsubscribe();
+        }
+        updateSendCodeButton(CODE_COUNTDOWN_SECONDS);
+        mCountdownSubscription = Observable.interval(1, TimeUnit.SECONDS)
+                .take(CODE_COUNTDOWN_SECONDS)
+                .map(elapsed -> CODE_COUNTDOWN_SECONDS - elapsed.intValue() - 1)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(time -> {
-                    if (!isViewAttached()) {
-                        return;
-                    }
-                    if (getView().getBtnSendCode() != null) {
-                        if (time >= 0) {
-                            getView().getBtnSendCode().setEnabled(false);
-                            getView().getBtnSendCode().setText(time + "");
-                        } else {
-                            getView().getBtnSendCode().setEnabled(true);
-                            getView().getBtnSendCode().setText(UIUtils.getString(R.string.send_code_btn_normal_tip));
-                        }
-                    } else {
-                        mTimer.cancel();
-                    }
-                }, throwable -> LogUtils.sf(throwable.getLocalizedMessage())));
+                .subscribe(this::updateSendCodeButton, throwable -> {
+                    LogUtils.sf(throwable.getLocalizedMessage());
+                    updateSendCodeButton(0);
+                });
+        addSubscription(mCountdownSubscription);
+    }
+
+    private void updateSendCodeButton(int remainingSeconds) {
+        if (!isViewAttached() || getView().getBtnSendCode() == null) {
+            return;
+        }
+        getView().getBtnSendCode().setEnabled(remainingSeconds == 0);
+        getView().getBtnSendCode().setText(remainingSeconds > 0
+                ? String.valueOf(remainingSeconds)
+                : UIUtils.getString(R.string.send_code_btn_normal_tip));
     }
 
     public void register() {
